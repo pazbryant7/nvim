@@ -71,7 +71,7 @@ autocmd('RecordingEnter', {
 		vim.opt.cmdheight = 1
 		local msg = string.format('key: %s', vim.fn.reg_recording())
 		vim.notify(msg, vim.log.levels.INFO, {
-			title = 'Macro Recording',
+			title = 'Neovim Alert',
 		})
 	end,
 })
@@ -81,7 +81,7 @@ autocmd('RecordingLeave', {
 	callback = function()
 		vim.opt.cmdheight = 0
 		vim.notify('has finished', vim.log.levels.INFO, {
-			title = 'Macro Recording',
+			title = 'Neovim Alert',
 		})
 	end,
 })
@@ -128,7 +128,8 @@ autocmd('FileType', {
 
 				vim.notify(
 					'You have closed the last window. Avoiding leave neovim.',
-					vim.log.levels.INFO
+					vim.log.levels.INFO,
+					{ title = 'Neovim Alert' }
 				)
 				-- Option 2: Show a notification instead of opening a new buffer
 				-- Uncomment the following lines and comment out Option 1 if you prefer a notification

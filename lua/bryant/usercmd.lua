@@ -34,12 +34,20 @@ end, {
 usercmd('SpellToggle', function()
 	vim.cmd([[set spell!]])
 	local is_spell_on = vim.opt.spell:get() and 'on' or 'off'
-	vim.notify(string.format('spell is %s', is_spell_on), vim.log.levels.INFO)
+	vim.notify(
+		string.format('spell is %s', is_spell_on),
+		vim.log.levels.INFO,
+		{ title = 'Neovim Alert' }
+	)
 end, { desc = 'Spell toggle' })
 
 usercmd('DiagnosticsToggle', function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 	local is_enabled = vim.diagnostic.is_enabled()
 	local msg = is_enabled and 'enabled' or 'disabled'
-	vim.notify(string.format('Diagnostic has been %s', msg), vim.log.levels.INFO)
+	vim.notify(
+		string.format('Diagnostic has been %s', msg),
+		vim.log.levels.INFO,
+		{ title = 'Neovim Alert' }
+	)
 end, { desc = 'Diagnostics toggle' })
