@@ -34,7 +34,9 @@ map('v', '>', '>gv', { desc = 'Align Items To The Right' })
 map('n', '<leader>cr', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Custom Rename"})
 
 -- print current path
-map('n', '<leader>cp', "<cmd>lua vim.notify(vim.fn.expand('%:p'))<cr>", { desc = "Print Current Path" })
+map('n', '<leader>cp', function()
+  vim.notify(vim.fn.expand('%:p'), vim.log.levels.INFO, { title = "Neovim Alert" })
+end, { desc = "Print Current Path" })
 
 -- quick fix list
 map('n', '<m-k>', "<cmd>cnext<cr>", { desc = "Quick fix list cnext", silent = true })

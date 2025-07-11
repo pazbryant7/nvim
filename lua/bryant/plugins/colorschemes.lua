@@ -13,6 +13,6 @@ return {
 			dapui = true,
 		})
 
-		vim.cmd('colorscheme base16-default-dark')
+		vim.cmd('colorscheme base16-0x96f')
 	end,
 }
