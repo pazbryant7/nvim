@@ -40,8 +40,8 @@ opt.colorcolumn = '80'
 opt.isfname:append('@-@')
 
 -- update statusline
-opt.laststatus = 0
--- opt.statusline = ' %f%m%r%h%w'
+-- opt.laststatus = 0
+opt.statusline = ' %F%m%r%= %l'
 
 opt.updatetime = 50
 
