@@ -35,8 +35,6 @@ opt.smartcase = false
 opt.ignorecase = false
 
 opt.scrolloff = 5
-opt.signcolumn = 'yes:1'
-opt.colorcolumn = '80'
 opt.isfname:append('@-@')
 
 -- update statusline
