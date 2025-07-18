@@ -68,6 +68,10 @@ opt.spellfile = '/home/bryant/.config/spell/en.utf-8.add'
 -- disable nvim startup screen
 opt.shortmess:append('sI')
 
+-- use rg instead of grep
+vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+vim.opt.grepformat = '%f:%l:%c:%m'
+
 -- neovide
 if v.g.neovide then
 	v.o.guifont = 'Maple Mono:h9.5:w1.2:#h-none'

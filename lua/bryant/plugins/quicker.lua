@@ -1,6 +1,6 @@
 return {
 	'stevearc/quicker.nvim',
-	event = 'FileType qf',
+	ft = 'qf',
 	---@module "quicker"
 	---@type quicker.SetupOptions
 	opts = {
@@ -79,20 +79,11 @@ return {
 			return vim.o.columns - start_col
 		end,
 	},
+  -- stylua: ignore start
 	keys = {
-		{
-			'<c-q>',
-			function()
-				require('quicker').toggle()
-			end,
-			desc = 'Toggle quickfix',
-		},
-		{
-			'<leader>q',
-			function()
-				require('quicker').toggle({ loclist = true })
-			end,
-			desc = 'Toggle loclist',
-		},
+    { '<m-j>', '<cmd>cprevious<cr>', { desc = 'Quick fix list cprevious' } },
+    { '<m-k>', '<cmd>cnext<cr>', { desc = 'Quick fix list cnext', silent = true }, },
+    { '<c-q>', function() require('quicker').toggle() end, desc = 'Toggle quickfix', },
+    { '<leader>q', function() require('quicker').toggle({ loclist = true }) end, desc = 'Toggle loclist', },
 	},
 }
