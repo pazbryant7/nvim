@@ -38,10 +38,6 @@ map('n', '<leader>cp', function()
   vim.notify(vim.fn.expand('%:p'), vim.log.levels.INFO, { title = "Neovim Alert" })
 end, { desc = "Print Current Path" })
 
--- quick fix list
-map('n', '<m-k>', "<cmd>cnext<cr>", { desc = "Quick fix list cnext", silent = true })
-map('n', '<m-j>', "<cmd>cprevious<cr>", { desc = "Quick fix list cprevious" })
-
 -- swap maps
 map({'n',"v"}, ';', ':', { desc = "Enter Command Mode" })
 map({'n',"v"}, ':', ';', { desc = "Repeat last f/t/F/T search" })
