@@ -67,3 +67,7 @@ map("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Localist: Next item" })
 map("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Localist: Previous item" })
 map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item', })
 map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item', })
+
+-- tmux-sessionizer
+map("n", "<m-f>", "<cmd>silent !tmux neww ~/bin/tmux/tmux-new-session<CR>")
+map("n", "<c-f>", "<cmd>silent !tmux neww ~/bin/tmux/tmux-select-session<CR>")
