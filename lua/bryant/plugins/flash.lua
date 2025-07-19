@@ -7,7 +7,7 @@ return {
 		label = {
 			current = true,
 			rainbow = {
-				enabled = false,
+				enabled = true,
 				-- number between 1 and 9
 				shade = 5,
 			},
@@ -29,8 +29,8 @@ return {
 			char = {
 				enabled = true,
 				-- only when not using jump labels
-				autohide = true,
-				jump_labels = false,
+				autohide = false,
+				jump_labels = true,
 				multi_line = true,
 				keys = { 'f', 'F', 't', 'T', [';'] = ':', ',' },
 				highlight = { backdrop = false },
@@ -38,7 +38,7 @@ return {
 					register = false,
 					-- when using jump labels, set to 'true' to automatically jump
 					-- or execute a motion when there is only one match
-					autojump = false,
+					autojump = true,
 				},
 			},
 			treesitter = {
