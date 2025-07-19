@@ -8,6 +8,22 @@ local map = v.keymap.set
 -- better change inner word
 map('n', '<C-c>', 'ciw', { desc = 'Better Change Inner Word' })
 
+-- In Visual mode, moves the selected lines down and up by one line, then re-indents.
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down", silent = true })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up", silent = true })
+
+-- In Normal mode, joins the line below to the current line, but keeps the cursor in its original column.
+map("n", "J", "mzJ`z", { desc = "Join line below (preserve cursor position)" })
+
+-- Better neovim defaults
+map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down and re-center view" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and re-center view" })
+map("n", "n", "nzzzv", { desc = "Next search result and center" })
+map("n", "N", "Nzzzv", { desc = "Previous search result and center" })
+
+-- Current file allow execution
+map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Current file allow execution permissions", silent = true })
+
 --  No highlights
 map('n', '<Escape>', '<cmd>noh<CR>', { desc = 'No search highlights' })
 
@@ -47,5 +63,7 @@ map('n', 'ZQ', ':q!<CR>', { desc = 'Quit without saving' })
 map('n', 'ZZ', ':wq<CR>', { desc = 'Save and quit' })
 
 -- Navigate quickfix list without "no more items" errors
-map('n', '<c-k>', '<cmd>silent! cnext<CR>', { desc = 'Quickfix: Next item', })
-map('n', '<c-j>', '<cmd>silent! cprevious<CR>', { desc = 'Quickfix: Previous item', })
+map("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Localist: Next item" })
+map("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Localist: Previous item" })
+map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item', })
+map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item', })
