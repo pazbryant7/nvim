@@ -45,3 +45,7 @@ map({'n',"v"}, ':', ';', { desc = "Repeat last f/t/F/T search" })
 -- already existing binds
 map('n', 'ZQ', ':q!<CR>', { desc = 'Quit without saving' })
 map('n', 'ZZ', ':wq<CR>', { desc = 'Save and quit' })
+
+-- Navigate quickfix list without "no more items" errors
+map('n', '<c-k>', '<cmd>silent! cnext<CR>', { desc = 'Quickfix: Next item', })
+map('n', '<c-j>', '<cmd>silent! cprevious<CR>', { desc = 'Quickfix: Previous item', })
