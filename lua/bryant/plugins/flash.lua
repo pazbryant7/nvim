@@ -52,15 +52,10 @@ return {
 	},
 	keys = function()
 		local flash = require('flash')
+    -- stylua: ignore start
 		return {
-			{
-				'gs', -- ; and , increase and decrease
-				mode = { 'n', 'x', 'o' },
-				function()
-					flash.treesitter()
-				end,
-				desc = 'Flash Treesitter',
-			},
+      { 'm', mode = { 'n', 'x', 'o' }, function() flash.jump() end, desc = 'Flash', },
+			{ 'gs', mode = { 'n', 'x', 'o' }, function() flash.treesitter() end, desc = 'Flash Treesitter', },
 		}
 	end,
 }
