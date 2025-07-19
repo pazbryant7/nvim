@@ -81,9 +81,8 @@ return {
 	},
   -- stylua: ignore start
 	keys = {
-    { '<m-j>', '<cmd>cprevious<cr>', { desc = 'Quick fix list cprevious' } },
-    { '<m-k>', '<cmd>cnext<cr>', { desc = 'Quick fix list cnext', silent = true }, },
+    { '<c-j>', '<cmd>cprevious<cr>', { desc = 'Quick fix list cprevious' } },
+    { '<c-k>', '<cmd>cnext<cr>', { desc = 'Quick fix list cnext', silent = true }, },
     { '<c-q>', function() require('quicker').toggle() end, desc = 'Toggle quickfix', },
-    { '<leader>q', function() require('quicker').toggle({ loclist = true }) end, desc = 'Toggle loclist', },
 	},
 }
