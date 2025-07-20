@@ -2,6 +2,7 @@ local M = {}
 
 function M.get_keymaps()
 	return {
+    -- stylua: ignore start
     { 'grn', vim.lsp.buf.rename, desc = 'LSP Rename' },
     { 'grr', vim.lsp.buf.references, desc = 'LSP References' },
     { 'grd', 	vim.diagnostic.setqflist, desc = 'LSP Diagnostics' },
@@ -20,26 +21,9 @@ function M.get_keymaps()
     { 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
     { 'gO', vim.lsp.buf.document_symbol, desc = 'LSP Open Document Symbol' },
     { 'gt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
-		{
-			'K',
-			function()
-				vim.lsp.buf.hover({ border = 'single' })
-			end,
-			desc = 'LSP Hover',
-		},
-		{
-			'gra',
-			vim.lsp.buf.code_action,
-			desc = 'LSP Code Action',
-			mode = { 'n', 'v' },
-		},
-		{
-			'<c-s>',
-			function()
-				vim.lsp.buf.signature_help({ border = 'single' })
-			end,
-			desc = 'LSP Signature Help',
-		},
+		{ 'K', function() vim.lsp.buf.hover({ border = 'single' }) end, desc = 'LSP Hover', },
+		{ 'gra', vim.lsp.buf.code_action, desc = 'LSP Code Action', mode = { 'n', 'v' }, },
+		{ '<c-s>', function() vim.lsp.buf.signature_help({ border = 'single' }) end, desc = 'LSP Signature Help', mode = { 'n', 'i' } },
 	}
 end
 
@@ -61,22 +45,22 @@ end
 function M.on_attach(client, buffer)
 	local Keys = require('lazy.core.handler.keys')
 	local keymaps = {}
-
 	for _, value in ipairs(M.get_keymaps()) do
 		local keys = Keys.parse(value)
 		if keys[2] == vim.NIL or keys[2] == false then
 			keymaps[keys.id] = nil
 		else
+			-- Preserve the original mode from the keymap definition
+			keys.mode = value.mode or keys.mode or 'n'
 			keymaps[keys.id] = keys
 		end
 	end
-
 	for _, keys in pairs(keymaps) do
 		local opts = Keys.opts(keys)
 		opts.has = nil
 		opts.silent = true
 		opts.buffer = buffer
-		vim.keymap.set(keys.mode or 'n', keys.lhs, keys.rhs, opts)
+		vim.keymap.set(keys.mode, keys.lhs, keys.rhs, opts)
 	end
 end
 
