@@ -27,8 +27,6 @@ return {
 	opts = {
 		cmdline = {
 			enabled = true,
-			keymap = { preset = 'inherit' },
-			completion = { menu = { auto_show = true } },
 		},
 		completion = {
 			documentation = { auto_show = false },
@@ -78,18 +76,23 @@ return {
 		signature = { enabled = true },
 
 		keymap = {
-			['<C-space>'] = { 'hide' },
-			['<C-y>'] = { 'select_and_accept' },
+			preset = 'none',
+			['<c-space>'] = { 'hide', 'fallback' },
+			['<c-y>'] = { 'select_and_accept', 'fallback' },
 			['<Up>'] = { 'select_prev', 'fallback' },
 			['<Down>'] = { 'select_next', 'fallback' },
 			['<m-l>'] = { 'snippet_forward', 'fallback' },
 			['<m-h>'] = { 'snippet_backward', 'fallback' },
-			['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
-			['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
-			['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-			['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-			['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
-			['<C-e>'] = { 'show', 'show_documentation', 'hide_documentation' },
+			['<c-n>'] = { 'select_next', 'fallback_to_mappings' },
+			['<c-p>'] = { 'select_prev', 'fallback_to_mappings' },
+			['<c-b>'] = { 'scroll_documentation_up', 'fallback' },
+			['<c-f>'] = { 'scroll_documentation_down', 'fallback' },
+			['<c-e>'] = {
+				'show',
+				'show_documentation',
+				'hide_documentation',
+				'hide',
+			},
 		},
 	},
 	opts_extend = { 'sources.default' },
