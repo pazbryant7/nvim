@@ -10,6 +10,10 @@ return {
 			version = 'v2.*',
 			config = function()
 				local ls = require('luasnip')
+
+        -- make javascript snippets be available in typescript files
+				ls.filetype_extend('typescript', { 'javascript' })
+
 				ls.config.set_config({
 					history = true,
 					updateevents = 'TextChanged,TextChangedI',
