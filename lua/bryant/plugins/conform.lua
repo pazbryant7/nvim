@@ -20,6 +20,7 @@ return {
 			less = { 'prettier' },
 			yaml = { 'prettier' },
 			sh = { 'shfmt' },
+			fish = { 'fish_indent' },
 			bash = { 'shfmt' },
 			zsh = { 'shfmt' },
 			go = { 'gofumpt', 'goimports' },
@@ -27,6 +28,12 @@ return {
 			toml = { 'taplo' },
 			c = { 'clang-format' },
 			rust = { 'rustfmt' },
+		},
+
+		formatters = {
+			fish_indent = {
+				command = '/usr/bin/fish_indent',
+			},
 		},
 	},
 	keys = {
