@@ -28,6 +28,7 @@ return {
 			toml = { 'taplo' },
 			c = { 'clang-format' },
 			rust = { 'rustfmt' },
+			xml = { 'xmlformatter' },
 		},
 
 		formatters = {
