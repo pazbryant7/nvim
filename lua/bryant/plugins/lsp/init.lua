@@ -88,6 +88,9 @@ return {
 
 				-- rust
 				'codelldb',
+
+        -- xml
+				'xmlformatter',
 			}
 			require('mason').setup({
 				ui = {
