@@ -11,7 +11,7 @@ return {
 			config = function()
 				local ls = require('luasnip')
 
-        -- make javascript snippets be available in typescript files
+				-- make javascript snippets be available in typescript files
 				ls.filetype_extend('typescript', { 'javascript' })
 
 				ls.config.set_config({
@@ -31,6 +31,11 @@ return {
 	opts = {
 		cmdline = {
 			enabled = true,
+			completion = {
+				menu = {
+					auto_show = true,
+				},
+			},
 		},
 		completion = {
 			documentation = { auto_show = false },
