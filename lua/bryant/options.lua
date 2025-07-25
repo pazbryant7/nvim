@@ -77,3 +77,5 @@ if v.g.neovide then
 	v.g.neovide_refresh_rate = 60
 	v.g.neovide_cursor_vfx_mode = 'railgun'
 end
+
+vim.cmd('colorscheme habamax')
