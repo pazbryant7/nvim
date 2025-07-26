@@ -14,8 +14,8 @@ return {
 
     -- stylua: ignore start
 		return {
-      { '<c-l>', function() harpoon:list():next({ ui_nav_wrap = true }) end, desc = 'Harpoon next harpoon', },
-      { '<c-h>', function() harpoon:list():prev({ ui_nav_wrap = true }) end, desc = 'Harpoon previous harpoon', },
+      { '<m-l>', function() harpoon:list():next({ ui_nav_wrap = true }) end, desc = 'Harpoon next harpoon', },
+      { '<m-h>', function() harpoon:list():prev({ ui_nav_wrap = true }) end, desc = 'Harpoon previous harpoon', },
       { '<c-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = 'Harpoon toggle quick menu', },
       { '<c-y>', function() harpoon:list():add() vim.notify("file added to harpoon",vim.log.levels.INFO, { title = "Harpoon" }) end, desc = 'Harpoon add', },
 		}
