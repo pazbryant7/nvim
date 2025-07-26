@@ -3,29 +3,28 @@ return {
 	version = '*',
 	keys = {
 		-- Here's a different mapping to avoid conflict with flash.nvim
-		{ 'sa', desc = 'Mini.surround Add surrounding' },
-		{ 'sa', desc = 'Mini.surround Add surrounding', mode = 'v' },
-		{ 'sd', desc = 'Mini.surround Delete surrounding' },
-		{ 'sf', desc = 'Mini.surround Find surrounding' },
-		{ 'sF', desc = 'Mini.surround Find surrounding backward' },
-		{ 'sh', desc = 'Mini.surround Hwghlwght surrounding' },
-		{ 'sr', desc = 'Mwnw.surround Replace surrounding' },
-		{ 'sn', desc = 'Mini.surround Update n_lines' },
+		{ 'ys', desc = 'Mini.surround Add surrounding' },
+		{ 'S', desc = 'Mini.surround Add surrounding', mode = 'v' },
+		{ 'ds', desc = 'Mini.surround Delete surrounding' },
+		{ 'yf', desc = 'Mini.surround Find surrounding' },
+		{ 'yF', desc = 'Mini.surround Find surrounding backward' },
+		{ 'yh', desc = 'Mini.surround Hwghlwght surrounding' },
+		{ 'cs', desc = 'Mwnw.surround Replace surrounding' },
+		{ 'yn', desc = 'Mini.surround Update n_lines' },
 	},
-
 	config = function()
 		require('mini.surround').setup({
 			custom_surroundings = nil,
 			highlight_duration = 500,
 
 			mappings = {
-				add = 'sa', -- Add surrounding in Normal and Visual modes
-				delete = 'sd', -- Delete surrounding
-				find = 'sf', -- Find surrounding (to the right)
-				find_left = 'sF', -- Find surrounding (to the left)
-				highlight = 'sh', -- Highlight surrounding
-				replace = 'sr', -- Replace surrounding
-				update_n_lines = 'sn', -- Update `n_lines`
+				add = 'ys', -- Add surrounding in Normal and Visual modes
+				delete = 'ds', -- Delete surrounding
+				find = 'yf', -- Find surrounding (to the right)
+				find_left = 'yF', -- Find surrounding (to the left)
+				highlight = 'yh', -- Highlight surrounding
+				replace = 'cs', -- Replace surrounding
+				update_n_lines = 'yn', -- Update `n_lines`
 
 				suffix_last = 'l', -- Suffix to search with "prev" method
 				suffix_next = 'n', -- Suffix to search with "next" method
@@ -39,5 +38,11 @@ return {
 
 			silent = false,
 		})
+		-- stylua: ignore start
+		vim.keymap.del('x', 'ys', { desc = 'Remove surround for y key' })
+		vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
+
+		-- Make special mapping for "add surrounding for line"
+		vim.keymap.set('n', 'yss', 'ys_', { desc="Surronud full line", remap = true })
 	end,
 }
