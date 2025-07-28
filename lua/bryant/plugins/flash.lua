@@ -56,7 +56,7 @@ return {
 		return {
       { 's', mode = { 'n', 'x', 'o' }, function() flash.jump() end, desc = 'Flash', },
       { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-			{ 'gs', mode = { 'n', 'x', 'o' }, function() flash.treesitter() end, desc = 'Flash Treesitter', },
+			{ 'S', mode = { 'n', 'x', 'o' }, function() flash.treesitter() end, desc = 'Flash Treesitter', },
 		}
 	end,
 }
