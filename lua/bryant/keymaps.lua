@@ -6,7 +6,7 @@ local map = v.keymap.set
 -- custom keymaps
 
 -- Save buffer with <C-s>
-map('n', '<leader>s', '<cmd>w<CR>', { desc = 'Save current buffer' })
+map('n', '<m-s>', '<cmd>w<CR>', { desc = 'Save current buffer' })
 
 -- better change inner word
 map('n', '<C-c>', 'ciw', { desc = 'Better Change Inner Word' })
