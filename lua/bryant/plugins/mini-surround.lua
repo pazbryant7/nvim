@@ -38,11 +38,11 @@ return {
 
 			silent = false,
 		})
-		-- stylua: ignore start
+
 		vim.keymap.del('x', 'ys', { desc = 'Remove surround for y key' })
 		vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
 
 		-- Make special mapping for "add surrounding for line"
-		vim.keymap.set('n', 'yss', 'ys_', { desc="Surronud full line", remap = true })
+		vim.keymap.set('n', 'yss', 'ys_', { desc = 'Surronud full line', remap = true })
 	end,
 }

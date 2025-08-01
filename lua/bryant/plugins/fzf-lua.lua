@@ -72,15 +72,50 @@ return {
 			},
 		}
 	end,
-	-- stylua: ignore start
+
 	keys = {
-		{ '<leader>f', "<cmd> FzfLua <CR>" , desc = 'FzfLua' },
-		{ '<c-p>', function() require('fzf-lua').files() end, desc = 'FzfLua Files' },
-		{ '<leader>ht', function() require('fzf-lua').help_tags() end, desc = 'FzfLua Help Tags' },
-		{ '<leader>k', function() require('fzf-lua').keymaps() end, desc = 'FzfLua Show Key Maps' },
-		{ '<c-t>', function() require('fzf-lua').live_grep_native() end, desc = 'FzfLua Live Grep' },
-		{ 'z=', function() require('fzf-lua').spell_suggest() end, desc = 'FzfLua Spell Suggestions' },
-		{ '<leader>th', function() require('fzf-lua').colorschemes() end, desc = 'FzfLua Switch Colorschemes' },
+		{ '<leader>f', '<cmd> FzfLua <CR>', desc = 'FzfLua' },
+		{
+			'<c-p>',
+			function()
+				require('fzf-lua').files()
+			end,
+			desc = 'FzfLua Files',
+		},
+		{
+			'<leader>ht',
+			function()
+				require('fzf-lua').help_tags()
+			end,
+			desc = 'FzfLua Help Tags',
+		},
+		{
+			'<leader>k',
+			function()
+				require('fzf-lua').keymaps()
+			end,
+			desc = 'FzfLua Show Key Maps',
+		},
+		{
+			'<c-t>',
+			function()
+				require('fzf-lua').live_grep_native()
+			end,
+			desc = 'FzfLua Live Grep',
+		},
+		{
+			'z=',
+			function()
+				require('fzf-lua').spell_suggest()
+			end,
+			desc = 'FzfLua Spell Suggestions',
+		},
+		{
+			'<leader>th',
+			function()
+				require('fzf-lua').colorschemes()
+			end,
+			desc = 'FzfLua Switch Colorschemes',
+		},
 	},
-	-- stylua: ignore end
 }

@@ -19,13 +19,7 @@ usercmd('Sort', function()
 		return #a < #b
 	end)
 
-	vim.api.nvim_buf_set_lines(
-		0,
-		start_line - 1,
-		end_line,
-		false,
-		non_empty_lines
-	)
+	vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, non_empty_lines)
 end, {
 	range = true,
 	desc = 'Sort lines by length (shortest to longest)',
@@ -34,20 +28,12 @@ end, {
 usercmd('SpellToggle', function()
 	vim.cmd([[set spell!]])
 	local is_spell_on = vim.opt.spell:get() and 'on' or 'off'
-	vim.notify(
-		string.format('spell is %s', is_spell_on),
-		vim.log.levels.INFO,
-		{ title = 'Neovim Alert' }
-	)
+	vim.notify(string.format('spell is %s', is_spell_on), vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Spell toggle' })
 
 usercmd('DiagnosticsToggle', function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 	local is_enabled = vim.diagnostic.is_enabled()
 	local msg = is_enabled and 'enabled' or 'disabled'
-	vim.notify(
-		string.format('Diagnostic has been %s', msg),
-		vim.log.levels.INFO,
-		{ title = 'Neovim Alert' }
-	)
+	vim.notify(string.format('Diagnostic has been %s', msg), vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Diagnostics toggle' })

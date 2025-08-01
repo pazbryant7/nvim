@@ -2,28 +2,41 @@ local M = {}
 
 function M.get_keymaps()
 	return {
-    -- stylua: ignore start
-    { 'grn', vim.lsp.buf.rename, desc = 'LSP Rename' },
-    { 'grr', vim.lsp.buf.references, desc = 'LSP References' },
-    { 'grd', 	vim.diagnostic.setqflist, desc = 'LSP Diagnostics' },
-    { 'gd', vim.lsp.buf.definition, desc = 'LSP Goto Definition' },
-    { ']d', M.diagnostic_goto(true), desc = 'LSP Next Diagnostic' },
-    { '[d', M.diagnostic_goto(false), desc = 'LSP Prev Diagnostic' },
-    { 'gD', vim.lsp.buf.declaration, desc = 'LSP Goto Declaration' },
-    { ']h', M.diagnostic_goto(true, 'HINT'), desc = 'LSP Next Hint' },
-    { ']i', M.diagnostic_goto(true, 'INFO'), desc = 'LSP Next Info' },
-    { '[h', M.diagnostic_goto(false, 'HINT'), desc = 'LSP Prev Hint' },
-    { '[i', M.diagnostic_goto(false, 'INFO'), desc = 'LSP Prev Info' },
-    { ']e', M.diagnostic_goto(true, 'ERROR'), desc = 'LSP Next Error' },
-    { ']w', M.diagnostic_goto(true, 'WARN'), desc = 'LSP Next Warning' },
-    { '[e', M.diagnostic_goto(false, 'ERROR'), desc = 'LSP Prev Error' },
-    { '[w', M.diagnostic_goto(false, 'WARN'), desc = 'LSP Prev Warning' },
-    { 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
-    { 'gO', vim.lsp.buf.document_symbol, desc = 'LSP Open Document Symbol' },
-    { 'gt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
-		{ 'K', function() vim.lsp.buf.hover({ border = 'single' }) end, desc = 'LSP Hover', },
-		{ 'gra', vim.lsp.buf.code_action, desc = 'LSP Code Action', mode = { 'n', 'v' }, },
-		{ '<c-s>', function() vim.lsp.buf.signature_help({ border = 'single' }) end, desc = 'LSP Signature Help', mode = { 'n', 'i' } },
+
+		{ 'grn', vim.lsp.buf.rename, desc = 'LSP Rename' },
+		{ 'grr', vim.lsp.buf.references, desc = 'LSP References' },
+		{ 'grd', vim.diagnostic.setqflist, desc = 'LSP Diagnostics' },
+		{ 'gd', vim.lsp.buf.definition, desc = 'LSP Goto Definition' },
+		{ ']d', M.diagnostic_goto(true), desc = 'LSP Next Diagnostic' },
+		{ '[d', M.diagnostic_goto(false), desc = 'LSP Prev Diagnostic' },
+		{ 'gD', vim.lsp.buf.declaration, desc = 'LSP Goto Declaration' },
+		{ ']h', M.diagnostic_goto(true, 'HINT'), desc = 'LSP Next Hint' },
+		{ ']i', M.diagnostic_goto(true, 'INFO'), desc = 'LSP Next Info' },
+		{ '[h', M.diagnostic_goto(false, 'HINT'), desc = 'LSP Prev Hint' },
+		{ '[i', M.diagnostic_goto(false, 'INFO'), desc = 'LSP Prev Info' },
+		{ ']e', M.diagnostic_goto(true, 'ERROR'), desc = 'LSP Next Error' },
+		{ ']w', M.diagnostic_goto(true, 'WARN'), desc = 'LSP Next Warning' },
+		{ '[e', M.diagnostic_goto(false, 'ERROR'), desc = 'LSP Prev Error' },
+		{ '[w', M.diagnostic_goto(false, 'WARN'), desc = 'LSP Prev Warning' },
+		{ 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
+		{ 'gO', vim.lsp.buf.document_symbol, desc = 'LSP Open Document Symbol' },
+		{ 'gt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
+		{
+			'K',
+			function()
+				vim.lsp.buf.hover({ border = 'single' })
+			end,
+			desc = 'LSP Hover',
+		},
+		{ 'gra', vim.lsp.buf.code_action, desc = 'LSP Code Action', mode = { 'n', 'v' } },
+		{
+			'<c-s>',
+			function()
+				vim.lsp.buf.signature_help({ border = 'single' })
+			end,
+			desc = 'LSP Signature Help',
+			mode = { 'n', 'i' },
+		},
 	}
 end
 
