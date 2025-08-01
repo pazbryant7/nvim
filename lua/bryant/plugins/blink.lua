@@ -83,7 +83,7 @@ return {
 
 		keymap = {
 			preset = 'none',
-			['<c-space>'] = { 'hide', 'fallback' },
+			['<c-space>'] = { 'hide' },
 			['<c-y>'] = { 'select_and_accept', 'fallback' },
 			['<Up>'] = { 'select_prev', 'fallback' },
 			['<Down>'] = { 'select_next', 'fallback' },
