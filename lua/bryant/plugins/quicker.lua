@@ -79,8 +79,14 @@ return {
 			return vim.o.columns - start_col
 		end,
 	},
-  -- stylua: ignore start
+
 	keys = {
-    { '<c-q>', function() require('quicker').toggle() end, desc = 'Toggle quickfix', },
+		{
+			'<c-q>',
+			function()
+				require('quicker').toggle()
+			end,
+			desc = 'Toggle quickfix',
+		},
 	},
 }

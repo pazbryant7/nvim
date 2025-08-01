@@ -70,13 +70,7 @@ return {
 			transform_items = function(_, items)
 				local wanted = {}
 				for _, item in ipairs(items) do
-					if
-						not (
-							item.kind
-								== require('blink.cmp.types').CompletionItemKind.Snippet
-							and item.source_id == 'lsp'
-						)
-					then
+					if not (item.kind == require('blink.cmp.types').CompletionItemKind.Snippet and item.source_id == 'lsp') then
 						wanted[#wanted + 1] = item
 					end
 				end

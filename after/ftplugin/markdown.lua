@@ -15,16 +15,6 @@ vim.opt_local.wrap = true
 vim.opt_local.spell = true
 vim.opt_local.textwidth = 80
 
-map(
-	'n',
-	'<c-t>',
-	'<cmd>ObsidianSearch<cr>',
-	{ desc = 'Obsidian search', buffer = bufnr, remap = false }
-)
+map('n', '<c-t>', '<cmd>ObsidianSearch<cr>', { desc = 'Obsidian search', buffer = bufnr, remap = false })
 
-map(
-	'n',
-	'<c-p',
-	'<cmd>ObsidianQuickSwitch<cr>',
-	{ desc = 'Obsidian Quick Switch', buffer = bufnr, remap = false }
-)
+map('n', '<c-p', '<cmd>ObsidianQuickSwitch<cr>', { desc = 'Obsidian Quick Switch', buffer = bufnr, remap = false })

@@ -12,12 +12,36 @@ return {
 		local harpoon = require('harpoon')
 		harpoon:setup()
 
-    -- stylua: ignore start
 		return {
-      { '<m-l>', function() harpoon:list():next({ ui_nav_wrap = true }) end, desc = 'Harpoon next harpoon', },
-      { '<m-h>', function() harpoon:list():prev({ ui_nav_wrap = true }) end, desc = 'Harpoon previous harpoon', },
-      { '<m-t>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = 'Harpoon toggle quick menu', },
-      { '<m-s>', function() harpoon:list():add() vim.notify("file added to harpoon",vim.log.levels.INFO, { title = "Harpoon" }) end, desc = 'Harpoon add', },
+			{
+				'<m-l>',
+				function()
+					harpoon:list():next({ ui_nav_wrap = true })
+				end,
+				desc = 'Harpoon next harpoon',
+			},
+			{
+				'<m-h>',
+				function()
+					harpoon:list():prev({ ui_nav_wrap = true })
+				end,
+				desc = 'Harpoon previous harpoon',
+			},
+			{
+				'<m-t>',
+				function()
+					harpoon.ui:toggle_quick_menu(harpoon:list())
+				end,
+				desc = 'Harpoon toggle quick menu',
+			},
+			{
+				'<m-s>',
+				function()
+					harpoon:list():add()
+					vim.notify('file added to harpoon', vim.log.levels.INFO, { title = 'Harpoon' })
+				end,
+				desc = 'Harpoon add',
+			},
 		}
 	end,
 }
