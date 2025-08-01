@@ -335,7 +335,7 @@ return {
 		},
 	},
 	keys = {
-		-- stylua: ignore start
+
 		{ '<leader>od', '<cmd>Obsidian<CR>', desc = 'Open Obsidian Daily Note' },
 		{ '<leader>ot', '<cmd>ObsidianToday<CR>', desc = 'Open Obsidian Daily Note' },
 		{ '<leader>oy', '<cmd>ObsidianYesterday<CR>', desc = 'Obsidian yesterday' },

@@ -25,7 +25,7 @@ return {
 			},
 			twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
 			gitsigns = { enabled = true }, -- disables git signs
-			tmux = { enabled = true }, -- disables the tmux statusline
+			tmux = { enabled = flas }, -- disables the tmux statusline
 			todo = { enabled = true }, -- if set to "true", todo-comments.nvim highlights will be disabled
 		},
 	},

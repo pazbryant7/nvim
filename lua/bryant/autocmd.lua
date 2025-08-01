@@ -145,11 +145,7 @@ autocmd('BufHidden', {
 	group = bryant_group,
 	desc = 'Remove unamed buffers',
 	callback = function(event)
-		if
-			event.file == ''
-			and vim.bo[event.buf].buftype == ''
-			and not vim.bo[event.buf].modified
-		then
+		if event.file == '' and vim.bo[event.buf].buftype == '' and not vim.bo[event.buf].modified then
 			vim.schedule(function()
 				pcall(vim.api.nvim_buf_delete, event.buf, {})
 			end)

@@ -52,11 +52,32 @@ return {
 	},
 	keys = function()
 		local flash = require('flash')
-    -- stylua: ignore start
+
 		return {
-      { 's', mode = { 'n', 'x', 'o' }, function() flash.jump() end, desc = 'Flash', },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-			{ 'S', mode = { 'n', 'x', 'o' }, function() flash.treesitter() end, desc = 'Flash Treesitter', },
+			{
+				's',
+				mode = { 'n', 'x', 'o' },
+				function()
+					flash.jump()
+				end,
+				desc = 'Flash',
+			},
+			{
+				'r',
+				mode = 'o',
+				function()
+					require('flash').remote()
+				end,
+				desc = 'Remote Flash',
+			},
+			{
+				'S',
+				mode = { 'n', 'x', 'o' },
+				function()
+					flash.treesitter()
+				end,
+				desc = 'Flash Treesitter',
+			},
 		}
 	end,
 }
