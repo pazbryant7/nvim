@@ -63,6 +63,9 @@ return {
 					module = 'lazydev.integrations.blink',
 					score_offset = 100,
 				},
+				snippets = {
+					score_offset = 5,
+				},
 			},
 			transform_items = function(_, items)
 				local wanted = {}
