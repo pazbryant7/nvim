@@ -1,7 +1,7 @@
 vim.diagnostic.config({
 	underline = false,
 	severity_sort = true,
-	virtual_text = false,
+	virtual_text = true,
 	virtual_lines = false,
 	update_in_insert = false,
 	dynamicRegistration = true,
