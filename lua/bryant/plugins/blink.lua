@@ -69,11 +69,23 @@ return {
 			},
 			transform_items = function(_, items)
 				local wanted = {}
+				local seen_snippets = {}
+				local SnippetKind = require('blink.cmp.types').CompletionItemKind.Snippet
+
 				for _, item in ipairs(items) do
-					if not (item.kind == require('blink.cmp.types').CompletionItemKind.Snippet and item.source_id == 'lsp') then
-						wanted[#wanted + 1] = item
+					if item.kind == SnippetKind then
+						local is_from_lsp = (item.source_name == 'lsp')
+						local is_duplicate = seen_snippets[item.label]
+
+						if not is_from_lsp and not is_duplicate then
+							seen_snippets[item.label] = true
+							table.insert(wanted, item)
+						end
+					else
+						table.insert(wanted, item)
 					end
 				end
+
 				return wanted
 			end,
 		},
