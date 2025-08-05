@@ -38,7 +38,7 @@ return {
 					['ctrl-s'] = actions.file_split,
 					['ctrl-v'] = actions.file_vsplit,
 					['enter'] = actions.file_edit_or_qf,
-					['ctrl-q'] = { fn = actions.file_sel_to_qf, prefix = 'select-all' },
+					['alt-q'] = { fn = actions.file_sel_to_qf, prefix = 'select-all' },
 					['ctrl-h'] = actions.toggle_hidden,
 					['ctrl-i'] = actions.toggle_ignore,
 				},
