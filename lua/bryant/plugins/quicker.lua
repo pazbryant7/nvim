@@ -82,7 +82,7 @@ return {
 
 	keys = {
 		{
-			'<c-q>',
+			'<m-q>',
 			function()
 				require('quicker').toggle()
 			end,

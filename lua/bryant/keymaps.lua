@@ -62,7 +62,5 @@ map('n', 'ZQ', ':q!<CR>', { desc = 'Quit without saving' })
 map('n', 'ZZ', ':wq<CR>', { desc = 'Save and quit' })
 
 -- Navigate quickfix list without "no more items" errors
-map('n', '<leader>k', '<cmd>lnext<CR>zz', { desc = 'Localist: Next item' })
-map('n', '<leader>j', '<cmd>lprev<CR>zz', { desc = 'Localist: Previous item' })
-map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item' })
-map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item' })
+map('n', '<m-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item' })
+map('n', '<m-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item' })
