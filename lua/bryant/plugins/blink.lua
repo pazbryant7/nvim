@@ -65,6 +65,7 @@ return {
 				},
 				snippets = {
 					score_offset = 5,
+					min_keyword_length = 2,
 				},
 			},
 			transform_items = function(_, items)
