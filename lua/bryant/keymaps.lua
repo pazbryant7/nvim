@@ -23,9 +23,6 @@ map('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up and re-center view' })
 map('n', 'n', 'nzzzv', { desc = 'Next search result and center' })
 map('n', 'N', 'Nzzzv', { desc = 'Previous search result and center' })
 
--- Current file allow execution
-map('n', '<leader>x', '<cmd>!chmod +x %<CR>', { desc = 'Current file allow execution permissions', silent = true })
-
 --  No highlights
 map('n', '<Escape>', '<cmd>noh<CR>', { desc = 'No search highlights' })
 

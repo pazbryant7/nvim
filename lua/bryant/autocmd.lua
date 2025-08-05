@@ -185,7 +185,7 @@ autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave' }, {
 })
 
 autocmd('BufWritePre', {
-	group = augroup('TrimWhiteSpaceGrp', { clear = true }),
+	group = bryant_group,
 	desc = 'Remove all trailing whitespace on save',
 	command = [[:%s/\s\+$//e]],
 })
