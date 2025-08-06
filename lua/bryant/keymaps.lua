@@ -2,8 +2,6 @@ local v = vim
 
 local map = v.keymap.set
 
--- custom keymaps
-
 -- Save buffer with <C-s>
 map('n', '<m-w>', '<cmd>w<CR>', { desc = 'Save current buffer' })
 
@@ -64,3 +62,6 @@ map('n', 'ZZ', ':wq<CR>', { desc = 'Save and quit' })
 -- Navigate quickfix list without "no more items" errors
 map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item' })
 map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item' })
+
+-- Disable suspend neovim
+map('n', '<c-z>', '<Nop>', { desc = 'Disable suspend neovim' })
