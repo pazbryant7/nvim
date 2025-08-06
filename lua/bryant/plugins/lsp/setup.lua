@@ -33,6 +33,9 @@ vim.lsp.config('*', {
 			},
 			completion = {
 				dynamicRegistration = false,
+				completionItem = {
+					snippetSupport = false,
+				},
 			},
 			formatting = {
 				dynamicRegistration = false,

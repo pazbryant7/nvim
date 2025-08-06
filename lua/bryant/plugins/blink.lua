@@ -4,27 +4,11 @@ return {
 	version = '1.*',
 	dependencies = {
 		'saghen/blink.compat',
-		'rafamadriz/friendly-snippets',
 		{
 			'L3MON4D3/LuaSnip',
 			version = 'v2.*',
 			config = function()
-				local ls = require('luasnip')
-
-				-- make javascript snippets be available in typescript files
-				ls.filetype_extend('typescript', { 'javascript' })
-
-				ls.config.set_config({
-					history = true,
-					updateevents = 'TextChanged,TextChangedI',
-					enable_autosnippets = true,
-				})
-				require('luasnip.loaders.from_vscode').lazy_load({
-					exclude = { 'sh', 'bash' },
-				})
-				require('luasnip.loaders.from_lua').lazy_load({
-					paths = { './snippets' },
-				})
+				require('luasnip.loaders.from_lua').lazy_load({ paths = { './snippets' } })
 			end,
 		},
 	},
@@ -64,29 +48,23 @@ return {
 					score_offset = 100,
 				},
 				snippets = {
-					score_offset = 5,
-					min_keyword_length = 2,
+					score_offset = 100,
+					min_keyword_length = 1,
 				},
 			},
 			transform_items = function(_, items)
 				local wanted = {}
-				local seen_snippets = {}
 				local SnippetKind = require('blink.cmp.types').CompletionItemKind.Snippet
-
 				for _, item in ipairs(items) do
 					if item.kind == SnippetKind then
-						local is_from_lsp = (item.source_name == 'lsp')
-						local is_duplicate = seen_snippets[item.label]
-
-						if not is_from_lsp and not is_duplicate then
-							seen_snippets[item.label] = true
+						local is_from_lsp = (item.source_name == 'LSP')
+						if not is_from_lsp then
 							table.insert(wanted, item)
 						end
 					else
 						table.insert(wanted, item)
 					end
 				end
-
 				return wanted
 			end,
 		},
@@ -97,7 +75,7 @@ return {
 		keymap = {
 			preset = 'none',
 			['<c-space>'] = { 'hide' },
-			['<c-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+			['<c-z>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			['<c-y>'] = { 'select_and_accept', 'fallback' },
 			['<Up>'] = { 'select_prev', 'fallback' },
 			['<Down>'] = { 'select_next', 'fallback' },
