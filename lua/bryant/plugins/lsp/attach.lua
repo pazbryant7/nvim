@@ -55,7 +55,7 @@ function M.diagnostic_goto(next, severity)
 	end
 end
 
-function M.on_attach(client, buffer)
+function M.on_attach(_, buffer)
 	local Keys = require('lazy.core.handler.keys')
 	local keymaps = {}
 	for _, value in ipairs(M.get_keymaps()) do
