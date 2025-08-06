@@ -71,7 +71,7 @@ return {
 				desc = 'Remote Flash',
 			},
 			{
-				'S',
+				'gs',
 				mode = { 'n', 'x', 'o' },
 				function()
 					flash.treesitter()
