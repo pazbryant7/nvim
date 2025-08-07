@@ -1,19 +1,27 @@
 return {
 	'folke/flash.nvim',
+	init = function()
+		vim.api.nvim_set_hl(0, 'FlashMatch', {
+			fg = '#ffffff',
+			bg = '#e05586',
+			bold = true,
+			nocombine = true,
+		})
+	end,
 	opts = {
+		-- all your other options go here
 		search = {
 			multi_window = false,
 		},
 		label = {
 			current = true,
 			rainbow = {
-				enabled = true,
-				-- number between 1 and 9
+				enabled = false,
 				shade = 5,
 			},
 		},
 		jump = {
-			autojump = false,
+			autojump = true,
 		},
 		highlight = {
 			backdrop = false,
@@ -28,7 +36,6 @@ return {
 		modes = {
 			char = {
 				enabled = true,
-				-- only when not using jump labels
 				autohide = false,
 				jump_labels = true,
 				multi_line = true,
@@ -36,8 +43,6 @@ return {
 				highlight = { backdrop = false },
 				jump = {
 					register = false,
-					-- when using jump labels, set to 'true' to automatically jump
-					-- or execute a motion when there is only one match
 					autojump = true,
 				},
 			},
