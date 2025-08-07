@@ -2,8 +2,11 @@ local v = vim
 
 local map = v.keymap.set
 
--- Save buffer with <C-s>
-map('n', '<m-w>', '<cmd>w<CR>', { desc = 'Save current buffer' })
+-- Manage exit and saves
+map('n', '<c-f>', '<cmd>w<CR>', { desc = 'Save current buffer' })
+map('n', '<leader>f', '<cmd>wa<CR>', { desc = 'Save all buffers' })
+map('n', '<leader>q', '<cmd>q!<CR>', { desc = 'Quit without save' })
+map('n', '<leader>Q', '<cmd>qa!<CR>', { desc = 'Quit all without save' })
 
 -- better change inner word
 map('n', '<C-c>', 'ciw', { desc = 'Better Change Inner Word' })
@@ -60,8 +63,8 @@ map('n', 'ZQ', ':q!<CR>', { desc = 'Quit without saving' })
 map('n', 'ZZ', ':wq<CR>', { desc = 'Save and quit' })
 
 -- Navigate quickfix list without "no more items" errors
-map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item' })
-map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item' })
+map('n', '<m-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item' })
+map('n', '<m-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item' })
 
 -- Disable suspend neovim
 map('n', '<c-z>', '<Nop>', { desc = 'Disable suspend neovim' })

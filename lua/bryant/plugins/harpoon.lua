@@ -14,28 +14,28 @@ return {
 
 		return {
 			{
-				'<c-l>',
+				'<m-l>',
 				function()
 					harpoon:list():next({ ui_nav_wrap = true })
 				end,
 				desc = 'Harpoon next harpoon',
 			},
 			{
-				'<c-h>',
+				'<m-h>',
 				function()
 					harpoon:list():prev({ ui_nav_wrap = true })
 				end,
 				desc = 'Harpoon previous harpoon',
 			},
 			{
-				'<c-e>',
+				'<m-t>',
 				function()
 					harpoon.ui:toggle_quick_menu(harpoon:list())
 				end,
 				desc = 'Harpoon toggle quick menu',
 			},
 			{
-				'<c-y>',
+				'<m-n>',
 				function()
 					harpoon:list():add()
 					vim.notify('file added to harpoon', vim.log.levels.INFO, { title = 'Harpoon' })
