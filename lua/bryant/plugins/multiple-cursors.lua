@@ -35,10 +35,10 @@ return {
 		map('x', 'I', mc.insertVisual, { desc = 'Multicursor Visual Insert Mode' })
 		map('x', 'A', mc.appendVisual, { desc = 'Multicursor Visual Insert Mode Last' })
 
-		map('x', '<leader>t', function()
+		map('x', '<leader>tt', function()
 			mc.transposeCursors(1)
 		end, { desc = 'Multicursor rotate text' })
-		map('x', '<leader>T', function()
+		map('x', '<leader>TT', function()
 			mc.transposeCursors(-1)
 		end, { desc = 'Multicursor rotate text' })
 
