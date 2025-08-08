@@ -1,6 +1,5 @@
 local api = vim.api
 local autocmd = api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
 
 local bryant_group = api.nvim_create_augroup('bryant_group', { clear = true })
 
