@@ -38,10 +38,10 @@ return {
 	},
 	keys = {
 		{
-			'<m-f>',
+			'<c-b>',
 			function()
+				vim.cmd(':w')
 				require('conform').format({ lsp_format = 'fallback' })
-				vim.notify('code formated', vim.log.levels.INFO, { title = 'Conform' })
 			end,
 			desc = 'Conform [F]ormat Buffer With',
 		},
