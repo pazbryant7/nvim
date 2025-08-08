@@ -11,9 +11,9 @@ local bufnr = vim.api.nvim_get_current_buf()
 
 o.spc = ''
 
-vim.opt_local.wrap = true
-vim.opt_local.spell = true
-vim.opt_local.textwidth = 80
+o.wrap = true
+o.spell = true
+o.textwidth = 80
 
 map('n', '<c-t>', '<cmd>ObsidianSearch<cr>', { desc = 'Obsidian search', buffer = bufnr, remap = false })
 
