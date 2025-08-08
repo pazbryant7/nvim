@@ -37,3 +37,28 @@ usercmd('DiagnosticsToggle', function()
 	local msg = is_enabled and 'enabled' or 'disabled'
 	vim.notify(string.format('Diagnostic has been %s', msg), vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Diagnostics toggle' })
+
+-- Toggle blink cmp
+local autoCompletionEnabled = true
+function EnableAutoCompletion()
+	vim.b.completion = true
+	autoCompletionEnabled = true
+	print('Auto-completion enabled')
+end
+
+function DisableAutoCompletion()
+	vim.b.completion = false
+	require('blink.cmp').hide()
+	autoCompletionEnabled = false
+	print('Auto-completion disabled')
+end
+
+function ToggleAutoCompletion()
+	if autoCompletionEnabled then
+		DisableAutoCompletion()
+	else
+		EnableAutoCompletion()
+	end
+end
+
+usercmd('ToggleAutoCompletion', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp Completion' })
