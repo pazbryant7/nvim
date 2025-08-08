@@ -4,7 +4,7 @@ local map = v.keymap.set
 
 -- Manage exit and saves
 map('n', '<c-f>', '<cmd>update<CR>', { desc = 'Save current buffer' })
-map('n', '<leader>f', '<cmd>wa<CR>', { desc = 'Save all buffers' })
+map('n', '<leader>s', '<cmd>wa<CR>', { desc = 'Save all buffers' })
 map('n', '<leader>q', '<cmd>q!<CR>', { desc = 'Quit without save' })
 map('n', '<leader>Q', '<cmd>qa!<CR>', { desc = 'Quit all without save' })
 
