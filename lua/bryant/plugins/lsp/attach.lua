@@ -21,6 +21,8 @@ function M.get_keymaps()
 		{ 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
 		{ 'gO', vim.lsp.buf.document_symbol, desc = 'LSP Open Document Symbol' },
 		{ 'gt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
+		{ '<m-l>', M.diagnostic_goto(true, 'ERROR'), desc = 'LSP Error Next Diagnostic' },
+		{ '<m-h>', M.diagnostic_goto(false, 'ERROR'), desc = 'LSP Error Prev Diagnostic' },
 		{
 			'K',
 			function()
