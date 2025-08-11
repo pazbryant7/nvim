@@ -19,20 +19,24 @@ return {
 				menu = {
 					auto_show = true,
 				},
-				accept = {
-					auto_brackets = {
-						enabled = false,
-					},
-				},
 			},
 		},
 		completion = {
 			documentation = { auto_show = false },
+			accept = { auto_brackets = { enabled = false } },
 			menu = {
 				draw = {
 					columns = {
-						{ 'label', 'label_description', gap = 1 },
-						{ 'kind_icon', 'kind', gap = 1 },
+						{
+							'label',
+							'label_description',
+							gap = 1,
+						},
+						{
+							'kind_icon',
+							'kind',
+							gap = 1,
+						},
 					},
 				},
 			},
