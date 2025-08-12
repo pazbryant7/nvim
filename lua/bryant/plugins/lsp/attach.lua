@@ -10,19 +10,24 @@ function M.get_keymaps()
 		{ ']d', M.diagnostic_goto(true), desc = 'LSP Next Diagnostic' },
 		{ '[d', M.diagnostic_goto(false), desc = 'LSP Prev Diagnostic' },
 		{ 'gD', vim.lsp.buf.declaration, desc = 'LSP Goto Declaration' },
-		{ ']h', M.diagnostic_goto(true, 'HINT'), desc = 'LSP Next Hint' },
-		{ ']i', M.diagnostic_goto(true, 'INFO'), desc = 'LSP Next Info' },
-		{ '[h', M.diagnostic_goto(false, 'HINT'), desc = 'LSP Prev Hint' },
-		{ '[i', M.diagnostic_goto(false, 'INFO'), desc = 'LSP Prev Info' },
 		{ ']e', M.diagnostic_goto(true, 'ERROR'), desc = 'LSP Next Error' },
 		{ ']w', M.diagnostic_goto(true, 'WARN'), desc = 'LSP Next Warning' },
 		{ '[e', M.diagnostic_goto(false, 'ERROR'), desc = 'LSP Prev Error' },
 		{ '[w', M.diagnostic_goto(false, 'WARN'), desc = 'LSP Prev Warning' },
 		{ 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
 		{ 'gO', vim.lsp.buf.document_symbol, desc = 'LSP Open Document Symbol' },
+		{ '<m-k>', M.diagnostic_goto(true), desc = 'LSP Error Next Diagnostic' },
 		{ 'gt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
-		{ '<m-l>', M.diagnostic_goto(true), desc = 'LSP Error Next Diagnostic' },
-		{ '<m-h>', M.diagnostic_goto(false), desc = 'LSP Error Prev Diagnostic' },
+		{ '<m-j>', M.diagnostic_goto(false), desc = 'LSP Error Prev Diagnostic' },
+		{ 'gra', vim.lsp.buf.code_action, desc = 'LSP Code Action', mode = { 'n', 'v' } },
+		{
+			'<m-q>',
+			function()
+				vim.diagnostic.setqflist({ open = false })
+				require('quicker').toggle()
+			end,
+			desc = 'LSP Diagnostics',
+		},
 		{
 			'K',
 			function()
@@ -30,7 +35,6 @@ function M.get_keymaps()
 			end,
 			desc = 'LSP Hover',
 		},
-		{ 'gra', vim.lsp.buf.code_action, desc = 'LSP Code Action', mode = { 'n', 'v' } },
 		{
 			'<c-s>',
 			function()
