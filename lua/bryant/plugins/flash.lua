@@ -1,13 +1,5 @@
 return {
 	'folke/flash.nvim',
-	init = function()
-		vim.api.nvim_set_hl(0, 'FlashMatch', {
-			fg = '#ffffff',
-			bg = '#e05586',
-			bold = true,
-			nocombine = true,
-		})
-	end,
 	opts = {
 		-- all your other options go here
 		search = {
