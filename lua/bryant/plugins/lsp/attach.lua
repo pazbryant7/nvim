@@ -16,18 +16,10 @@ function M.get_keymaps()
 		{ '[w', M.diagnostic_goto(false, 'WARN'), desc = 'LSP Prev Warning' },
 		{ 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
 		{ 'gO', vim.lsp.buf.document_symbol, desc = 'LSP Open Document Symbol' },
-		{ '<m-k>', M.diagnostic_goto(true), desc = 'LSP Error Next Diagnostic' },
+		{ '<m-l>', M.diagnostic_goto(true), desc = 'LSP Error Next Diagnostic' },
 		{ 'gt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
-		{ '<m-j>', M.diagnostic_goto(false), desc = 'LSP Error Prev Diagnostic' },
+		{ '<m-h>', M.diagnostic_goto(false), desc = 'LSP Error Prev Diagnostic' },
 		{ 'gra', vim.lsp.buf.code_action, desc = 'LSP Code Action', mode = { 'n', 'v' } },
-		{
-			'<m-q>',
-			function()
-				vim.diagnostic.setqflist({ open = false })
-				require('quicker').toggle()
-			end,
-			desc = 'LSP Diagnostics',
-		},
 		{
 			'K',
 			function()
