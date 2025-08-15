@@ -30,7 +30,7 @@ return {
 				enabled = true,
 				autohide = false,
 				jump_labels = true,
-				multi_line = true,
+				multi_line = false,
 				keys = { 'f', 'F', 't', 'T', [';'] = ':', ',' },
 				highlight = { backdrop = false },
 				jump = {
