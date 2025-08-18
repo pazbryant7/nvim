@@ -9,9 +9,11 @@ return {
 		'TSToolsAddMissingImports',
 	},
 	opts = {
-		complete_function_calls = true,
-		expose_as_code_action = 'all',
-		separate_diagnostic_server = true,
+		settings = {
+			complete_function_calls = true,
+			expose_as_code_action = 'all',
+			separate_diagnostic_server = true,
+		},
 	},
 	ft = {
 		'javascript',
