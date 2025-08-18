@@ -2,6 +2,7 @@ return {
 	'shortcuts/no-neck-pain.nvim',
 	cmd = 'NoNeckPainToggleLeftSide',
 	opts = {
+		width = 80,
 		mappings = {
 			enabled = false,
 		},
@@ -10,7 +11,7 @@ return {
 				cursorline = false,
 				cursorcolumn = false,
 				colorcolumn = '0',
-        number = false,
+				number = false,
 				relativenumber = false,
 				foldenable = false,
 				list = false,
