@@ -3,7 +3,6 @@ return {
 	event = 'VeryLazy',
 	opts = {},
 	keys = {
-
 		{
 			'<leader>?',
 			function()

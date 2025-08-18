@@ -1,12 +1,11 @@
 vim.diagnostic.config({
 	underline = false,
 	severity_sort = true,
-	virtual_text = true,
+	virtual_text = false,
 	virtual_lines = false,
 	update_in_insert = false,
 	dynamicRegistration = true,
 	float = {
-		source = true,
 		max_width = 100,
 		focusable = true,
 		style = 'minimal',
@@ -15,10 +14,6 @@ vim.diagnostic.config({
 		signs = {
 			text = { ERROR = 'E', WARN = 'W', HINT = 'H', INFO = '?' },
 		},
-		prefix = function(ctx)
-			local severity = vim.diagnostic.severity[ctx.severity]
-			return '  ', 'Diagnostic' .. severity
-		end,
 	},
 })
 
