@@ -9,7 +9,7 @@ map('n', '<leader>q', '<cmd>q!<CR>', { desc = 'Quit without save' })
 map('n', '<leader>Q', '<cmd>qa!<CR>', { desc = 'Quit all without save' })
 
 -- better change inner word
-map('n', '<C-c>', 'ciw', { desc = 'Better Change Inner Word' })
+map('n', '<C-c>', 'cib', { desc = 'Better Change Inner Block' })
 
 -- In Visual mode, moves the selected lines down and up by one line, then re-indents.
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected lines down', silent = true })
