@@ -1,30 +1,19 @@
 return {
 	'echasnovski/mini.ai',
 	version = '*',
-	keys = {
-		{ 'a', mode = { 'x', 'o' } },
-		{ 'i', mode = { 'x', 'o' } },
-	},
 	dependencies = 'nvim-treesitter-textobjects',
 	opts = function()
 		local ai = require('mini.ai')
 		return {
 			n_lines = 500,
-
 			search_method = 'cover_or_next',
-
 			mappings = {
-				-- Main textobject prefixes
 				around = 'a',
 				inside = 'i',
-
-				-- Next/last variants
 				around_next = 'an',
 				inside_next = 'in',
 				around_last = 'al',
 				inside_last = 'il',
-
-				-- Move cursor to corresponding edge of `a` textobject
 				goto_left = 'g[',
 				goto_right = 'g]',
 			},
@@ -38,4 +27,9 @@ return {
 			},
 		}
 	end,
+	keys = {
+		{ 'a', mode = { 'x', 'o' }, desc = 'Mini AI Around textobject' },
+		{ 'i', mode = { 'x', 'o' }, desc = 'Mini AI Inside textobject' },
+		{ '<c-c>', 'cib', remap = true, desc = 'Mini AI Change Inner Block' },
+	},
 }
