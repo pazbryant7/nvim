@@ -236,14 +236,14 @@ return {
 
 		-- Navigation
 		{
-			']t',
+			']T',
 			function()
 				require('neotest').jump.next({ status = 'failed' })
 			end,
 			desc = 'Test: Jump to Next Failed Test',
 		},
 		{
-			'[t',
+			'[T',
 			function()
 				require('neotest').jump.prev({ status = 'failed' })
 			end,
