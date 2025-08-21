@@ -44,56 +44,70 @@ return {
 	},
 
 	{
-		'mason-org/mason.nvim',
-		dependencies = 'WhoIsSethDaniel/mason-tool-installer.nvim',
-		branch = 'main',
+		'williamboman/mason.nvim',
 		cmd = 'Mason',
+		dependencies = {
+			'WhoIsSethDaniel/mason-tool-installer.nvim',
+		},
 		config = function()
 			local ensure_installed = {
 				-- lua
 				'stylua',
 				'luacheck',
-
 				-- web dev
 				'prettierd',
 				'prettier',
-
 				-- bash
 				'shfmt',
 				'shellcheck',
 				'shellharden',
-
 				-- golang
 				'gofumpt',
 				'goimports',
 				'golangci-lint',
-
 				-- python
 				'ruff',
-
 				-- markdown
 				'alex',
 				'markdownlint',
-
 				-- javascript
 				'eslint_d',
-
 				-- toml
 				'taplo',
-
 				-- c
 				'clang-format',
-
-				-- rust
-				'codelldb',
 			}
+
 			require('mason').setup({
 				ui = {
 					border = 'single',
 				},
 			})
+
 			require('mason-tool-installer').setup({
 				ensure_installed = ensure_installed,
+			})
+		end,
+	},
+
+	{
+		'jay-babu/mason-nvim-dap.nvim',
+		dependencies = {
+			'mason.nvim',
+			'mfussenegger/nvim-dap',
+		},
+		config = function()
+			require('mason-nvim-dap').setup({
+				ensure_installed = {
+					'codelldb',
+					'delve',
+				},
+				automatic_installation = true,
+				handlers = {
+					function(config)
+						require('mason-nvim-dap').default_setup(config)
+					end,
+				},
 			})
 		end,
 	},
