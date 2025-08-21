@@ -38,6 +38,32 @@ usercmd('ToggleDiagnostics', function()
 	vim.notify(string.format('Diagnostic has been %s', msg), vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Diagnostics toggle' })
 
+usercmd('GoToFileWithTumux', function()
+	if vim.env.TMUX then
+		local file = vim.fn.expand('<cfile>')
+		if file and file ~= '' then
+			local cwd = vim.fn.getcwd()
+			local prog_name = vim.v.progname
+			local cmd_parts = {}
+			if vim.env.NVIM_APPNAME then
+				table.insert(cmd_parts, 'NVIM_APPNAME=' .. vim.fn.shellescape(vim.env.NVIM_APPNAME))
+			end
+			table.insert(cmd_parts, prog_name)
+			table.insert(cmd_parts, vim.fn.shellescape(file))
+			local nvim_command = table.concat(cmd_parts, ' ')
+			local tmux_command = string.format("tmux split-window -h -c %s '%s'", vim.fn.shellescape(cwd), nvim_command)
+			local result = vim.fn.system(tmux_command)
+			if vim.v.shell_error ~= 0 then
+				vim.notify('Failed to open tmux pane: ' .. result, vim.log.levels.ERROR, { title = 'Tmux' })
+			end
+		else
+			vim.notify('No file path under cursor.', vim.log.levels.WARN, { title = 'Tmux' })
+		end
+	else
+		vim.notify('Not inside a tmux session.', vim.log.levels.ERROR, { title = 'Tmux' })
+	end
+end, { desc = 'Go to file under the cursor with tmux' })
+
 -- Toggle blink cmp
 local autoCompletionEnabled = true
 function EnableAutoCompletion()

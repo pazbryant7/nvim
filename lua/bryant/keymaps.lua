@@ -36,7 +36,7 @@ map({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Copy Without Overwrite Registe
 map('n', '<leader>Y', [["+Y]], { desc = 'Copy Full Line Without Overwrite Register' })
 
 -- delete without overwrite register
-map({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete Without Overwrite Register' })
+map({ 'n', 'v' }, '<leader>dd', '"_d', { desc = 'Delete Without Overwrite Register' })
 map('n', '<leader>D', '"_dd', { desc = 'Delete Full Line Without Overwrite Register' })
 
 -- align manually
@@ -72,32 +72,9 @@ map('n', '<leader>td', '<cmd>ToggleDiagnostics<cr>', { desc = 'Toggle Diagtostic
 map('n', '<leader>tc', '<cmd>ToggleAutoCompletion<cr>', { desc = 'Toggle BlinkCompletion}' })
 
 -- tmux open under cursor in new tmux pane
-map('n', '<leader>gf', function()
-	if vim.env.TMUX then
-		local file = vim.fn.expand('<cfile>')
-		if file and file ~= '' then
-			local cwd = vim.fn.getcwd()
-			local prog_name = vim.v.progname
-			local cmd_parts = {}
-			if vim.env.NVIM_APPNAME then
-				table.insert(cmd_parts, 'NVIM_APPNAME=' .. vim.fn.shellescape(vim.env.NVIM_APPNAME))
-			end
-			table.insert(cmd_parts, prog_name)
-			table.insert(cmd_parts, vim.fn.shellescape(file))
-			local nvim_command = table.concat(cmd_parts, ' ')
-			local tmux_command = string.format("tmux split-window -h -c %s '%s'", vim.fn.shellescape(cwd), nvim_command)
-			local result = vim.fn.system(tmux_command)
-			if vim.v.shell_error ~= 0 then
-				vim.notify('Failed to open tmux pane: ' .. result, vim.log.levels.ERROR, { title = 'Tmux' })
-			end
-		else
-			vim.notify('No file path under cursor.', vim.log.levels.WARN, { title = 'Tmux' })
-		end
-	else
-		vim.notify('Not inside a tmux session.', vim.log.levels.ERROR, { title = 'Tmux' })
-	end
-end, {
-	noremap = true,
-	silent = true,
-	desc = 'Open file under cursor in new tmux pane',
-})
+map(
+	'n',
+	'<leader>gf',
+	'<cmd>GoToFileWithTumux<cr>',
+	{ noremap = true, silent = true, desc = 'Open file under cursor in new tmux pane' }
+)
