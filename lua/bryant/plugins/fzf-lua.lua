@@ -20,6 +20,8 @@ return {
 			'refactoring',
 			'__pycache__',
 			'node_modules/',
+			'.obsidian/',
+			'obsidian/',
 			'lazy%-lock%.json$',
 			'package%-lock%.json$',
 		}
@@ -86,9 +88,9 @@ return {
 		{
 			'<m-c>',
 			function()
-				require('fzf-lua').files({ cwd = vim.fn.getcwd() })
+				require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })
 			end,
-			desc = 'FzfLua Files',
+			desc = "FzfLua Files from Current File's Directory",
 		},
 		{
 			'<leader>ht',

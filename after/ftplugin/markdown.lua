@@ -9,12 +9,9 @@ end
 
 local bufnr = vim.api.nvim_get_current_buf()
 
-o.spc = ''
-
 o.wrap = true
 o.spell = true
 o.textwidth = 80
 
-map('n', '<c-t>', '<cmd>ObsidianSearch<cr>', { desc = 'Obsidian search', buffer = bufnr, remap = false })
-
-map('n', '<c-p', '<cmd>ObsidianQuickSwitch<cr>', { desc = 'Obsidian Quick Switch', buffer = bufnr, remap = false })
+map('n', '<c-t>', '<cmd>Obsidian search<cr>', { desc = 'Obsidian search', buffer = bufnr, remap = false })
+map('n', '<c-p>', '<cmd>Obsidian quick_switch<cr>', { desc = 'Obsidian Quick Switch', buffer = bufnr, remap = false })
