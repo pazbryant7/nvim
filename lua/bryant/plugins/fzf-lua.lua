@@ -84,6 +84,13 @@ return {
 			desc = 'FzfLua Files',
 		},
 		{
+			'<m-c>',
+			function()
+				require('fzf-lua').files({ cwd = vim.fn.getcwd() })
+			end,
+			desc = 'FzfLua Files',
+		},
+		{
 			'<leader>ht',
 			function()
 				require('fzf-lua').help_tags()

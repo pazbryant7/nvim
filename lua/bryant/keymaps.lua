@@ -78,3 +78,6 @@ map(
 	'<cmd>GoToFileWithTumux<cr>',
 	{ noremap = true, silent = true, desc = 'Open file under cursor in new tmux pane' }
 )
+
+-- lazy
+map('n', '<leader>L', '<cmd>Lazy<cr>', { desc = 'Open Lazy' })

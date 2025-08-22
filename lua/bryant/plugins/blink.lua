@@ -23,7 +23,7 @@ return {
 		},
 		completion = {
 			documentation = { auto_show = false },
-			accept = { auto_brackets = { enabled = false } },
+			accept = { auto_brackets = { enabled = true } },
 			menu = {
 				auto_show = true,
 				draw = {
