@@ -4,40 +4,8 @@ return {
 	version = '*',
 	ft = 'markdown',
 	cmd = { 'Obsidian' },
-	opts = {
-		legacy_commands = false,
-		notes_subdir = '00 - Fleeting',
-
-		workspaces = {
-			{
-				name = 'Personal notes',
-				path = '~/Documents/github/notes',
-			},
-			{
-				name = 'Youtube Notes',
-				path = '~/Documents/github/youtube',
-			},
-		},
-
-		daily_notes = {
-			folder = '01 - Daily Notes',
-			date_format = '%Y-%m-%d',
-			alias_format = '%B %-d, %Y',
-			default_tags = { 'daily-notes' },
-			template = '40 - Templates/Daily.md',
-			workdays_only = false,
-		},
-
-		completion = {
-			nvim_cmp = false,
-			blink = true,
-			min_chars = 2,
-			create_new = true,
-		},
-
-		new_notes_location = 'notes_subdir',
-
-		note_id_func = function(title)
+	opts = function()
+		local function generate_note_id(title)
 			local suffix = ''
 			if title ~= nil and title ~= '' then
 				suffix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
@@ -50,116 +18,166 @@ return {
 				end
 			end
 			return os.date('%Y%m%d%H%M') .. '-' .. suffix
-		end,
+		end
 
-		note_path_func = function(spec)
-			local path = spec.dir / tostring(spec.id)
-			return path:with_suffix('.md')
-		end,
+		return {
+			legacy_commands = false,
+			notes_subdir = '00 - Fleeting',
 
-		wiki_link_func = function(opts)
-			return require('obsidian.util').wiki_link_id_prefix(opts)
-		end,
+			workspaces = {
+				{
+					name = 'Personal notes',
+					path = '~/Documents/github/notes',
+				},
+				{
+					name = 'Youtube Notes',
+					path = '~/Documents/github/youtube',
+				},
+			},
 
-		markdown_link_func = function(opts)
-			return require('obsidian.util').markdown_link(opts)
-		end,
+			daily_notes = {
+				folder = '01 - Daily Notes',
+				date_format = '%Y-%m-%d',
+				alias_format = '%B %-d, %Y',
+				default_tags = { 'daily-notes' },
+				template = '40 - Templates/Daily.md',
+				workdays_only = false,
+			},
 
-		preferred_link_style = 'wiki',
+			completion = {
+				nvim_cmp = false,
+				blink = true,
+				min_chars = 2,
+				create_new = true,
+			},
 
-		disable_frontmatter = false,
+			new_notes_location = 'notes_subdir',
 
-		note_frontmatter_func = function(note)
-			if note.title then
-				note:add_alias(note.title)
-			end
-			local out = {
-				id = note.id,
-				aliases = note.aliases,
-				tags = note.tags,
-				created = os.date('%Y-%m-%d %H:%M'),
-				modified = os.date('%Y-%m-%d %H:%M'),
-				connections = {},
-			}
-			if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-				for k, v in pairs(note.metadata) do
-					out[k] = v
+			templates = {
+				folder = '40 - Templates',
+				date_format = '%Y-%m-%d',
+				time_format = '%H:%M',
+				substitutions = {
+					id = function()
+						return generate_note_id()
+					end,
+
+					id_with_title = function(title)
+						return generate_note_id(title)
+					end,
+
+					date = function()
+						return os.date('%Y-%m-%d')
+					end,
+					time = function()
+						return os.date('%H:%M')
+					end,
+				},
+				customizations = {
+					['Fleeting'] = {
+						notes_subdir = '00 - Fleeting',
+						note_id_func = generate_note_id,
+					},
+					['Literature'] = {
+						notes_subdir = '10 - Literature',
+						note_id_func = generate_note_id,
+					},
+					['Permanent'] = {
+						notes_subdir = '20 - Zettelkasten',
+						note_id_func = generate_note_id,
+					},
+				},
+			},
+
+			note_id_func = generate_note_id,
+
+			note_path_func = function(spec)
+				local path = spec.dir / tostring(spec.id)
+				return path:with_suffix('.md')
+			end,
+
+			wiki_link_func = function(opts)
+				return require('obsidian.util').wiki_link_id_prefix(opts)
+			end,
+
+			markdown_link_func = function(opts)
+				return require('obsidian.util').markdown_link(opts)
+			end,
+
+			preferred_link_style = 'wiki',
+
+			disable_frontmatter = false,
+
+			note_frontmatter_func = function(note)
+				if note.title then
+					note:add_alias(note.title)
 				end
-			end
-			return out
-		end,
-
-		templates = {
-			folder = '40 - Templates',
-			date_format = '%Y-%m-%d',
-			time_format = '%H:%M',
-			substitutions = {
-				-- type = function()
-				-- 	return os.date
-				-- end,
-			},
-			customizations = {
-				['Fleeting'] = {
-					notes_subdir = '00 - Fleeting',
-				},
-				['Literature'] = {
-					notes_subdir = '10 - Literature',
-				},
-				['Permanent'] = {
-					notes_subdir = '20 - Zettelkasten',
-				},
-			},
-		},
-
-		follow_url_func = function(url)
-			vim.ui.open(url)
-		end,
-
-		follow_img_func = function(img)
-			vim.ui.open(img)
-		end,
-
-		picker = {
-			name = 'fzf-lua',
-			note_mappings = {
-				new = '<C-x>',
-				insert_link = '<C-l>',
-			},
-			tag_mappings = {
-				tag_note = '<C-x>',
-				insert_tag = '<C-l>',
-			},
-		},
-
-		sort_by = 'modified',
-		sort_reversed = true,
-		search_max_lines = 1000,
-		open_notes_in = 'current',
-
-		ui = {
-			enabled = true,
-		},
-
-		attachments = {
-			img_folder = '30 - Attachments',
-			img_name_func = function()
-				return string.format('img-%s', os.date('%Y%m%d-%H%M%S'))
+				local out = {
+					id = note.id,
+					aliases = note.aliases,
+					tags = note.tags,
+					created = os.date('%Y-%m-%d %H:%M'),
+					modified = os.date('%Y-%m-%d %H:%M'),
+					connections = {},
+				}
+				if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+					for k, v in pairs(note.metadata) do
+						out[k] = v
+					end
+				end
+				return out
 			end,
-			img_text_func = function(path)
-				local name = vim.fs.basename(tostring(path))
-				local encoded_name = require('obsidian.util').urlencode(name)
-				return string.format('![%s](%s)', name, encoded_name)
-			end,
-			confirm_img_paste = true,
-		},
 
-		footer = {
-			enabled = true,
-			format = '{{backlinks}} backlinks  {{properties}} properties  {{words}} words  {{chars}} chars',
-			hl_group = 'Comment',
-			separator = string.rep('-', 80),
-		},
-	},
+			follow_url_func = function(url)
+				vim.ui.open(url)
+			end,
+
+			follow_img_func = function(img)
+				vim.ui.open(img)
+			end,
+
+			picker = {
+				name = 'fzf-lua',
+				note_mappings = {
+					new = '<C-x>',
+					insert_link = '<C-l>',
+				},
+				tag_mappings = {
+					tag_note = '<C-x>',
+					insert_tag = '<C-l>',
+				},
+			},
+
+			sort_by = 'modified',
+			sort_reversed = true,
+			search_max_lines = 1000,
+			open_notes_in = 'current',
+
+			ui = {
+				enabled = true,
+			},
+
+			attachments = {
+				img_folder = '30 - Attachments',
+				img_name_func = function()
+					return string.format('img-%s', os.date('%Y%m%d-%H%M%S'))
+				end,
+				img_text_func = function(path)
+					local name = vim.fs.basename(tostring(path))
+					local encoded_name = require('obsidian.util').urlencode(name)
+					return string.format('![%s](%s)', name, encoded_name)
+				end,
+				confirm_img_paste = true,
+			},
+
+			footer = {
+				enabled = true,
+				format = '{{backlinks}} backlinks  {{properties}} properties  {{words}} words  {{chars}} chars',
+				hl_group = 'Comment',
+				separator = string.rep('-', 80),
+			},
+		}
+	end,
 
 	keys = function()
 		local function new_obsidian_note(template_name)
