@@ -22,7 +22,7 @@ return {
 				match = 'FlashMatch',
 				current = 'FlashCurrent',
 				backdrop = 'FlashBackdrop',
-				label = 'FlashLabel',
+				label = '@error',
 			},
 		},
 		modes = {
