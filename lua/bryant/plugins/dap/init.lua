@@ -61,7 +61,7 @@ return {
       { '<leader>b', function() require('dap').toggle_breakpoint() end, desc = 'Dap Debug: Toggle Breakpoint' },
       { '<leader>dp', function() require('dap.ui.widgets').preview() end, desc = 'Dap Debug: Preview', mode = { 'n', 'v' } },
       { '<leader>dh', function() require('dap.ui.widgets').hover() end, desc = 'Dap Debug: Hover Variables', mode = { 'n', 'v' }, },
-      { '<leader>ds', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.scopes) end, desc = 'Dap Debug: Scopes', },
+      { '<leader>dw', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.scopes) end, desc = 'Dap Debug: Scopes', },
       { '<leader>df', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.frames) end, desc = 'Dap Debug: Frames', },
       { '<leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, desc = 'Dap Debug: Set Log Point', },
 		},

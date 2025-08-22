@@ -3,10 +3,9 @@ local v = vim
 local map = v.keymap.set
 
 -- Manage exit and saves
-map('n', '<c-f>', '<cmd>write<CR>', { desc = 'Save current buffer' })
-map('n', '<leader>s', '<cmd>wa<CR>', { desc = 'Save all buffers' })
-map('n', '<leader>q', '<cmd>q!<CR>', { desc = 'Quit without save' })
-map('n', '<leader>Q', '<cmd>qa!<CR>', { desc = 'Quit all without save' })
+map('n', '<leader>wa', '<cmd>wa<CR>', { desc = 'Save all buffers' })
+map('n', '<leader>qc', '<cmd>q!<CR>', { desc = 'Quit without save' })
+map('n', '<leader>qa', '<cmd>qa!<CR>', { desc = 'Quit all without save' })
 
 -- In Visual mode, moves the selected lines down and up by one line, then re-indents.
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected lines down', silent = true })
@@ -16,10 +15,12 @@ map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selected lines up', silent = tr
 map('n', 'J', 'mzJ`z', { desc = 'Join line below (preserve cursor position)' })
 
 -- Better neovim defaults
-map('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down and re-center view' })
-map('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up and re-center view' })
 map('n', 'n', 'nzzzv', { desc = 'Next search result and center' })
 map('n', 'N', 'Nzzzv', { desc = 'Previous search result and center' })
+map('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up and re-center view' })
+map('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down and re-center view' })
+map('n', '<C-i>', '<C-i>zz', { desc = 'Jump forward to next position and center' })
+map('n', '<C-o>', '<C-o>zz', { desc = 'Jump back to previous position and center' })
 
 --  No highlights
 map('n', '<Escape>', '<cmd>noh<CR>', { desc = 'No search highlights' })

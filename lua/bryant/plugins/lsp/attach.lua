@@ -15,7 +15,6 @@ function M.get_keymaps()
 		{ '[e', M.diagnostic_goto(false, 'ERROR'), desc = 'LSP Prev Error' },
 		{ '[w', M.diagnostic_goto(false, 'WARN'), desc = 'LSP Prev Warning' },
 		{ 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
-		{ 'gO', vim.lsp.buf.document_symbol, desc = 'LSP Open Document Symbol' },
 		{ '<m-l>', M.diagnostic_goto(true), desc = 'LSP Error Next Diagnostic' },
 		{ 'gt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
 		{ '<m-h>', M.diagnostic_goto(false), desc = 'LSP Error Prev Diagnostic' },
@@ -34,6 +33,13 @@ function M.get_keymaps()
 			end,
 			desc = 'LSP Signature Help',
 			mode = { 'n', 'i' },
+		},
+		{
+			'gO',
+			function()
+				vim.lsp.buf.document_symbol({ loclist = false })
+			end,
+			desc = 'LSP Open Document Symbol',
 		},
 	}
 end
