@@ -30,6 +30,5 @@ return {
 	keys = {
 		{ 'a', mode = { 'x', 'o' }, desc = 'Mini AI Around textobject' },
 		{ 'i', mode = { 'x', 'o' }, desc = 'Mini AI Inside textobject' },
-		{ '<c-c>', 'cib', remap = true, desc = 'Mini AI Change Inner Block' },
 	},
 }
