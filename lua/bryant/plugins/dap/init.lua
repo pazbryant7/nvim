@@ -30,14 +30,12 @@ return {
 			'rcarriga/nvim-dap-ui',
 			'nvim-neotest/nvim-nio',
 			'jay-babu/mason-nvim-dap.nvim',
-			'theHamsta/nvim-dap-virtual-text',
 		},
 		config = function()
 			local dap = require('dap')
 			local dapui = require('dapui')
 
 			-- Setup components
-			require('bryant.plugins.dap.virtual-text').setup()
 			require('bryant.plugins.dap.signs').setup()
 			require('bryant.plugins.dap.ui').setup(dap, dapui)
 
@@ -51,15 +49,17 @@ return {
 		end,
     -- stylua: ignore start
 		keys = {
-      { '<F12>', function() require('dap').step_out() end, desc = 'Dap Debug: Step Out' },
-      { '<F11>', function() require('dap').step_into() end, desc = 'Dap Debug: Step Into' },
-      { '<F10>', function() require('dap').step_over() end, desc = 'Dap Debug: Step Over' },
-      { '<leader>dl', function() require('dap').run_last() end, desc = 'Dap Debug: Run Last' },
-      { '<F5>', function() require('dap').continue() end, desc = 'Dap Debug: Start/Continue' },
-      { '<leader>dr', function() require('dap').repl.open() end, desc = 'Dap Debug: Open REPL' },
-      { '<leader>B', function() require('dap').set_breakpoint() end, desc = 'Dap Debug: Set Breakpoint' },
+      { '<F3>', function() require('dap').step_out() end, desc = 'Dap Debug: Step Out' },
+      { '<F2>', function() require('dap').step_into() end, desc = 'Dap Debug: Step Into' },
+      { '<F1>', function() require('dap').step_over() end, desc = 'Dap Debug: Step Over' },
+      { '<F5>', function() require('dap').disconnect() end, desc = 'Dap Debug: Disconnect' },
+      { '<F4>', function() require('dap').continue() end, desc = 'Dap Debug: Start/Continue' },
+
+      { '<F6>', function() require('dap').disconnect() end, desc = 'Dap Debug: Disconnect' },
+      { '<leader>dt', function() require('dap').terminate() end, desc = 'Dap Debug: Terminate' },
+
+      { '<leader>cl', function() require('dap').clear_breakpoints() end, desc = 'Dap Clear Breakpoints', },
       { '<leader>b', function() require('dap').toggle_breakpoint() end, desc = 'Dap Debug: Toggle Breakpoint' },
-      { '<leader>dp', function() require('dap.ui.widgets').preview() end, desc = 'Dap Debug: Preview', mode = { 'n', 'v' } },
       { '<leader>dh', function() require('dap.ui.widgets').hover() end, desc = 'Dap Debug: Hover Variables', mode = { 'n', 'v' }, },
       { '<leader>dw', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.scopes) end, desc = 'Dap Debug: Scopes', },
       { '<leader>df', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.frames) end, desc = 'Dap Debug: Frames', },
