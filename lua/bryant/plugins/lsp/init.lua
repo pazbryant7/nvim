@@ -24,7 +24,7 @@ return {
 				'emmet_language_server',
 			},
 			automatic_enable = {
-				exclude = { 'ts_ls' },
+				exclude = { 'ts_ls', 'rust_analyzer' },
 			},
 		},
 		config = function(_, opts)
