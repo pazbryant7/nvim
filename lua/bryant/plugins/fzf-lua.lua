@@ -81,7 +81,7 @@ return {
     -- stylua: ignore start
     { '<leader>f', '<cmd> FzfLua <CR>', desc = 'FzfLua' },
     { '<c-p>', function() require('fzf-lua').files() end, desc = 'FzfLua Files' },
-    { '<c-f>', function() require('fzf-lua').buffers() end, desc = 'FzfLua buffers' },
+    { '<c-b>', function() require('fzf-lua').buffers() end, desc = 'FzfLua buffers' },
     { '<leader>H', function() require('fzf-lua').help_tags() end, desc = 'FzfLua Help Tags' },
     { '<leader>k', function() require('fzf-lua').keymaps() end, desc = 'FzfLua Show Key Maps' },
     { '<c-t>', function() require('fzf-lua').live_grep_native() end, desc = 'FzfLua Live Grep' },
