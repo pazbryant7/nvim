@@ -1,24 +1,28 @@
-vim.diagnostic.config({
-	underline = false,
-	severity_sort = true,
-	virtual_text = false,
-	virtual_lines = false,
-	update_in_insert = false,
-	dynamicRegistration = true,
-	float = {
-		max_width = 100,
-		focusable = true,
-		style = 'minimal',
-		border = 'single',
-		header = { ' Diagnostics', 'Bold' },
-		signs = {
-			text = { ERROR = 'E', WARN = 'W', HINT = 'H', INFO = '?' },
-		},
-	},
-})
+local M = {}
 
-vim.lsp.config('*', {
-	capabilities = {
+function M.set_diagnostics()
+	vim.diagnostic.config({
+		underline = false,
+		severity_sort = true,
+		virtual_text = false,
+		virtual_lines = false,
+		update_in_insert = false,
+		dynamicRegistration = true,
+		float = {
+			max_width = 100,
+			focusable = true,
+			style = 'minimal',
+			border = 'single',
+			header = { ' Diagnostics', 'Bold' },
+			signs = {
+				text = { ERROR = 'E', WARN = 'W', HINT = 'H', INFO = '?' },
+			},
+		},
+	})
+end
+
+function M.get_capabilities()
+	local custom_capabilities = {
 		textDocument = {
 			semanticTokens = {
 				dynamicRegistration = false,
@@ -39,13 +43,19 @@ vim.lsp.config('*', {
 				dynamicRegistration = false,
 			},
 		},
-	},
-})
+	}
+	local blink_capabilities = require('blink.cmp').get_lsp_capabilities()
+	return vim.tbl_deep_extend('force', {}, blink_capabilities, custom_capabilities)
+end
 
-vim.api.nvim_create_autocmd('LspAttach', {
-	desc = 'Attach lsp user custom keybinds',
-	group = vim.api.nvim_create_augroup('bryant-lsp', { clear = true }),
-	callback = function()
-		require('bryant.plugins.lsp.attach').on_attach(client, bufnr)
-	end,
-})
+function M.setup_capabilities()
+	local capabilities = M.get_capabilities()
+	vim.lsp.config('*', capabilities)
+end
+
+function M.setup()
+	M.set_diagnostics()
+	M.setup_capabilities()
+end
+
+return M

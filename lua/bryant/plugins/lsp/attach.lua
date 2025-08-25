@@ -2,7 +2,6 @@ local M = {}
 
 function M.get_keymaps()
 	return {
-
 		{ 'grn', vim.lsp.buf.rename, desc = 'LSP Rename' },
 		{ 'grr', vim.lsp.buf.references, desc = 'LSP References' },
 		{ 'grd', vim.diagnostic.setqflist, desc = 'LSP Diagnostics' },

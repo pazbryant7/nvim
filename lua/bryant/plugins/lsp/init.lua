@@ -21,16 +21,16 @@ return {
 				'marksman',
 				'dockerls',
 				'basedpyright',
-				'rust_analyzer',
 				'emmet_language_server',
 			},
 			automatic_enable = {
-				exclude = { 'ts_ls', 'rust_analyzer' },
+				exclude = { 'ts_ls' },
 			},
 		},
 		config = function(_, opts)
 			require('mason-lspconfig').setup(opts)
-			require('bryant.plugins.lsp.setup')
+			require('bryant.plugins.lsp.setup').setup()
+			require('bryant.plugins.lsp.attach').on_attach()
 		end,
 	},
 
@@ -101,82 +101,11 @@ return {
 			'nvim-treesitter/nvim-treesitter',
 
 			-- Language adapters
-			'nvim-neotest/neotest-jest', -- JavaScript/TypeScript (Jest)
-			'marilari88/neotest-vitest', -- JavaScript/TypeScript (Vitest)
-			'rouge8/neotest-rust', -- Rust
-			'nvim-neotest/neotest-go', -- Go
-			'alfaix/neotest-gtest', -- C/C++ (Google Test)
-			'nvim-neotest/neotest-python', -- Python
-			'nvim-neotest/neotest-plenary', -- Lua (Plenary)
-			'rcasia/neotest-bash', -- Bash
 		},
 		config = function()
 			require('neotest').setup({
 				adapters = {
-					-- JavaScript/TypeScript adapters
-					require('neotest-jest')({
-						jestCommand = 'npm test --',
-						jestConfigFile = 'jest.config.js',
-						env = { CI = true },
-						cwd = function()
-							return vim.fn.getcwd()
-						end,
-					}),
-					require('neotest-vitest')({
-						filter_dir = function(name, rel_path, root)
-							return name ~= 'node_modules'
-						end,
-					}),
-
-					-- Rust adapter
-					require('neotest-rust')({
-						args = { '--no-capture' },
-						dap_adapter = 'codelldb', -- requires DAP setup
-					}),
-
-					-- Go adapter
-					require('neotest-go')({
-						experimental = {
-							test_table = true,
-						},
-						args = { '-count=1', '-timeout=60s' },
-					}),
-
-					-- C/C++ adapter (Google Test)
-					require('neotest-gtest').setup({
-						-- You might need to adjust these paths
-						-- root_dir = function(path)
-						-- 	return require('neotest.lib').find_project_root(path) or vim.fn.getcwd()
-						-- end,
-					}),
-
-					-- Python adapter
-					require('neotest-python')({
-						-- Runner to use (pytest, unittest, django)
-						runner = 'pytest',
-						python = '.venv/bin/python', -- Adjust for your virtual env
-						args = { '--log-level', 'DEBUG', '--quiet' },
-						is_test_file = function(file_path)
-							-- Custom test file detection
-							local patterns = {
-								'test_.*%.py$',
-								'.*_test%.py$',
-								'tests/.*%.py$',
-							}
-							for _, pattern in ipairs(patterns) do
-								if file_path:match(pattern) then
-									return true
-								end
-							end
-							return false
-						end,
-					}),
-
-					-- Lua adapter (Plenary)
-					require('neotest-plenary'),
-
-					-- Bash adapter
-					require('neotest-bash'),
+					-- adapters
 				},
 
 				-- Global configuration
@@ -248,16 +177,16 @@ return {
 				-- Diagnostic integration
 				diagnostic = {
 					enabled = true,
-					severity = vim.diagnostic.severity.ERROR,
+					severity = get_capabilities.diagnostic.severity.ERROR,
 				},
 			})
 
 			-- Optional: Set up signs for test status
-			vim.fn.sign_define('neotest_passed', { text = '✓', texthl = 'NeotestPassed' })
-			vim.fn.sign_define('neotest_failed', { text = '✖', texthl = 'NeotestFailed' })
-			vim.fn.sign_define('neotest_running', { text = '●', texthl = 'NeotestRunning' })
-			vim.fn.sign_define('neotest_skipped', { text = '○', texthl = 'NeotestSkipped' })
-			vim.fn.sign_define('neotest_unknown', { text = '?', texthl = 'NeotestUnknown' })
+			get_capabilities.fn.sign_define('neotest_passed', { text = '✓', texthl = 'NeotestPassed' })
+			get_capabilities.fn.sign_define('neotest_failed', { text = '✖', texthl = 'NeotestFailed' })
+			get_capabilities.fn.sign_define('neotest_running', { text = '●', texthl = 'NeotestRunning' })
+			get_capabilities.fn.sign_define('neotest_skipped', { text = '○', texthl = 'NeotestSkipped' })
+			get_capabilities.fn.sign_define('neotest_unknown', { text = '?', texthl = 'NeotestUnknown' })
 		end,
 		keys = {
 			{
@@ -270,14 +199,14 @@ return {
 			{
 				'<leader>tf',
 				function()
-					require('neotest').run.run(vim.fn.expand('%'))
+					require('neotest').run.run(get_capabilities.fn.expand('%'))
 				end,
 				desc = 'Test: Run Current File',
 			},
 			{
 				'<leader>td',
 				function()
-					require('neotest').run.run(vim.fn.getcwd())
+					require('neotest').run.run(get_capabilities.fn.getcwd())
 				end,
 				desc = 'Test: Run All Tests in Directory',
 			},
