@@ -1,8 +1,11 @@
 return {
 	'mrcjkb/rustaceanvim',
 	version = '^6',
-	ft = { 'rust' },
-	init = function()
+	ft = 'rust',
+	config = function()
+		local on_attach = require('bryant.plugins.lsp.attach').on_attach
+		local capabilities = require('bryant.plugins.lsp.setup').get_capabilities()
+
 		vim.g.rustaceanvim = {
 			tools = {
 				runnables = {
@@ -10,15 +13,17 @@ return {
 				},
 			},
 			server = {
+				cmd = { '/usr/lib/rustup/bin/rust-analyzer' },
+
 				settings = {
 					['rust-analyzer'] = {
-						checkOnSave = false,
+						procMacro = { enable = true },
+						check = { command = 'clippy' },
+						cargo = { features = 'all' },
 					},
 				},
-				on_attach = function(client, bufnr)
-					-- Your general LSP keymaps here
-					-- E.g., vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr })
-				end,
+				on_attach = on_attach,
+				capabilities = capabilities,
 			},
 		}
 	end,
