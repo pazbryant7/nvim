@@ -2,7 +2,7 @@ return {
 	'shortcuts/no-neck-pain.nvim',
 	cmd = 'NoNeckPainToggleLeftSide',
 	opts = {
-		width = 100,
+		width = 90,
 		mappings = {
 			enabled = false,
 		},
