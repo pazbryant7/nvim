@@ -1,5 +1,6 @@
 return {
 	'stevearc/oil.nvim',
+	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	lazy = false,
 	keys = {
 		{ '-', '<CMD>Oil<CR>', { desc = 'Oil Open Parent Directory' } },
@@ -10,7 +11,9 @@ return {
 		default_file_explorer = true,
 		skip_confirm_for_simple_edits = true,
 		cleanup_delay_ms = 500,
-		columns = {},
+		columns = {
+			'icon',
+		},
 		keymaps = {
 			['g?'] = { 'actions.show_help', mode = 'n' },
 			['<CR>'] = 'actions.select',
