@@ -24,7 +24,7 @@ return {
 		end,
 	},
 
-	{
+  {
 		'mfussenegger/nvim-dap',
 		dependencies = {
 			'rcarriga/nvim-dap-ui',
@@ -49,13 +49,12 @@ return {
 		end,
     -- stylua: ignore start
 		keys = {
-      { '<F3>', function() require('dap').step_out() end, desc = 'Dap Debug: Step Out' },
-      { '<F2>', function() require('dap').step_into() end, desc = 'Dap Debug: Step Into' },
       { '<F1>', function() require('dap').step_over() end, desc = 'Dap Debug: Step Over' },
-      { '<F5>', function() require('dap').disconnect() end, desc = 'Dap Debug: Disconnect' },
+      { '<F2>', function() require('dap').step_into() end, desc = 'Dap Debug: Step Into' },
+      { '<F3>', function() require('dap').step_out() end, desc = 'Dap Debug: Step Out' },
       { '<F4>', function() require('dap').continue() end, desc = 'Dap Debug: Start/Continue' },
 
-      { '<F6>', function() require('dap').disconnect() end, desc = 'Dap Debug: Disconnect' },
+      { '<F5>', function() require('dap').disconnect() end, desc = 'Dap Debug: Disconnect' },
       { '<leader>dt', function() require('dap').terminate() end, desc = 'Dap Debug: Terminate' },
 
       { '<leader>cl', function() require('dap').clear_breakpoints() end, desc = 'Dap Clear Breakpoints', },
