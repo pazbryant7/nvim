@@ -80,5 +80,8 @@ map(
 	{ noremap = true, silent = true, desc = 'Open file under cursor in new tmux pane' }
 )
 
+-- DeleteOtherBuffers but current
+map('n', '<leader>bo', '<cmd>DeleteOtherBuffers<cr>', { desc = 'Delete all buffers except current', silent = true })
+
 -- lazy
 map('n', '<leader>L', '<cmd>Lazy<cr>', { desc = 'Open Lazy' })
