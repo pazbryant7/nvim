@@ -1,12 +1,16 @@
 return {
 	'shortcuts/no-neck-pain.nvim',
-	cmd = 'NoNeckPainToggleLeftSide',
+	version = '*',
+	cmd = 'NoNeckPain',
 	opts = {
-		width = 90,
+		width = 80,
 		mappings = {
 			enabled = false,
 		},
 		buffers = {
+			right = {
+				enabled = false,
+			},
 			wo = {
 				cursorline = false,
 				cursorcolumn = false,
@@ -26,7 +30,7 @@ return {
 			'zm',
 			mode = 'n',
 			'<cmd>NoNeckPain<CR>',
-			desc = 'NoNeckPain Toggle',
+			desc = 'NoNeckPain',
 		},
 	},
 }
