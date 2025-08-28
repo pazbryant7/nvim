@@ -7,6 +7,7 @@ return {
 		{
 			'L3MON4D3/LuaSnip',
 			version = 'v2.*',
+			build = 'make install_jsregexp',
 			config = function()
 				local ls = require('luasnip')
 				ls.filetype_extend('javascript', { 'js' })
@@ -22,15 +23,34 @@ return {
 		cmdline = {
 			enabled = true,
 			completion = {
+				list = {
+					selection = {
+						preselect = false,
+						auto_insert = true,
+					},
+				},
 				menu = {
 					auto_show = true,
 				},
 			},
 		},
+
+		appearance = {
+			-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+			nerd_font_variant = 'mono',
+		},
+
 		completion = {
-			documentation = { auto_show = false },
+			documentation = { auto_show = true },
 			accept = { auto_brackets = { enabled = true } },
+			list = {
+				selection = {
+					preselect = true,
+					auto_insert = true,
+				},
+			},
 			menu = {
+				max_height = 15,
 				auto_show = true,
 				draw = {
 					columns = {
@@ -45,6 +65,7 @@ return {
 							gap = 1,
 						},
 					},
+					treesitter = { 'lsp' },
 				},
 			},
 		},
@@ -54,7 +75,6 @@ return {
 				'snippets',
 				'lsp',
 				'path',
-				'buffer',
 				'cmdline',
 			},
 			providers = {
@@ -86,7 +106,17 @@ return {
 		},
 		fuzzy = { implementation = 'prefer_rust_with_warning' },
 		snippets = { preset = 'luasnip' },
-		signature = { enabled = true },
+		signature = {
+			enabled = true,
+			trigger = {
+				enabled = true,
+				show_on_trigger_character = true,
+				show_on_insert_on_trigger_character = true,
+			},
+			window = {
+				show_documentation = true,
+			},
+		},
 
 		keymap = {
 			preset = 'none',
