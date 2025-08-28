@@ -24,4 +24,17 @@ return {
 			},
 		},
 	},
+
+	['pwa-chrome'] = {
+		type = 'server',
+		host = 'localhost',
+		port = '${port}',
+		executable = {
+			command = 'node',
+			args = {
+				debug_server_path,
+				'${port}',
+			},
+		},
+	},
 }

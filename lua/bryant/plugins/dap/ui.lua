@@ -28,6 +28,8 @@ function M.setup(dap, dapui)
 		-- You can add other dap-ui configurations here
 	})
 
+	dap.set_log_level('TRACE')
+
 	-- Event Listeners
 	dap.listeners.after.event_initialized['dapui_config'] = function()
 		dapui.open()

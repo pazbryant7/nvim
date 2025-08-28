@@ -38,7 +38,6 @@ return {
 		'neovim/nvim-lspconfig',
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
-			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
 		},
 	},
@@ -72,6 +71,7 @@ return {
 				'markdownlint',
 				-- javascript
 				'eslint_d',
+				'js-debug-adapter',
 				-- toml
 				'taplo',
 				-- c
