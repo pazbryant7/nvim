@@ -69,8 +69,8 @@ map('n', '<c-z>', '<Nop>', { desc = 'Disable suspend neovim' })
 
 -- usercmd keybinds
 map('n', '<leader>ts', '<cmd>ToggleSpell<cr>', { desc = 'Toggle Spell}' })
-map('n', '<leader>td', '<cmd>ToggleDiagnostics<cr>', { desc = 'Toggle Diagtostics}' })
-map('n', '<leader>tc', '<cmd>ToggleAutoCompletion<cr>', { desc = 'Toggle BlinkCompletion}' })
+map('n', '<leader>td', '<cmd>ToggleDiagnostics<cr>', { desc = 'Toggle Diagtostics' })
+map('n', '<leader>tc', '<cmd>ToggleAutoCompletion<cr>', { desc = 'Toggle BlinkCompletion' })
 
 -- tmux open under cursor in new tmux pane
 map(
