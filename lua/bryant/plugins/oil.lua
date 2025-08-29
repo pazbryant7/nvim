@@ -11,9 +11,7 @@ return {
 		default_file_explorer = true,
 		skip_confirm_for_simple_edits = true,
 		cleanup_delay_ms = 500,
-		columns = {
-			'icon',
-		},
+		columns = {},
 		keymaps = {
 			['g?'] = { 'actions.show_help', mode = 'n' },
 			['<CR>'] = 'actions.select',
