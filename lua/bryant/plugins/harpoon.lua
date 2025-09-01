@@ -41,6 +41,35 @@ return {
 				end,
 				desc = 'Harpoon add',
 			},
+
+			{
+				'<leader>[',
+				function()
+					harpoon:list():select(1)
+				end,
+				desc = 'Harpoon go to 1',
+			},
+			{
+				'<leader>{',
+				function()
+					harpoon:list():select(2)
+				end,
+				desc = 'Harpoon go to 2',
+			},
+			{
+				'<leader>(',
+				function()
+					harpoon:list():select(3)
+				end,
+				desc = 'Harpoon go to 3',
+			},
+			{
+				'<leader>%',
+				function()
+					harpoon:list():select(4)
+				end,
+				desc = 'Harpoon go to 4',
+			},
 		}
 	end,
 }
