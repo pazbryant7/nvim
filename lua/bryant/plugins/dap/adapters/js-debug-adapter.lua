@@ -9,6 +9,7 @@ if vim.fn.filereadable(debug_server_path) == 0 then
 			.. '\nPlease install js-debug-adapter via Mason: :DapInstall js',
 		vim.log.levels.ERROR
 	)
+	return {}
 end
 
 return {

@@ -66,6 +66,7 @@ return {
 				'golangci-lint',
 				-- python
 				'ruff',
+				'debugpy',
 				-- markdown
 				'alex',
 				'markdownlint',

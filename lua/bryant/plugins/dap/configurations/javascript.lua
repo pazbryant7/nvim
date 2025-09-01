@@ -1,168 +1,89 @@
 local M = {}
-local dap_utils = {
-	pick_process = function()
-		return vim.fn.input('Enter PID: ')
-	end,
+
+local function get_project_root()
+	local root_pattern = vim.fs.find({ '.git', 'package.json' }, { upward = true, stop = vim.env.HOME })[1]
+	return root_pattern and vim.fs.dirname(root_pattern) or vim.fn.getcwd()
+end
+
+local shared_skip_files = {
+	'<node_internals>/**',
+	'node_modules/**',
 }
+
+local project_root = get_project_root()
 
 local common_config = {
 	{
-		type = 'pwa-chrome',
-		request = 'launch',
 		name = 'Launch Chrome with "localhost"',
-		url = function()
-			local co = coroutine.running()
-			return coroutine.create(function()
-				vim.ui.input({ prompt = 'Enter URL: ', default = 'http://localhost:3000' }, function(url)
-					if url == nil or url == '' then
-						return
-					else
-						coroutine.resume(co, url)
-					end
-				end)
-			end)
-		end,
-		webRoot = '${workspaceFolder}',
-		protocol = 'inspector',
-		sourceMaps = true,
-		userDataDir = false,
-		skipFiles = { '<node_internals>/**', 'node_modules/**', '${workspaceFolder}/node_modules/**' },
-	},
-	{
-		name = 'Next.js: debug server-side',
-		type = 'pwa-node',
-		request = 'attach',
-		port = 9231,
-		skipFiles = { '<node_internals>/**', 'node_modules/**' },
-		cwd = '${workspaceFolder}',
-	},
-	{
-		type = 'pwa-node',
-		request = 'launch',
-		name = 'Launch Current File (pnpm dev)',
-		cwd = vim.fn.getcwd(),
-		runtimeExecutable = 'pnpm',
-		runtimeArgs = { 'run-script', 'dev' },
-		sourceMaps = true,
-		protocol = 'inspector',
-		args = { '${file}' },
-	},
-	{
 		type = 'pwa-chrome',
-		request = 'attach',
-		name = 'Attach to Chrome (select port)',
-		program = '${file}',
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = 'inspector',
-		port = function()
-			return vim.fn.input('Select port: ', '9222')
+		request = 'launch',
+		url = function()
+			return vim.fn.input('Enter URL: ', 'http://localhost:3000')
 		end,
-		webRoot = '${workspaceFolder}',
-		skipFiles = { '<node_internals>/**', 'node_modules/**' },
+		webRoot = project_root,
+		sourceMaps = true,
+		protocol = 'inspector',
+		skipFiles = shared_skip_files,
 	},
 	{
+		name = 'Attach to process (select pid)',
 		type = 'pwa-node',
 		request = 'attach',
-		name = 'Attach to process (select pid)',
-		cwd = vim.fn.getcwd(),
-		processId = dap_utils.pick_process,
-		skipFiles = { '<node_internals>/**' },
-	},
-}
-
-local typescript_config = {
-	{
-		type = 'pwa-node',
-		request = 'launch',
-		name = 'Launch Current File (ts-node)',
-		cwd = vim.fn.getcwd(),
-		runtimeArgs = { '--loader', 'ts-node/esm' },
-		runtimeExecutable = 'node',
-		args = { '${file}' },
-		sourceMaps = true,
-		protocol = 'inspector',
-		skipFiles = { '<node_internals>/**', 'node_modules/**' },
-	},
-	{
-		type = 'pwa-node',
-		request = 'launch',
-		name = 'Launch Current File (tsx)',
-		cwd = vim.fn.getcwd(),
-		runtimeExecutable = 'tsx',
-		args = { '${file}' },
-		sourceMaps = true,
-		protocol = 'inspector',
-		skipFiles = { '<node_internals>/**', 'node_modules/**' },
-	},
-	{
-		type = 'pwa-node',
-		request = 'launch',
-		name = 'Test Current File (deno)',
-		cwd = vim.fn.getcwd(),
-		runtimeArgs = { 'test', '--inspect-brk', '--allow-all', '${file}' },
-		runtimeExecutable = 'deno',
-		attachSimplePort = 9229,
+		processId = function()
+			return vim.fn.input('Enter PID: ')
+		end,
+		cwd = project_root,
+		skipFiles = shared_skip_files,
 	},
 }
 
 local javascript_config = {
 	{
-		type = 'pwa-node',
-		request = 'launch',
 		name = 'Launch Current File (node)',
-		cwd = vim.fn.getcwd(),
+		type = 'pwa-node',
+		request = 'launch',
+		program = '${file}',
+		cwd = project_root,
 		runtimeExecutable = 'node',
-		args = { '${file}' },
-		sourceMaps = true,
-		protocol = 'inspector',
-		skipFiles = { '<node_internals>/**', 'node_modules/**' },
+		skipFiles = shared_skip_files,
 	},
 }
 
-local test_config = {
+local typescript_config = {
 	{
+		name = 'Launch Current File (tsx)',
 		type = 'pwa-node',
 		request = 'launch',
-		name = 'Test Current File (jest)',
-		cwd = vim.fn.getcwd(),
-		runtimeArgs = { '${workspaceFolder}/node_modules/.bin/jest' },
-		runtimeExecutable = 'node',
-		args = { '${file}', '--coverage', 'false' },
-		rootPath = '${workspaceFolder}',
-		sourceMaps = true,
-		console = 'integratedTerminal',
-		internalConsoleOptions = 'neverOpen',
-		skipFiles = { '<node_internals>/**', 'node_modules/**' },
-	},
-	{
-		type = 'pwa-node',
-		request = 'launch',
-		name = 'Test Current File (vitest)',
-		cwd = vim.fn.getcwd(),
-		program = '${workspaceFolder}/node_modules/vitest/vitest.mjs',
-		args = { '--inspect-brk', '--threads', 'false', 'run', '${file}' },
-		autoAttachChildProcesses = true,
-		smartStep = true,
-		console = 'integratedTerminal',
-		skipFiles = { '<node_internals>/**', 'node_modules/**' },
+		program = '${file}',
+		cwd = project_root,
+		runtimeExecutable = 'tsx',
+		skipFiles = shared_skip_files,
 	},
 }
 
-local function create_language_config(common, lang_specific, test)
-	local final_config = vim.deepcopy(common)
+local test_config = {}
 
-	vim.list_extend(final_config, lang_specific)
-	vim.list_extend(final_config, test)
+local language_configs = {
+	javascript = javascript_config,
+	typescript = typescript_config,
+}
 
-	return final_config
-end
+local language_aliases = {
+	javascriptreact = 'javascript',
+	typescriptreact = 'typescript',
+}
 
 M.configurations = {}
-M.configurations.javascript = create_language_config(common_config, javascript_config, test_config)
-M.configurations.typescript = create_language_config(common_config, typescript_config, test_config)
 
-M.configurations.javascriptreact = M.configurations.javascript
-M.configurations.typescriptreact = M.configurations.typescript
+for lang, specific_config in pairs(language_configs) do
+	local final_config = vim.deepcopy(common_config)
+	vim.list_extend(final_config, specific_config)
+	vim.list_extend(final_config, test_config)
+	M.configurations[lang] = final_config
+end
+
+for new_lang, existing_lang in pairs(language_aliases) do
+	M.configurations[new_lang] = M.configurations[existing_lang]
+end
 
 return M.configurations

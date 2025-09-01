@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		'rcarriga/nvim-dap-ui',
 		'nvim-neotest/nvim-nio',
+		'theHamsta/nvim-dap-virtual-text',
 	},
 	config = function()
 		local dap = require('dap')
@@ -11,6 +12,20 @@ return {
 		-- Setup UI, signs, etc.
 		require('bryant.plugins.dap.signs').setup()
 		require('bryant.plugins.dap.ui').setup(dap, dapui)
+
+		require('nvim-dap-virtual-text').setup({
+			enabled = true,
+			enabled_commands = true,
+			highlight_changed_variables = true,
+			highlight_new_as_changed = true,
+			show_stop_reason = true,
+			commented = true,
+			only_first_definition = true,
+			all_references = true,
+			clear_on_continue = false,
+			virt_text_pos = vim.fn.has('nvim-0.10') == 1 and 'inline' or 'eol',
+			virt_lines = false,
+		})
 
 		local function load_and_merge_modules(module_prefix)
 			local merged_table = {}
