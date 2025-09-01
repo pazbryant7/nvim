@@ -2,12 +2,12 @@ local M = {}
 
 function M.set_diagnostics()
 	vim.diagnostic.config({
-		underline = false,
+		underline = true,
 		severity_sort = true,
 		virtual_text = false,
 		virtual_lines = false,
 		update_in_insert = false,
-		dynamicRegistration = true,
+		dynamicRegistration = false,
 		float = {
 			max_width = 100,
 			focusable = true,
