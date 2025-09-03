@@ -47,34 +47,30 @@ return {
 			},
 		},
 	},
-	keys = function()
-		local flash = require('flash')
-
-		return {
-			{
-				's',
-				mode = { 'n', 'x', 'o' },
-				function()
-					flash.jump()
-				end,
-				desc = 'Flash',
-			},
-			{
-				'r',
-				mode = 'o',
-				function()
-					require('flash').remote()
-				end,
-				desc = 'Remote Flash',
-			},
-			{
-				'gs',
-				mode = { 'n', 'x', 'o' },
-				function()
-					flash.treesitter()
-				end,
-				desc = 'Flash Treesitter',
-			},
-		}
-	end,
+	keys = {
+		{
+			's',
+			mode = { 'n', 'x', 'o' },
+			function()
+				require('flash').jump()
+			end,
+			desc = 'Flash',
+		},
+		{
+			'r',
+			mode = 'o',
+			function()
+				require('flash').remote()
+			end,
+			desc = 'Remote Flash',
+		},
+		{
+			'gs',
+			mode = { 'n', 'x', 'o' },
+			function()
+				require('flash').treesitter()
+			end,
+			desc = 'Flash Treesitter',
+		},
+	},
 }

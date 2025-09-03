@@ -3,13 +3,15 @@ return {
 	dependencies = {
 		'rcarriga/nvim-dap-ui',
 		'nvim-neotest/nvim-nio',
-		'theHamsta/nvim-dap-virtual-text',
+		{
+			'theHamsta/nvim-dap-virtual-text',
+			cmd = 'DapVirtualTextToggle',
+		},
 	},
 	config = function()
 		local dap = require('dap')
 		local dapui = require('dapui')
 
-		-- Setup UI, signs, etc.
 		require('bryant.plugins.dap.signs').setup()
 		require('bryant.plugins.dap.ui').setup(dap, dapui)
 
@@ -58,19 +60,21 @@ return {
 		dap.adapters = load_and_merge_modules('bryant.plugins.dap.adapters')
 		dap.configurations = load_and_merge_modules('bryant.plugins.dap.configurations')
 	end,
-    -- stylua: ignore start
-		keys = {
-			{ '<F1>', function() require('dap').step_over() end, desc = 'Dap Debug: Step Over' },
-			{ '<F2>', function() require('dap').step_into() end, desc = 'Dap Debug: Step Into' },
-			{ '<F3>', function() require('dap').step_out() end, desc = 'Dap Debug: Step Out' },
-			{ '<F4>', function() require('dap').disconnect() end, desc = 'Dap Debug: Disconnect' },
-			{ '<F5>', function() require('dap').continue() end, desc = 'Dap Debug: Start/Continue' },
-			{ '<leader>dt', function() require('dap').terminate() end, desc = 'Dap Debug: Terminate' },
-			{ '<leader>dcb', function() require('dap').clear_breakpoints() end, desc = 'Dap Clear Breakpoints' },
-			{ '<leader>dtb', function() require('dap').toggle_breakpoint() end, desc = 'Dap Debug: Toggle Breakpoint' },
-			{ '<leader>dh', function() require('dap.ui.widgets').hover() end, desc = 'Dap Debug: Hover Variables', mode = { 'n', 'v' }, },
-			{ '<leader>dw', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.scopes) end, desc = 'Dap Debug: Scopes', },
-			{ '<leader>df', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.frames) end, desc = 'Dap Debug: Frames', },
-			{ '<leader>dsb', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, desc = 'Dap Debug: Set Log Point', },
-		},
+	keys = {
+      -- stylua: ignore start
+    { '<F3>', function() require('dap').step_out() end, desc = 'Dap Debug: Step Out' },
+    { '<F2>', function() require('dap').step_into() end, desc = 'Dap Debug: Step Into' },
+    { '<F1>', function() require('dap').step_over() end, desc = 'Dap Debug: Step Over' },
+    { '<F4>', function() require('dap').disconnect() end, desc = 'Dap Debug: Disconnect' },
+    { '<F5>', function() require('dap').continue() end, desc = 'Dap Debug: Start/Continue' },
+    { '<leader>dt', function() require('dap').terminate() end, desc = 'Dap Debug: Terminate' },
+    { '<F6>', function() require('dap').run_last() end, desc = 'Dap Debug: Run Last Session', },
+    { '<leader>dvt', '<cmd>DapVirtualTextToggle<cr>' , desc = 'Dap Debug: Virtual Text Toggle', },
+    { '<leader>dcb', function() require('dap').clear_breakpoints() end, desc = 'Dap Clear Breakpoints' },
+    { '<leader>dtb', function() require('dap').toggle_breakpoint() end, desc = 'Dap Debug: Toggle Breakpoint' },
+    { '<leader>dh', function() require('dap.ui.widgets').hover() end, desc = 'Dap Debug: Hover Variables', mode = { 'n', 'v' }, },
+    { '<leader>dw', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.scopes) end, desc = 'Dap Debug: Scopes', },
+    { '<leader>df', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.frames) end, desc = 'Dap Debug: Frames', },
+    { '<leader>dsb', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, desc = 'Dap Debug: Set Log Point', },
+	},
 }
