@@ -7,12 +7,19 @@ map('n', '<leader>wa', '<cmd>wa<CR>', { desc = 'Save all buffers' })
 map('n', '<leader>qc', '<cmd>q!<CR>', { desc = 'Quit without save' })
 map('n', '<leader>qa', '<cmd>qa!<CR>', { desc = 'Quit all without save' })
 
+-- last buffer
+map('i', '<C-^>', '<Cmd>b#<CR>', { desc = 'Toggle between current and last buffer' })
+
 -- In Visual mode, moves the selected lines down and up by one line, then re-indents.
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected lines down', silent = true })
 map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selected lines up', silent = true })
 
 -- In Normal mode, joins the line below to the current line, but keeps the cursor in its original column.
 map('n', 'J', 'mzJ`z', { desc = 'Join line below (preserve cursor position)' })
+
+-- swap maps
+map({ 'n', 'v' }, ';', ':', { desc = 'Enter Command Mode' })
+map({ 'n', 'v' }, ':', ';', { desc = 'Repeat last f/t/F/T search' })
 
 -- Better neovim defaults
 map('n', 'n', 'nzzzv', { desc = 'Next search result and center' })
@@ -51,10 +58,6 @@ map('n', '<leader>cr', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
 map('n', '<leader>cp', function()
 	vim.notify(vim.fn.expand('%:p'), vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Print Current Path' })
-
--- swap maps
-map({ 'n', 'v' }, ';', ':', { desc = 'Enter Command Mode' })
-map({ 'n', 'v' }, ':', ';', { desc = 'Repeat last f/t/F/T search' })
 
 -- already existing binds
 map('n', 'ZQ', ':q!<CR>', { desc = 'Quit without saving' })

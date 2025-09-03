@@ -1,7 +1,7 @@
 return {
 	'folke/flash.nvim',
+	event = 'InsertEnter',
 	opts = {
-		-- all your other options go here
 		search = {
 			multi_window = false,
 		},

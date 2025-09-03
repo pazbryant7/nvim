@@ -3,29 +3,6 @@ return {
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	opts = function()
 		local actions = require('fzf-lua').actions
-		local file_ignore_patterns = {
-			'tags',
-			'*.pyc',
-			'mocks',
-			'go.mod',
-			'dist/',
-			'go.sum',
-			'build/',
-			'zig-out',
-			'.docker',
-			'vendor/',
-			'target/',
-			'yarn.lock',
-			'zig-cache',
-			'refactoring',
-			'__pycache__',
-			'node_modules/',
-			'.obsidian/',
-			'.stversions/',
-			'obsidian/',
-			'lazy%-lock%.json$',
-			'package%-lock%.json$',
-		}
 
 		return {
 			profile = {
@@ -33,22 +10,35 @@ return {
 				default = 'max-perf',
 			},
 			winopts = {
-				height = 0.70,
-				width = 0.70,
+				height = 0.60,
+				width = 0.60,
+				preview = {
+					hidden = false,
+				},
 			},
-			file_ignore_patterns = file_ignore_patterns,
+			keymap = {
+				builtin = {
+					false,
+					['<F4>'] = 'toggle-preview',
+					['<c-d>'] = 'preview-page-down',
+					['<c-u>'] = 'preview-page-up',
+				},
+				fzf = {
+					false,
+					['ctrl-a'] = 'beginning-of-line',
+					['ctrl-e'] = 'end-of-line',
+					['ctrl-g'] = 'first',
+					['ctrl-G'] = 'last',
+					['f4'] = 'toggle-preview',
+					['ctrl-d'] = 'preview-page-down',
+					['ctrl-u'] = 'preview-page-up',
+				},
+			},
 			actions = {
 				files = {
-					['ctrl-s'] = actions.file_split,
-					['ctrl-v'] = actions.file_vsplit,
-					['enter'] = actions.file_edit_or_qf,
+					true,
+					['ctrl-t'] = { fn = actions.file_tabedit },
 					['ctrl-q'] = { fn = actions.file_sel_to_qf, prefix = 'select-all' },
-					['ctrl-h'] = actions.toggle_hidden,
-					['ctrl-i'] = actions.toggle_ignore,
-				},
-				grep = {
-					['ctrl-h'] = actions.toggle_hidden,
-					['ctrl-i'] = actions.toggle_ignore,
 				},
 			},
 			previewers = {
@@ -64,16 +54,12 @@ return {
 				},
 			},
 			files = {
-				hidden = true,
-				fd_opts = '--color=never --type f',
+				hidden = false,
 			},
 			grep = {
-				rg_opts = '--column --line-number --no-heading --color=always --smart-case',
+				hidden = false,
 			},
-			live_grep = {
-				hidden = true,
-				rg_opts = '--column --line-number --no-heading --color=always --smart-case',
-			},
+			live_grep = { hidden = false },
 		}
 	end,
 
@@ -81,7 +67,7 @@ return {
     -- stylua: ignore start
     { '<leader>f', '<cmd> FzfLua <CR>', desc = 'FzfLua' },
     { '<c-p>', function() require('fzf-lua').files() end, desc = 'FzfLua Files' },
-    { '<c-b>', function() require('fzf-lua').buffers() end, desc = 'FzfLua buffers' },
+    { '<c-f>', function() require('fzf-lua').buffers() end, desc = 'FzfLua buffers' },
     { '<leader>H', function() require('fzf-lua').help_tags() end, desc = 'FzfLua Help Tags' },
     { '<leader>k', function() require('fzf-lua').keymaps() end, desc = 'FzfLua Show Key Maps' },
     { '<c-t>', function() require('fzf-lua').live_grep_native() end, desc = 'FzfLua Live Grep' },

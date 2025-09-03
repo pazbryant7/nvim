@@ -38,7 +38,7 @@ return {
 	},
 	keys = {
 		{
-			'<c-f>',
+			'<c-b>',
 			function()
 				vim.cmd(':w')
 				require('conform').format({ lsp_format = 'fallback' })
