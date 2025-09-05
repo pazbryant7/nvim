@@ -18,7 +18,6 @@ return {
 				'lua_ls',
 				'yamlls',
 				'clangd',
-				'marksman',
 				'dockerls',
 				'basedpyright',
 				'emmet_language_server',
