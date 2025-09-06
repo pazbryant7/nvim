@@ -77,27 +77,12 @@ usercmd('DeleteOtherBuffers', function()
 	print('Delete other buffers')
 end, { desc = 'Delete other buffers but current' })
 
--- Toggle blink cmp
-local autoCompletionEnabled = true
-function EnableAutoCompletion()
-	vim.b.completion = true
-	autoCompletionEnabled = true
-	print('Auto-completion enabled')
-end
-
-function DisableAutoCompletion()
-	vim.b.completion = false
-	require('blink.cmp').hide()
-	autoCompletionEnabled = false
-	print('Auto-completion disabled')
-end
-
-function ToggleAutoCompletion()
-	if autoCompletionEnabled then
-		DisableAutoCompletion()
-	else
-		EnableAutoCompletion()
+usercmd('LuafileExecute', function()
+	local file = vim.fn.expand('%')
+	if file then
+		vim.cmd('luafile ' .. file)
 	end
-end
-
-usercmd('ToggleAutoCompletion', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp Completion' })
+end, {
+	nargs = 0,
+	desc = 'Execute the current buffer as a Lua file',
+})

@@ -10,6 +10,9 @@ map('n', '<leader>qa', '<cmd>qa!<CR>', { desc = 'Quit all without save' })
 -- last buffer
 map('i', '<C-^>', '<Cmd>b#<CR>', { desc = 'Toggle between current and last buffer' })
 
+-- Change inner word
+map('n', '<C-c>', 'ciw', { desc = 'Change Inner Word' })
+
 -- In Visual mode, moves the selected lines down and up by one line, then re-indents.
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected lines down', silent = true })
 map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selected lines up', silent = true })
@@ -88,3 +91,6 @@ map('n', '<leader>bo', '<cmd>DeleteOtherBuffers<cr>', { desc = 'Delete all buffe
 
 -- lazy
 map('n', '<leader>L', '<cmd>Lazy<cr>', { desc = 'Open Lazy' })
+
+-- run current file with lua (for debugger)
+map('n', '<leader>xl', '<Cmd>LuafileExecute<CR>', { desc = 'Execute lua file' })

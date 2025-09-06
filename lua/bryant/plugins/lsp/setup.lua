@@ -4,6 +4,7 @@ function M.set_diagnostics()
 	vim.diagnostic.config({
 		underline = true,
 		severity_sort = true,
+		signs = true,
 		virtual_text = false,
 		virtual_lines = false,
 		update_in_insert = false,
