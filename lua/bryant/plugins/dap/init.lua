@@ -7,6 +7,7 @@ return {
 			'theHamsta/nvim-dap-virtual-text',
 			cmd = 'DapVirtualTextToggle',
 		},
+		'jbyuki/one-small-step-for-vimkind', -- lua adapter
 	},
 	config = function()
 		local dap = require('dap')
@@ -76,5 +77,8 @@ return {
     { '<leader>dw', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.scopes) end, desc = 'Dap Debug: Scopes', },
     { '<leader>df', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.frames) end, desc = 'Dap Debug: Frames', },
     { '<leader>dsb', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, desc = 'Dap Debug: Set Log Point', },
+
+    -- lua specific
+    { '<leader>dl', function() require"osv".launch({port = 8086}) end, { noremap = true } },
 	},
 }
