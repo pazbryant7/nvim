@@ -1,12 +1,32 @@
-local home = vim.fn.expand('~')
-local mason_pkg_path = home .. '/.local/share/nvim/mason/packages/debugpy'
-local debug_server_path = mason_pkg_path .. '/venv/bin/python'
+local dap_args = {}
+local debug_server_path = ''
 
-if vim.fn.executable(debug_server_path) == 0 then
+local mason_shim_path = vim.fn.exepath('debugpy-adapter')
+if mason_shim_path ~= '' then
+	debug_server_path = mason_shim_path
+	dap_args = {}
+end
+
+if debug_server_path == '' then
+	local direct_shim_path = vim.fn.expand('$MASON/bin/debugpy-adapter')
+	if vim.fn.executable(direct_shim_path) == 1 then
+		debug_server_path = direct_shim_path
+		dap_args = {}
+	end
+end
+
+if debug_server_path == '' then
+	local python_path = vim.fn.expand('$MASON/packages/debugpy/venv/bin/python')
+	if vim.fn.executable(python_path) == 1 then
+		debug_server_path = python_path
+		dap_args = { '-m', 'debugpy.adapter' }
+	end
+end
+
+-- If none of the paths worked, show an error
+if debug_server_path == '' then
 	vim.notify(
-		'debugpy executable not found at: '
-			.. debug_server_path
-			.. '\nPlease install debugpy via Mason: :MasonInstall debugpy',
+		'debugpy executable not found!\n' .. 'Please install debugpy via Mason: :MasonInstall debugpy',
 		vim.log.levels.ERROR
 	)
 	return {}
@@ -16,6 +36,6 @@ return {
 	python = {
 		type = 'executable',
 		command = debug_server_path,
-		args = { '-m', 'debugpy.adapter' },
+		args = dap_args,
 	},
 }

@@ -77,6 +77,8 @@ return {
 				'taplo',
 				-- c
 				'clang-format',
+				-- rust
+				'codelldb',
 			}
 
 			require('mason').setup({

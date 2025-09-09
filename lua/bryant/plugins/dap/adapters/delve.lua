@@ -1,10 +1,26 @@
-local home = vim.fn.expand('~')
-local mason_pkg_path = home .. '/.local/share/nvim/mason/packages/delve'
-local debug_server_path = mason_pkg_path .. '/dlv'
+local debug_server_path = vim.fn.exepath('dlv')
+
+if debug_server_path == '' then
+	debug_server_path = vim.fn.expand('$MASON/bin/dlv')
+end
+
+if vim.fn.executable(debug_server_path) == 0 then
+	debug_server_path = vim.fn.expand('$MASON/packages/delve/dlv')
+end
 
 if vim.fn.executable(debug_server_path) == 0 then
 	vim.notify(
-		'delve executable not found at: ' .. debug_server_path .. '\nPlease install delve via Mason: :MasonInstall delve',
+		'delve executable not found!\n'
+			.. 'Install delve via Mason: :MasonInstall delve\n'
+			.. 'Tried paths:\n'
+			.. '- '
+			.. vim.fn.exepath('dlv')
+			.. '\n'
+			.. '- '
+			.. vim.fn.expand('$MASON/bin/dlv')
+			.. '\n'
+			.. '- '
+			.. vim.fn.expand('$MASON/packages/delve/dlv'),
 		vim.log.levels.ERROR
 	)
 	return {}

@@ -1,7 +1,6 @@
 local M = {}
 
 local function get_project_root()
-	-- Adapted to find Go project markers
 	local root_pattern = vim.fs.find({ '.git', 'go.mod' }, { upward = true, stop = vim.env.HOME })[1]
 	return root_pattern and vim.fs.dirname(root_pattern) or vim.fn.getcwd()
 end
