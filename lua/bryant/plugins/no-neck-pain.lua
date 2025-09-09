@@ -2,8 +2,15 @@ return {
 	'shortcuts/no-neck-pain.nvim',
 	version = '*',
 	cmd = 'NoNeckPain',
+	event = 'BufEnter',
 	opts = {
 		width = 80,
+		autocmds = {
+			enableOnVimEnter = true,
+			enableOnTabEnter = false,
+			reloadOnColorSchemeChange = true,
+			skipEnteringNoNeckPainBuffer = true,
+		},
 		mappings = {
 			enabled = false,
 		},
