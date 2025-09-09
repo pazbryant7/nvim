@@ -73,7 +73,7 @@ return {
     { '<c-t>', function() require('fzf-lua').live_grep_native() end, desc = 'FzfLua Live Grep' },
     { 'z=', function() require('fzf-lua').spell_suggest() end, desc = 'FzfLua Spell Suggestions' },
     { '<leader>th', function() require('fzf-lua').colorschemes() end, desc = 'FzfLua Switch Colorschemes' },
-    { '<leader>ds', function() require('fzf-lua').lsp_document_symbols() end, desc = 'FzfLua Lsp Document Symbols' },
+    { '<leader>s', function() require('fzf-lua').lsp_document_symbols() end, desc = 'FzfLua Lsp Document Symbols' },
     { '<leader>ws', function() require('fzf-lua').lsp_workspace_symbols() end, desc = 'FzfLua Lsp Workspace Symbols' },
     { '<m-c>', function() require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') }) end, desc = "FzfLua Files from Current File's Directory", },
 	},

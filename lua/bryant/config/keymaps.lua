@@ -39,15 +39,15 @@ map('n', '<Escape>', '<cmd>noh<CR>', { desc = 'No search highlights' })
 map({ 'n', 'v', 'o' }, 'H', '^', { desc = 'Go To The Start Of The Line' })
 map({ 'n', 'v', 'o' }, 'L', 'g_', { desc = 'Go To The End Of The Line' })
 
--- paste without overwrite register
-map('x', '<leader>p', [["_dP]], { desc = 'Paste Without Overwrite Register ' })
+-- without overwrite register
+map('x', '<leader>P', [["_dP]], { desc = 'Paste Without Overwrite Register ' })
 
 -- copy without overwrite register
 map({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Copy Without Overwrite Register' })
 map('n', '<leader>Y', [["+Y]], { desc = 'Copy Full Line Without Overwrite Register' })
 
 -- delete without overwrite register
-map({ 'n', 'v' }, '<leader>dd', '"_d', { desc = 'Delete Without Overwrite Register' })
+map({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete Without Overwrite Register' })
 map('n', '<leader>D', '"_dd', { desc = 'Delete Full Line Without Overwrite Register' })
 
 -- align manually

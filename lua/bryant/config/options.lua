@@ -31,8 +31,8 @@ opt.numberwidth = 1
 
 opt.hlsearch = true
 opt.incsearch = true
-opt.smartcase = false
-opt.ignorecase = false
+opt.smartcase = true
+opt.ignorecase = true
 
 opt.scrolloff = 5
 opt.isfname:append('@-@')
