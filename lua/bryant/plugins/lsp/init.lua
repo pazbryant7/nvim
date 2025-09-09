@@ -63,6 +63,7 @@ return {
 				'gofumpt',
 				'goimports',
 				'golangci-lint',
+				'delve',
 				-- python
 				'ruff',
 				'debugpy',
