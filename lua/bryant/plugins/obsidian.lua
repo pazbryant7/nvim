@@ -176,6 +176,10 @@ return {
 				hl_group = 'Comment',
 				separator = string.rep('-', 80),
 			},
+
+			checkbox = {
+				order = { ' ', 'x' },
+			},
 		}
 	end,
 
