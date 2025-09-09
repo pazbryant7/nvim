@@ -207,6 +207,16 @@ autocmd('BufEnter', {
 	end,
 })
 
+autocmd('User', {
+	pattern = 'ObsidianNoteEnter',
+	callback = function(ev)
+		vim.keymap.set('n', '<m-t>', '<cmd>Obsidian toggle_checkbox<cr>', {
+			buffer = ev.buf,
+			desc = 'Toggle checkbox',
+		})
+	end,
+})
+
 autocmd('QuickFixCmdPost', {
 	desc = 'Auto-open quickfix after grep/make',
 	pattern = '[^l]*',

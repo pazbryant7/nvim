@@ -1,6 +1,8 @@
 return {
 	'obsidian-nvim/obsidian.nvim',
-	dependencies = { 'nvim-lua/plenary.nvim' },
+	dependencies = {
+		'nvim-lua/plenary.nvim',
+	},
 	version = '*',
 	ft = 'markdown',
 	cmd = { 'Obsidian' },
@@ -154,7 +156,7 @@ return {
 			open_notes_in = 'current',
 
 			ui = {
-				enabled = true,
+				enabled = false,
 			},
 
 			attachments = {
