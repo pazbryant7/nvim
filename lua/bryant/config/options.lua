@@ -56,7 +56,7 @@ o.foldlevelstart = 99
 opt.foldlevelstart = 99
 
 -- for obsidian
-opt.conceallevel = 2
+opt.conceallevel = 0
 
 opt.spell = false
 opt.spelllang = { 'en_us', 'es_mx' }

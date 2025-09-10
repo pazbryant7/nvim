@@ -156,7 +156,7 @@ return {
 			open_notes_in = 'current',
 
 			ui = {
-				enabled = false,
+				enable = false,
 			},
 
 			attachments = {
