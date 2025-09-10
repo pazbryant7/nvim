@@ -10,6 +10,7 @@ return {
 		opts = {
 			ensure_installed = {
 				'html',
+				'just',
 				'gopls',
 				'cssls',
 				'ts_ls',
