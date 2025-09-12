@@ -70,9 +70,6 @@ map('n', 'ZZ', ':wq<CR>', { desc = 'Save and quit' })
 map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next item' })
 map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous item' })
 
--- disable suspend neovim
-map('n', '<c-z>', '<Nop>', { desc = 'Disable suspend neovim' })
-
 -- usercmd keybinds
 map('n', '<leader>ts', '<cmd>ToggleSpell<cr>', { desc = 'Toggle Spell}' })
 map('n', '<leader>td', '<cmd>ToggleDiagnostics<cr>', { desc = 'Toggle Diagtostics' })
