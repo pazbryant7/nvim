@@ -39,7 +39,6 @@ opt.isfname:append('@-@')
 
 -- update statusline
 opt.laststatus = 0
-
 opt.updatetime = 50
 
 opt.termguicolors = true

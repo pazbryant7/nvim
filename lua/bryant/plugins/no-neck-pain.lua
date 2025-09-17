@@ -29,6 +29,7 @@ return {
 				wrap = true,
 				linebreak = true,
 				signcolumn = 'no', -- Set signcolumn to 'no'
+				fillchars = 'eob: ',
 			},
 		},
 	},
