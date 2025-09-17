@@ -25,7 +25,7 @@ return {
 			completion = {
 				list = {
 					selection = {
-						preselect = false,
+						preselect = true,
 						auto_insert = true,
 					},
 				},
@@ -41,8 +41,15 @@ return {
 		},
 
 		completion = {
-			documentation = { auto_show = true },
-			accept = { auto_brackets = { enabled = true } },
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 5000,
+			},
+			accept = {
+				auto_brackets = {
+					enabled = true,
+				},
+			},
 			list = {
 				selection = {
 					preselect = true,
@@ -50,7 +57,7 @@ return {
 				},
 			},
 			menu = {
-				max_height = 15,
+				max_height = 10,
 				auto_show = true,
 				draw = {
 					columns = {
@@ -65,7 +72,9 @@ return {
 							gap = 1,
 						},
 					},
-					treesitter = { 'lsp' },
+					treesitter = {
+						'lsp',
+					},
 				},
 			},
 		},
@@ -86,6 +95,9 @@ return {
 				snippets = {
 					score_offset = 100,
 					min_keyword_length = 2,
+					should_show_items = function(ctx)
+						return ctx.trigger.initial_kind ~= 'trigger_character'
+					end,
 				},
 			},
 			transform_items = function(_, items)
@@ -104,8 +116,12 @@ return {
 				return wanted
 			end,
 		},
-		fuzzy = { implementation = 'prefer_rust_with_warning' },
-		snippets = { preset = 'luasnip' },
+		fuzzy = {
+			implementation = 'prefer_rust_with_warning',
+		},
+		snippets = {
+			preset = 'luasnip',
+		},
 		signature = {
 			enabled = true,
 			trigger = {
