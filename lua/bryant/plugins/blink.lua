@@ -14,7 +14,6 @@ return {
 				ls.filetype_extend('typescript', { 'js' })
 				ls.filetype_extend('javascriptreact', { 'js' })
 				ls.filetype_extend('typescriptreact', { 'js' })
-
 				require('luasnip.loaders.from_lua').lazy_load({ paths = { vim.fn.stdpath('config') .. '/snippets' } })
 			end,
 		},
@@ -34,12 +33,10 @@ return {
 				},
 			},
 		},
-
 		appearance = {
 			-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			nerd_font_variant = 'mono',
 		},
-
 		completion = {
 			documentation = {
 				auto_show = true,
@@ -133,7 +130,6 @@ return {
 				show_documentation = true,
 			},
 		},
-
 		keymap = {
 			preset = 'none',
 			['<c-space>'] = { 'hide' },
@@ -156,4 +152,33 @@ return {
 		},
 	},
 	opts_extend = { 'sources.default' },
+	config = function(_, opts)
+		local blink = require('blink.cmp')
+		blink.setup(opts)
+
+		local autoCompletionEnabled = true
+
+		local function EnableAutoCompletion()
+			vim.b.completion = true
+			autoCompletionEnabled = true
+			print('Auto completion enabled')
+		end
+
+		local function DisableAutoCompletion()
+			vim.b.completion = false
+			blink.hide()
+			autoCompletionEnabled = false
+			print('Auto completion disabled')
+		end
+
+		local function ToggleAutoCompletion()
+			if autoCompletionEnabled then
+				DisableAutoCompletion()
+			else
+				EnableAutoCompletion()
+			end
+		end
+
+		vim.keymap.set('n', '\\\\', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp Completion' })
+	end,
 }
