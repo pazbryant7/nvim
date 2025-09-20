@@ -14,8 +14,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-	{ import = 'bryant.plugins' },
-	{ import = 'bryant.plugins.lsp.specifics' },
+	{ import = 'plugins' },
+	{ import = 'plugins.lsp.specifics' },
 }, {
 	defaults = { lazy = true },
 	install = { missing = true },

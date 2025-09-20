@@ -3,8 +3,8 @@ return {
 	version = '^6',
 	ft = 'rust',
 	config = function()
-		local on_attach = require('bryant.plugins.lsp.attach').on_attach
-		local capabilities = require('bryant.plugins.lsp.setup').get_capabilities()
+		local on_attach = require('plugins.lsp.attach').on_attach
+		local capabilities = require('plugins.lsp.setup').get_capabilities()
 
 		vim.g.rustaceanvim = {
 			tools = {

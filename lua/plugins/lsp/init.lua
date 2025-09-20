@@ -29,8 +29,8 @@ return {
 		},
 		config = function(_, opts)
 			require('mason-lspconfig').setup(opts)
-			require('bryant.plugins.lsp.setup').setup()
-			require('bryant.plugins.lsp.attach').on_attach()
+			require('plugins.lsp.setup').setup()
+			require('plugins.lsp.attach').on_attach()
 		end,
 	},
 

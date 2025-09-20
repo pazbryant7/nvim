@@ -13,8 +13,8 @@ return {
 		local dap = require('dap')
 		local dapui = require('dapui')
 
-		require('bryant.plugins.dap.signs').setup()
-		require('bryant.plugins.dap.ui').setup(dap, dapui)
+		require('plugins.dap.signs').setup()
+		require('plugins.dap.ui').setup(dap, dapui)
 
 		require('nvim-dap-virtual-text').setup({
 			enabled = true,

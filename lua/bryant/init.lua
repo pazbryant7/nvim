@@ -1,6 +1,0 @@
-require('bryant.config.utils')
-require('bryant.config.options')
-require('bryant.config.keymaps')
-require('bryant.config.autocmd')
-require('bryant.config.usercmd')
-require('bryant.lazy')
