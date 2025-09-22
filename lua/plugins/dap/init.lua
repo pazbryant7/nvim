@@ -58,8 +58,8 @@ return {
 			return merged_table
 		end
 
-		dap.adapters = load_and_merge_modules('bryant.plugins.dap.adapters')
-		dap.configurations = load_and_merge_modules('bryant.plugins.dap.configurations')
+		dap.adapters = load_and_merge_modules('plugins.dap.adapters')
+		dap.configurations = load_and_merge_modules('plugins.dap.configurations')
 	end,
 	keys = {
       -- stylua: ignore start
