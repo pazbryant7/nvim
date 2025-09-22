@@ -79,5 +79,5 @@ map(
 map('n', '<leader>L', '<cmd>Lazy<cr>', { desc = 'Open Lazy' })
 
 -- functions can be found in my usercmd.lua file
-map('n', '<leader>xl', '<Cmd>LuafileExecute<CR>', { desc = 'Execute lua file' })
+map('n', '<leader>xl', '<cmd>LuafileExecute<CR>', { desc = 'Execute lua file' })
 map('n', '<leader>bo', '<cmd>DeleteOtherBuffers<cr>', { desc = 'Delete all buffers except current', silent = true })
