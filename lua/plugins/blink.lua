@@ -78,6 +78,7 @@ return {
 		sources = {
 			default = {
 				'lazydev',
+				'buffer',
 				'snippets',
 				'lsp',
 				'path',
