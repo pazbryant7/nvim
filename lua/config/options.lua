@@ -13,7 +13,6 @@ g.loaded_netrwPlugin = 1
 
 opt.showmode = true
 opt.showtabline = 0
-opt.guicursor = ''
 
 opt.swapfile = false
 opt.undofile = true
