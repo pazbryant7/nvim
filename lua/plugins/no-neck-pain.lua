@@ -5,6 +5,7 @@ return {
 	event = 'BufEnter',
 	opts = {
 		width = 80,
+		disableOnLastBuffer = true,
 		autocmds = {
 			enableOnVimEnter = true,
 			enableOnTabEnter = false,
@@ -30,6 +31,22 @@ return {
 				linebreak = true,
 				signcolumn = 'no', -- Set signcolumn to 'no'
 				fillchars = 'eob: ',
+			},
+		},
+
+		integrations = {
+			neotest = {
+				position = 'right',
+				reopen = true,
+			},
+			NvimDAPUI = {
+				---@type "none"
+				position = 'none',
+				reopen = true,
+			},
+			dashboard = {
+				enabled = true,
+				filetypes = { 'leetcode.nvim', 'aerial' },
 			},
 		},
 	},
