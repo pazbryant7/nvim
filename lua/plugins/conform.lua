@@ -29,7 +29,6 @@ return {
 			c = { 'clang-format' },
 			rust = { 'rustfmt' },
 		},
-
 		formatters = {
 			fish_indent = {
 				command = '/usr/bin/fish_indent',
@@ -40,10 +39,27 @@ return {
 		{
 			'<c-b>',
 			function()
+				local mode = vim.fn.mode()
 				vim.cmd(':w')
-				require('conform').format({ lsp_format = 'fallback' })
+
+				if mode == 'v' or mode == 'V' or mode == '\22' then -- \22 is visual block mode
+					pcall(function()
+						require('conform').format({
+							lsp_format = 'fallback',
+							range = {
+								start = { vim.fn.line("'<"), 1 },
+								['end'] = { vim.fn.line("'>"), vim.fn.col("'>") },
+							},
+						})
+					end)
+				else
+					pcall(function()
+						require('conform').format({ lsp_format = 'fallback' })
+					end)
+				end
 			end,
-			desc = 'Conform [F]ormat Buffer With',
+			mode = { 'n', 'v' },
+			desc = 'Format Buffer/Selection',
 		},
 	},
 }
