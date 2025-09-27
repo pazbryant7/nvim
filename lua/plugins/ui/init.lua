@@ -5,10 +5,10 @@ return {
 		'catppuccin/nvim',
 		name = 'catppuccin',
 		opts = {
-			flavour = 'mocha',
+			flavour = 'frappe',
 			background = { -- :h background
 				light = 'latte',
-				dark = 'mocha',
+				dark = 'frappe',
 			},
 			no_italic = true, -- Force no italic
 			color_overrides = {
@@ -19,7 +19,7 @@ return {
 		},
 		config = function(_, opts)
 			require('catppuccin').setup(opts)
-			vim.cmd('colorscheme catppuccin-mocha')
+			vim.cmd('colorscheme catppuccin-frappe')
 		end,
 	},
 
