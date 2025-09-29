@@ -162,12 +162,15 @@ return {
 			attachments = {
 				img_folder = '30 - Attachments',
 				img_name_func = function()
-					return string.format('img-%s', os.date('%Y%m%d-%H%M%S'))
+					return string.format('img-%s-', os.date('%Y%m%d-%H%M%S'))
 				end,
 				img_text_func = function(path)
 					local name = vim.fs.basename(tostring(path))
 					local encoded_name = require('obsidian.util').urlencode(name)
-					return string.format('![%s](%s)', name, encoded_name)
+
+					local custom_name = name:match('img%-%d+%-%d+%-(.+)%.%w+$') or name
+					local relative_path = string.format('Attachments/%s', encoded_name)
+					return string.format('![%s](%s)', custom_name, relative_path)
 				end,
 				confirm_img_paste = true,
 			},
