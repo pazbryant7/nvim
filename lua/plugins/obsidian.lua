@@ -24,7 +24,7 @@ return {
 
 		return {
 			legacy_commands = false,
-			notes_subdir = '00 - Fleeting',
+			notes_subdir = '00-Fleeting',
 
 			workspaces = {
 				{
@@ -38,11 +38,11 @@ return {
 			},
 
 			daily_notes = {
-				folder = '01 - Daily Notes',
+				folder = '01-DailyNotes',
 				date_format = '%Y-%m-%d',
 				alias_format = '%B %-d, %Y',
 				default_tags = { 'daily-notes' },
-				template = '40 - Templates/Daily.md',
+				template = '30-Templates/Daily.md',
 				workdays_only = false,
 			},
 
@@ -56,7 +56,7 @@ return {
 			new_notes_location = 'notes_subdir',
 
 			templates = {
-				folder = '40 - Templates',
+				folder = '30-Templates',
 				date_format = '%Y-%m-%d',
 				time_format = '%H:%M',
 				substitutions = {
@@ -77,15 +77,15 @@ return {
 				},
 				customizations = {
 					['Fleeting'] = {
-						notes_subdir = '00 - Fleeting',
+						notes_subdir = '00-Fleeting',
 						note_id_func = generate_note_id,
 					},
 					['Literature'] = {
-						notes_subdir = '10 - Literature',
+						notes_subdir = '10-Literature',
 						note_id_func = generate_note_id,
 					},
 					['Permanent'] = {
-						notes_subdir = '20 - Zettelkasten',
+						notes_subdir = '20-Zettelkasten',
 						note_id_func = generate_note_id,
 					},
 				},
@@ -138,6 +138,11 @@ return {
 				vim.ui.open(img)
 			end,
 
+			open = {
+				use_advanced_uri = true,
+				func = vim.ui.open,
+			},
+
 			picker = {
 				name = 'fzf-lua',
 				note_mappings = {
@@ -160,7 +165,7 @@ return {
 			},
 
 			attachments = {
-				img_folder = '30 - Attachments',
+				img_folder = 'assets/imgs',
 				img_name_func = function()
 					return string.format('img-%s-', os.date('%Y%m%d-%H%M%S'))
 				end,
@@ -169,7 +174,7 @@ return {
 					local encoded_name = require('obsidian.util').urlencode(name)
 
 					local custom_name = name:match('img%-%d+%-%d+%-(.+)%.%w+$') or name
-					local relative_path = string.format('Attachments/%s', encoded_name)
+					local relative_path = string.format('assets/imgs/%s', encoded_name)
 					return string.format('![%s](%s)', custom_name, relative_path)
 				end,
 				confirm_img_paste = true,
