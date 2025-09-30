@@ -188,7 +188,7 @@ return {
 			},
 
 			checkbox = {
-				order = { ' ', 'x' },
+				order = { '', 'x', '~' },
 			},
 		}
 	end,
