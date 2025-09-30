@@ -1,4 +1,4 @@
-require('config.options')
+require('config.init')
 
 require('config.lazy')
 
