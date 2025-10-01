@@ -13,7 +13,7 @@ return {
 			no_italic = true, -- Force no italic
 			color_overrides = {
 				latte = {
-					base = '#FAFAFA', -- #FAFAFA|"#F0F0F0"|"#E5E5E5",
+					base = '#e5e5e5',
 				},
 			},
 		},
@@ -39,26 +39,6 @@ return {
 		config = function(_, opts)
 			require('NeoSolarized').setup(opts)
 			vim.cmd([[ colorscheme NeoSolarized ]])
-		end,
-	},
-
-	{
-		'rose-pine/neovim',
-		name = 'rose-pine',
-		opts = {
-			styles = {
-				italic = false,
-				transparency = false,
-			},
-			palette = {
-				dawn = {
-					base = '#FAFAFA', -- #FAFAFA|"#F0F0F0"|"#E5E5E5",
-				},
-			},
-		},
-		config = function(_, opts)
-			require('rose-pine').setup(opts)
-			vim.cmd('colorscheme rose-pine')
 		end,
 	},
 
