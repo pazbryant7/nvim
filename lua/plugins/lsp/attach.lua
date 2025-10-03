@@ -31,7 +31,7 @@ function M.get_keymaps()
 				vim.lsp.buf.signature_help({ border = 'single' })
 			end,
 			desc = 'LSP Signature Help',
-			mode = { 'n', 'i' },
+			mode = { 'i', 'n' },
 		},
 		{
 			'gO',
