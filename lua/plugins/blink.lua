@@ -121,20 +121,11 @@ return {
 			preset = 'luasnip',
 		},
 		signature = {
-			enabled = true,
-			trigger = {
-				enabled = true,
-				show_on_trigger_character = true,
-				show_on_insert_on_trigger_character = true,
-			},
-			window = {
-				show_documentation = true,
-			},
+			enabled = false,
 		},
 		keymap = {
 			preset = 'none',
 			['<c-space>'] = { 'hide' },
-			['<c-x>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			['<c-y>'] = { 'select_and_accept', 'fallback' },
 			['<Up>'] = { 'select_prev', 'fallback' },
 			['<Down>'] = { 'select_next', 'fallback' },
