@@ -4,7 +4,7 @@ return {
 	cmd = 'NoNeckPain',
 	event = 'BufEnter',
 	opts = {
-		width = 80,
+		width = 70,
 		disableOnLastBuffer = true,
 		autocmds = {
 			enableOnVimEnter = true,
