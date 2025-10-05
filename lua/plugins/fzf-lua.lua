@@ -70,7 +70,7 @@ return {
     { '<c-f>', function() require('fzf-lua').buffers() end, desc = 'FzfLua buffers' },
     { '<leader>H', function() require('fzf-lua').help_tags() end, desc = 'FzfLua Help Tags' },
     { '<leader>k', function() require('fzf-lua').keymaps() end, desc = 'FzfLua Show Key Maps' },
-    { '<m-p>', function() require('fzf-lua').live_grep_native() end, desc = 'FzfLua Live Grep' },
+    { '<c-t>', function() require('fzf-lua').live_grep_native() end, desc = 'FzfLua Live Grep' },
     { 'z=', function() require('fzf-lua').spell_suggest() end, desc = 'FzfLua Spell Suggestions' },
     { '<leader>wt', function() require('fzf-lua').git_worktrees() end, desc = "FzfLua WorkTrees", },
     { '<leader>s', function() require('fzf-lua').lsp_document_symbols() end, desc = 'FzfLua Lsp Document Symbols' },
