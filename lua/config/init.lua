@@ -33,7 +33,7 @@ opt.incsearch = true
 opt.smartcase = true
 opt.ignorecase = true
 
-opt.scrolloff = 5
+opt.scrolloff = 20
 opt.isfname:append('@-@')
 
 -- update statusline
