@@ -44,6 +44,7 @@ local javascript_config = {
 		request = 'launch',
 		program = '${file}',
 		cwd = project_root,
+		sourceMaps = true,
 		runtimeExecutable = 'node',
 		skipFiles = shared_skip_files,
 	},
@@ -57,6 +58,7 @@ local typescript_config = {
 		program = '${file}',
 		cwd = project_root,
 		runtimeExecutable = 'tsx',
+		sourceMaps = true,
 		skipFiles = shared_skip_files,
 	},
 }
