@@ -28,11 +28,11 @@ return {
 		},
 		'nvim-treesitter/nvim-treesitter',
 		'nvim-tree/nvim-web-devicons',
-		opts = {
-			checkbox = {
-				custom = {
-					todo = { raw = '[~]', rendered = '󰰱 ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
-				},
+	},
+	opts = {
+		checkbox = {
+			custom = {
+				todo = { raw = '[~]', rendered = '󰅗 ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
 			},
 		},
 	},
