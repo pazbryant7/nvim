@@ -3,8 +3,12 @@ return {
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 	},
-	version = '*',
-	ft = 'markdown',
+	event = {
+		'BufReadPre ' .. vim.fn.expand('~') .. '/Documents/github/notes/**',
+		'BufNewFile ' .. vim.fn.expand('~') .. '/Documents/github/notes/**',
+		'BufReadPre ' .. vim.fn.expand('~') .. '/Documents/github/youtube/**',
+		'BufNewFile ' .. vim.fn.expand('~') .. '/Documents/github/youtube/**',
+	},
 	cmd = { 'Obsidian' },
 	opts = function()
 		local function generate_note_id(title)
