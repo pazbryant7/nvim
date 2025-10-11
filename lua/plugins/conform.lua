@@ -33,6 +33,9 @@ return {
 			fish_indent = {
 				command = '/usr/bin/fish_indent',
 			},
+			['clang-format'] = {
+				prepend_args = { '--style={IndentWidth: 4, TabWidth: 4, UseTab: Never}' },
+			},
 		},
 	},
 	keys = {
