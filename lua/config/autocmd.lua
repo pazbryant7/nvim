@@ -203,7 +203,9 @@ autocmd('BufEnter', {
 	once = true,
 	group = bryant_group,
 	callback = function()
-		require('fzf-lua').register_ui_select()
+		pcall(function()
+			require('fzf-lua').register_ui_select()
+		end)
 	end,
 })
 
