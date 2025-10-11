@@ -1,6 +1,5 @@
 return {
 	'akinsho/toggleterm.nvim',
-	cmd = 'ToggleTerm',
 	version = '*',
 	opts = {
 		size = function(term)
@@ -10,10 +9,22 @@ return {
 				return vim.o.columns * 0.4
 			end
 		end,
-		open_mapping = [[<c-\>]],
 		direction = 'vertical',
+		open_mapping = [[<c-\>]],
 	},
 	keys = {
-		{ '<c-\\>', '<cmd>ToggleTerm<cr>', { desc = 'ToggleTerm Toggle Terminal' } },
+		{ '<c-\\>', '<cmd>ToggleTerm<cr>', mode = { 'n', 't' }, desc = 'Toggle Terminal' },
+		{
+			'<leader>lg',
+			function()
+				local Terminal = require('toggleterm.terminal').Terminal
+				local lazygit = Terminal:new({
+					cmd = 'lazygit',
+					direction = 'float',
+				})
+				lazygit:toggle()
+			end,
+			desc = 'LazyGit',
+		},
 	},
 }
