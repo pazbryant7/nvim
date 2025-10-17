@@ -1,7 +1,5 @@
 return {
 	{
-		lazy = false,
-		priority = 1000,
 		'catppuccin/nvim',
 		name = 'catppuccin',
 		opts = {
@@ -17,10 +15,6 @@ return {
 				},
 			},
 		},
-		config = function(_, opts)
-			require('catppuccin').setup(opts)
-			vim.cmd('colorscheme catppuccin-frappe')
-		end,
 	},
 
 	{
@@ -36,14 +30,12 @@ return {
 				string = { italic = false },
 			},
 		},
-		config = function(_, opts)
-			require('NeoSolarized').setup(opts)
-			vim.cmd([[ colorscheme NeoSolarized ]])
-		end,
 	},
 
 	{
 		'bluz71/vim-moonfly-colors',
+		lazy = false,
+		priority = 1000,
 		name = 'moonfly',
 		init = function()
 			vim.g.moonflyItalics = false
