@@ -14,7 +14,7 @@ function M.setup(dap, dapui)
 					{ id = 'watches', size = 0.25 },
 				},
 				position = 'left',
-				size = 40,
+				size = 30,
 			},
 			{
 				elements = {
@@ -25,7 +25,6 @@ function M.setup(dap, dapui)
 				size = 10,
 			},
 		},
-		-- You can add other dap-ui configurations here
 	})
 
 	dap.set_log_level('TRACE')
