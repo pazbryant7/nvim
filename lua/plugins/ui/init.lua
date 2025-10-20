@@ -35,11 +35,54 @@ return {
 	{
 		'bluz71/vim-moonfly-colors',
 		lazy = false,
-		priority = 1000,
 		name = 'moonfly',
 		init = function()
 			vim.g.moonflyItalics = false
 		end,
+	},
+
+	{
+		'miikanissi/modus-themes.nvim',
+		opts = {
+			styles = {
+				comments = { italic = false },
+				keywords = { italic = false },
+				functions = {},
+				variables = {},
+			},
+		},
+	},
+
+	{
+
+		'slugbyte/lackluster.nvim',
+		opts = {
+			tweak_highlight = {
+				['@keyword'] = {
+					overwrite = false, -- overwrite falsey will extend/update lackluster's defaults (nil also does this)
+					bold = false,
+					italic = false,
+				},
+			},
+		},
+	},
+
+	{
+		'scottmckendry/cyberdream.nvim',
+		opts = {
+			italic_comments = false,
+		},
+	},
+
+	{ 'Mofiqul/dracula.nvim', opts = { italic_comment = false } },
+
+	{
+
+		'Mofiqul/vscode.nvim',
+		opts = {
+			italic_comments = false,
+			italic_inlayhints = false,
+		},
 	},
 
 	{
