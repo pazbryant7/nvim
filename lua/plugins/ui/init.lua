@@ -74,8 +74,6 @@ return {
 		},
 	},
 
-	{ 'Mofiqul/dracula.nvim', opts = { italic_comment = false } },
-
 	{
 
 		'Mofiqul/vscode.nvim',
