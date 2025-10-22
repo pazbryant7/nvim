@@ -55,27 +55,6 @@ return {
 
 	{
 
-		'slugbyte/lackluster.nvim',
-		opts = {
-			tweak_highlight = {
-				['@keyword'] = {
-					overwrite = false, -- overwrite falsey will extend/update lackluster's defaults (nil also does this)
-					bold = false,
-					italic = false,
-				},
-			},
-		},
-	},
-
-	{
-		'scottmckendry/cyberdream.nvim',
-		opts = {
-			italic_comments = false,
-		},
-	},
-
-	{
-
 		'Mofiqul/vscode.nvim',
 		opts = {
 			italic_comments = false,
