@@ -27,7 +27,6 @@ return {
 			end,
 		},
 		'nvim-treesitter/nvim-treesitter',
-		'nvim-tree/nvim-web-devicons',
 	},
 	opts = {
 		checkbox = {
