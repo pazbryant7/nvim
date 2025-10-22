@@ -5,7 +5,6 @@ return {
 	dependencies = { 'nvim-lua/plenary.nvim' },
 	opts = {},
 	keys = {
-    -- stylua: ignore start
 		{ 'gT', '<cmd>TodoQuickFix<cr>', desc = 'Previous todo comment' },
 	},
 }
