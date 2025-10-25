@@ -104,7 +104,11 @@ return {
 						'^zaibatsu$',
 						'^peachpuff$',
 						'^wildcharm$',
+						'^catppuccin$',
 						'^lunaperche$',
+						'^modus%_vivendi$',
+						'^modus%_operandi$',
+						'^catppuccin%-latte$',
 					},
 				})
 			end,
