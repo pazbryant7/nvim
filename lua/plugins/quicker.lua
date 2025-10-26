@@ -86,7 +86,7 @@ return {
 			function()
 				require('quicker').toggle()
 			end,
-			desc = 'Toggle quickfix',
+			desc = 'Toggle Quickfix',
 		},
 	},
 }

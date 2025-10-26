@@ -43,6 +43,6 @@ return {
 		vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
 
 		-- Make special mapping for "add surrounding for line"
-		vim.keymap.set('n', 'yss', 'ys_', { desc = 'Surronud full line', remap = true })
+		vim.keymap.set('n', 'yss', 'ys_', { desc = 'Surronud Full Line', remap = true })
 	end,
 }
