@@ -5,6 +5,6 @@ return {
 	dependencies = { 'nvim-lua/plenary.nvim' },
 	opts = {},
 	keys = {
-		{ 'gT', '<cmd>TodoQuickFix<cr>', desc = 'Previous todo comment' },
+		{ 'gT', '<cmd>TodoQuickFix<cr>', desc = 'Previous Todo Comment' },
 	},
 }

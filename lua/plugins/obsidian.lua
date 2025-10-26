@@ -211,24 +211,24 @@ return {
 
 		return {
       -- stylua: ignore start
-			{ '<leader>oo', '<cmd>Obsidian<CR>', desc = 'Obsidian open' },
-			{ '<leader>ot', '<cmd>Obsidian today<CR>', desc = 'Obsidian today' },
-			{ '<leader>oS', '<cmd>Obsidian search<CR>', desc = 'Obsidian search' },
-			{ '<leader>og', '<cmd>Obsidian tags<CR>', desc = 'Obsidian search tags' },
-			{ '<leader>or', '<cmd>Obsidian rename<CR>', desc = 'Obsidian rename note' },
-			{ '<leader>oy', '<cmd>Obsidian yesterday<CR>', desc = 'Obsidian yesterday' },
-			{ '<leader>oT', '<cmd>Obsidian template<CR>', desc = 'Obsidian insert template' },
-			{ '<leader>ob', '<cmd>Obsidian backlinks<CR>', desc = 'Obsidian show backlinks' },
-			{ '<leader>os', '<cmd>Obsidian quick_switch<CR>', desc = 'Obsidian quick switch' },
+			{ '<leader>oo', '<cmd>Obsidian<CR>', desc = 'Obsidian Open' },
+			{ '<leader>ot', '<cmd>Obsidian today<CR>', desc = 'Obsidian Today' },
+			{ '<leader>oS', '<cmd>Obsidian search<CR>', desc = 'Obsidian Search' },
+			{ '<leader>og', '<cmd>Obsidian tags<CR>', desc = 'Obsidian Search tags' },
+			{ '<leader>or', '<cmd>Obsidian rename<CR>', desc = 'Obsidian Rename Note' },
+			{ '<leader>oy', '<cmd>Obsidian yesterday<CR>', desc = 'Obsidian Yesterday' },
+			{ '<leader>oT', '<cmd>Obsidian template<CR>', desc = 'Obsidian Insert Template' },
+			{ '<leader>ob', '<cmd>Obsidian backlinks<CR>', desc = 'Obsidian Show Backlinks' },
+			{ '<leader>os', '<cmd>Obsidian quick_switch<CR>', desc = 'Obsidian Quick Switch' },
 
 			-- New notes
-			{ '<leader>zf', function() new_obsidian_note('Fleeting') end, desc = 'Obsidian insert fleeting note' },
-			{ '<leader>zp', function() new_obsidian_note('Permanent') end, desc = 'Obsidian insert permanent note' },
-			{ '<leader>zl', function() new_obsidian_note('Literature') end, desc = 'Obsidian insert literature note' },
+			{ '<leader>zf', function() new_obsidian_note('Fleeting') end, desc = 'Obsidian Insert Fleeting Note' },
+			{ '<leader>zp', function() new_obsidian_note('Permanent') end, desc = 'Obsidian Insert Permanent Note' },
+			{ '<leader>zl', function() new_obsidian_note('Literature') end, desc = 'Obsidian Insert Literature Note' },
 
 			-- Image pasting and Search
-			{ '<leader>op', '<cmd>Obsidian paste_img<CR>', desc = 'Obsidian paste image' },
-			{ '<leader>zo', '<cmd>Obsidian open<CR>', desc = 'Obsidian open in obsidian app' },
+			{ '<leader>op', '<cmd>Obsidian paste_img<CR>', desc = 'Obsidian Paste Image' },
+			{ '<leader>zo', '<cmd>Obsidian open<CR>', desc = 'Obsidian Open In Obsidian App' },
 		}
 	end,
 }

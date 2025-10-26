@@ -1,6 +1,5 @@
 return {
 	'jake-stewart/multicursor.nvim',
-	branch = '1.0',
 	event = 'VeryLazy',
 	config = function()
 		local mc = require('multicursor-nvim')
@@ -11,40 +10,30 @@ return {
 			mc.matchAddCursor(1)
 		end, { desc = 'Multicursor Start' })
 
-		map({ 'n', 'x' }, '<leader>A', mc.matchAllAddCursors, { desc = 'Multicursor add all cursors' })
-
 		map({ 'n', 'x' }, '<down>', function()
 			mc.lineAddCursor(1)
-		end)
+		end, { desc = 'Multicursor Add Down' })
+
 		map({ 'n', 'x' }, '<up>', function()
 			mc.lineAddCursor(-1)
-		end)
+		end, { desc = 'Multicursor Add Up' })
 
 		map({ 'n', 'x' }, '<leader><down>', function()
 			mc.lineSkipCursor(1)
-		end)
+		end, { desc = 'Multicursor Skip Down' })
+
 		map({ 'n', 'x' }, '<leader><up>', function()
 			mc.lineSkipCursor(-1)
-		end)
+		end, { desc = 'Multicursor Skip Up' })
 
 		map('x', 'q', function()
 			mc.matchSkipCursor(1)
-		end, { desc = 'Multicursor Skip' })
-		map('x', 'Q', mc.deleteCursor, { desc = 'Multicursor Remove Cursor' })
+		end, { desc = 'Multicursor Skip Next' })
 
-		map('x', 'I', mc.insertVisual, { desc = 'Multicursor Visual Insert Mode' })
-		map('x', 'A', mc.appendVisual, { desc = 'Multicursor Visual Insert Mode Last' })
+		map('x', 'Q', mc.deleteCursor, { desc = 'Multicursor Remove Current Cursor' })
 
-		map('x', '<leader>tt', function()
-			mc.transposeCursors(1)
-		end, { desc = 'Multicursor rotate text' })
-		map('x', '<leader>TT', function()
-			mc.transposeCursors(-1)
-		end, { desc = 'Multicursor rotate text' })
-
-		map('n', '<leader>a', mc.alignCursors, { desc = 'Multicursor align cursors' })
-		map('n', '<leader>gv', mc.restoreCursors, { desc = 'Multicursor bring back cursors' })
-		map('n', 'ga', mc.addCursorOperator, { desc = 'Multicursor cursor each line of the paragraph' })
+		map('x', 'I', mc.insertVisual, { desc = 'Multicursor visual Insert Mode' })
+		map('x', 'A', mc.appendVisual, { desc = 'Multicursor visual Insert Mode Last' })
 
 		mc.addKeymapLayer(function(layerSet)
 			layerSet({ 'n', 'x' }, '<left>', mc.prevCursor)
