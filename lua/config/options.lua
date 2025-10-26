@@ -76,4 +76,4 @@ if v.g.neovide then
 	v.g.neovide_cursor_vfx_mode = 'railgun'
 end
 
-vim.cmd('colorscheme default')
+vim.cmd('colorscheme unokai')
