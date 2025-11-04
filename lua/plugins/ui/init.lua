@@ -34,7 +34,6 @@ return {
 
 	{
 		'bluz71/vim-moonfly-colors',
-		lazy = false,
 		name = 'moonfly',
 		init = function()
 			vim.g.moonflyItalics = false
