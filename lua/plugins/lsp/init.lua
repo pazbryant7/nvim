@@ -39,6 +39,7 @@ return {
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
 			'williamboman/mason-lspconfig.nvim',
+			{ 'j-hui/fidget.nvim', opts = {} },
 		},
 	},
 
