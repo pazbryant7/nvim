@@ -16,6 +16,9 @@ return {
 				ls.filetype_extend('typescriptreact', { 'js' })
 				require('luasnip.loaders.from_lua').lazy_load({ paths = { vim.fn.stdpath('config') .. '/snippets' } })
 			end,
+			keys = function()
+				return {}
+			end,
 		},
 	},
 	opts = {
