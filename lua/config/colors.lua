@@ -17,10 +17,14 @@ local cursor_colors = {
 
 local function apply_cursor_colors()
 	for group, opts in pairs(cursor_colors) do
+		dd.add(group, opts)
 		set_hl(0, group, opts)
 	end
+
+	set_hl(0, 'WinSeparator', { fg = '#232634' })
 end
 
-vim.api.nvim_create_autocmd({ 'VimEnter', 'ColorScheme' }, {
+local usercmd = vim.api.nvim_create_autocmd
+usercmd({ 'VimEnter', 'ColorScheme' }, {
 	callback = apply_cursor_colors,
 })
