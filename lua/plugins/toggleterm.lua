@@ -15,7 +15,7 @@ return {
 	keys = {
 		{ '<c-\\>', '<cmd>ToggleTerm<cr>', mode = { 'n', 't' }, desc = 'Toggle Terminal' },
 		{
-			'<leader>lg',
+			'<leader>G',
 			function()
 				local Terminal = require('toggleterm.terminal').Terminal
 				local lazygit = Terminal:new({

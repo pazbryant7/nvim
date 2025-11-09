@@ -8,7 +8,7 @@ return {
 	cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFocusFiles' },
 	keys = {
 		{
-			'<ledaer>gd',
+			'<c-g>',
 			function()
 				local view = require('diffview.lib').get_current_view()
 				if view then
