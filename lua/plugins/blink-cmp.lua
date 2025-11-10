@@ -23,20 +23,6 @@ return {
 		},
 	},
 	opts = {
-		cmdline = {
-			enabled = true,
-			completion = {
-				list = {
-					selection = {
-						preselect = true,
-						auto_insert = true,
-					},
-				},
-				menu = {
-					auto_show = true,
-				},
-			},
-		},
 		appearance = {
 			-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			nerd_font_variant = 'mono',
@@ -86,7 +72,6 @@ return {
 				'snippets',
 				'lsp',
 				'path',
-				'cmdline',
 			},
 			providers = {
 				lazydev = {
