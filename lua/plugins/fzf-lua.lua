@@ -12,7 +12,8 @@ return {
 				height = 0.60,
 				width = 0.60,
 				preview = {
-					hidden = false,
+					hidden = true,
+					layout = 'flex',
 				},
 			},
 			keymap = {
@@ -24,11 +25,11 @@ return {
 				},
 				fzf = {
 					false,
+					['f4'] = 'toggle-preview',
 					['ctrl-a'] = 'beginning-of-line',
 					['ctrl-e'] = 'end-of-line',
 					['ctrl-g'] = 'first',
 					['ctrl-G'] = 'last',
-					['f4'] = 'toggle-preview',
 					['ctrl-d'] = 'preview-page-down',
 					['ctrl-u'] = 'preview-page-up',
 				},
