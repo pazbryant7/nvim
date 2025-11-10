@@ -1,6 +1,7 @@
 return {
 	'saghen/blink.cmp',
 	event = 'InsertEnter',
+	ft = 'markdown',
 	version = '1.*',
 	dependencies = {
 		'saghen/blink.compat',
