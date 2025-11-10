@@ -6,6 +6,9 @@ return {
 	'sindrets/diffview.nvim',
 	cond = has_git_folder,
 	cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFocusFiles' },
+	opts = {
+		use_icons = false,
+	},
 	keys = {
 		{
 			'<c-g>',
