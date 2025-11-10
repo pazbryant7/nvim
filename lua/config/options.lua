@@ -11,6 +11,8 @@ opt.clipboard = 'unnamedplus'
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
+o.colorcolumn = '80'
+
 opt.showmode = true
 opt.showtabline = 0
 
