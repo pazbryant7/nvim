@@ -28,6 +28,8 @@ return {
 		},
 	},
 	keys = {
+		{ '<m-l>', '<cmd>AerialNext<cr>', desc = 'Aerial Next' },
+		{ '<m-h>', '<cmd>AerialPrev<cr>', desc = 'Aerial Previous' },
 		{ '<leader>a', '<cmd>AerialToggle<cr>', desc = 'Aerial Toggle Symbols' },
 	},
 }
