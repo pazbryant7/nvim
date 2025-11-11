@@ -4,20 +4,24 @@ function M.set_diagnostics()
 	vim.diagnostic.config({
 		underline = true,
 		severity_sort = true,
-		signs = true,
 		virtual_text = false,
 		virtual_lines = false,
 		update_in_insert = false,
 		dynamicRegistration = false,
+		signs = {
+			text = {
+				ERROR = 'E',
+				WARN = 'W',
+				HINT = 'H',
+				INFO = '?',
+			},
+		},
 		float = {
 			max_width = 100,
 			focusable = true,
 			style = 'minimal',
 			border = 'single',
 			header = { ' Diagnostics', 'Bold' },
-			signs = {
-				text = { ERROR = 'E', WARN = 'W', HINT = 'H', INFO = '?' },
-			},
 		},
 	})
 end
