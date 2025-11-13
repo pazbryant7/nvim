@@ -102,4 +102,8 @@ return {
 	s('nvim', {
 		t('chore(nvim): update neovim sub module: ' .. currDate),
 	}),
+
+	s('plugins', {
+		t('chore(plugins): update plugins package list: ' .. currDate),
+	}),
 }

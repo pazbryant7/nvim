@@ -99,6 +99,10 @@ return {
 		t('chore(apps): update default package list: ' .. currDate),
 	}),
 
+	s('plugins', {
+		t('chore(plugins): update plugins package list: ' .. currDate),
+	}),
+
 	s('nvim', {
 		t('chore(nvim): update neovim sub module: ' .. currDate),
 	}),
