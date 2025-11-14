@@ -6,3 +6,4 @@ end
 
 o.wrap = true
 o.textwidth = 80
+o.conceallevel = 2

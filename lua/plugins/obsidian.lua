@@ -112,9 +112,8 @@ return {
 
 			preferred_link_style = 'wiki',
 
-			disable_frontmatter = false,
-
 			frontmatter = {
+				enabled = true,
 				func = function(note)
 					if note.title then
 						note:add_alias(note.title)
@@ -161,13 +160,15 @@ return {
 				},
 			},
 
-			sort_by = 'modified',
-			sort_reversed = true,
-			search_max_lines = 1000,
+			search = {
+				max_lines = 1000,
+				sort_by = 'modified',
+				sort_reversed = true,
+			},
 			open_notes_in = 'current',
 
 			ui = {
-				enable = false,
+				enable = true,
 			},
 
 			attachments = {
