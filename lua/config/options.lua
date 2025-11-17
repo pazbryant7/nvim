@@ -67,9 +67,12 @@ opt.spellfile = '/home/bryant/.config/spell/en.utf-8.add'
 -- disable nvim startup screen
 opt.shortmess:append('sI')
 
+-- for tmux title
+o.title = true
+
 -- use rg instead of grep
-vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
-vim.opt.grepformat = '%f:%l:%c:%m'
+opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+opt.grepformat = '%f:%l:%c:%m'
 
 -- neovide
 if v.g.neovide then

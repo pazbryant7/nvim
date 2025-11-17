@@ -234,3 +234,9 @@ autocmd('QuickFixCmdPost', {
 		end)
 	end,
 })
+
+autocmd('BufEnter', {
+	callback = function()
+		vim.o.titlestring = vim.fn.expand('%:t')
+	end,
+})
