@@ -62,24 +62,24 @@ return {
 		dap.configurations = load_and_merge_modules('plugins.dap.configurations')
 	end,
 	keys = {
--- stylua: ignore start
-{ '<F3>', function() require('dap').step_out() end, desc = 'Dap Debug: Step Out' },
-{ '<F2>', function() require('dap').step_into() end, desc = 'Dap Debug: Step Into' },
-{ '<F1>', function() require('dap').step_over() end, desc = 'Dap Debug: Step Over' },
-{ '<F4>', function() require('dap').disconnect() end, desc = 'Dap Debug: Disconnect' },
-{ '<F5>', function() require('dap').continue() end, desc = 'Dap Debug: Start/Continue' },
-{ '<F6>', function() require('dap').run_last() end, desc = 'Dap Debug: Run Last Session', },
+		-- stylua: ignore start
+		{ '<F3>', function() require('dap').step_out() end, desc = 'Dap Debug: Step Out' },
+		{ '<F2>', function() require('dap').step_into() end, desc = 'Dap Debug: Step Into' },
+		{ '<F1>', function() require('dap').step_over() end, desc = 'Dap Debug: Step Over' },
+		{ '<F4>', function() require('dap').disconnect() end, desc = 'Dap Debug: Disconnect' },
+		{ '<F5>', function() require('dap').continue() end, desc = 'Dap Debug: Start/Continue' },
+		{ '<F6>', function() require('dap').run_last() end, desc = 'Dap Debug: Run Last Session', },
 
-{ '<leader><leader>t', function() require('dap').terminate() end, desc = 'Dap Debug: Terminate' },
-{ '<leader><leader>v', '<cmd>DapVirtualTextToggle<cr>' , desc = 'Dap Debug: Virtual Text Toggle', },
-{ '<leader><leader>c', function() require('dap').clear_breakpoints() end, desc = 'Dap Clear Breakpoints' },
-{ '<leader><leader>b', function() require('dap').toggle_breakpoint() end, desc = 'Dap Debug: Toggle Breakpoint' },
-{ '<leader><leader>h', function() require('dap.ui.widgets').hover() end, desc = 'Dap Debug: Hover Variables', mode = { 'n', 'v' }, },
-{ '<leader><leader>s', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.scopes) end, desc = 'Dap Debug: Scopes', },
-{ '<leader><leader>f', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.frames) end, desc = 'Dap Debug: Frames', },
-{ '<leader><leader>B', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, desc = 'Dap Debug: Set Log Point', },
+		{ '<leader><leader>t', function() require('dap').terminate() end, desc = 'Dap Debug: Terminate' },
+		{ '<leader><leader>v', '<cmd>DapVirtualTextToggle<cr>' , desc = 'Dap Debug: Virtual Text Toggle', },
+		{ '<leader><leader>c', function() require('dap').clear_breakpoints() end, desc = 'Dap Clear Breakpoints' },
+		{ '<leader><leader>b', function() require('dap').toggle_breakpoint() end, desc = 'Dap Debug: Toggle Breakpoint' },
+		{ '<leader><leader>h', function() require('dap.ui.widgets').hover() end, desc = 'Dap Debug: Hover Variables', mode = { 'n', 'v' }, },
+		{ '<leader><leader>s', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.scopes) end, desc = 'Dap Debug: Scopes', },
+		{ '<leader><leader>f', function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.frames) end, desc = 'Dap Debug: Frames', },
+		{ '<leader><leader>B', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, desc = 'Dap Debug: Set Log Point', },
 
--- lua specific
-{ '<leader><leader>l', function() require"osv".launch({port = 8086}) end, { noremap = true } },
+		-- lua specific
+		{ '<leader><leader>l', function() require"osv".launch({port = 8086}) end, { noremap = true } },
 	},
 }
