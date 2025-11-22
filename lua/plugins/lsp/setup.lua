@@ -30,10 +30,10 @@ function M.get_capabilities()
 	local custom_capabilities = {
 		textDocument = {
 			semanticTokens = {
-				dynamicRegistration = false,
-				overlappingTokenSupport = false,
-				multilineTokenSupport = false,
-				augmentsSyntaxTokens = false,
+				dynamicRegistration = true,
+				overlappingTokenSupport = true,
+				multilineTokenSupport = true,
+				augmentsSyntaxTokens = true,
 			},
 			completion = {
 				dynamicRegistration = false,
