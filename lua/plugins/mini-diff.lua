@@ -3,19 +3,8 @@ return {
 	version = false,
 	event = { 'BufReadPre', 'BufNewFile' },
 	config = function()
-		require('mini.diff').setup({
-			mappings = {
-				apply = 'gh',
-				reset = 'gH',
-				textobject = 'gh',
-				goto_first = '[H',
-				goto_prev = '[h',
-				goto_next = ']h',
-				goto_last = ']H',
-			},
-		})
+		require('mini.diff').setup()
 	end,
-
 	keys = {
 		{
 			'gs',
