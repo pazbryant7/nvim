@@ -58,5 +58,3 @@ if g.neovide then
 	g.neovide_refresh_rate = 60
 	g.neovide_cursor_vfx_mode = 'railgun'
 end
-
-vim.cmd('colorscheme unokai')
