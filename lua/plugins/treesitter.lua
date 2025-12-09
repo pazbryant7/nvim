@@ -32,7 +32,7 @@ return {
 			'markdown_inline',
 		}
 
-		local avoid_indent_in = { 'markdown' }
+		local avoid_indent_in = { 'markdown', 'bash', 'sh' }
 
 		if vim.fn.executable('tree-sitter') == 1 then
 			vim.defer_fn(function()
