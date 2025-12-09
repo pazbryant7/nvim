@@ -1,18 +1,25 @@
 return {
-	'catppuccin/nvim',
-	lazy = false,
-	priority = 1000,
-	name = 'catppuccin',
-	opts = {
-		flavour = 'mocha',
-		background = { -- :h background
-			light = 'latte',
-			dark = 'mocha',
+	{
+		'catppuccin/nvim',
+		lazy = false,
+		priority = 1000,
+		name = 'catppuccin',
+		opts = {
+			flavour = 'mocha',
+			background = { -- :h background
+				light = 'latte',
+				dark = 'mocha',
+			},
+			no_italic = true, -- Force no italic
 		},
-		no_italic = true, -- Force no italic
+		config = function(_, opts)
+			require('catppuccin').setup(opts)
+			vim.cmd('colorscheme catppuccin')
+		end,
 	},
-	config = function(_, opts)
-		require('catppuccin').setup(opts)
-		vim.cmd('colorscheme catppuccin')
-	end,
+
+	{
+		'nvim-mini/mini.base16',
+		version = false,
+	},
 }
