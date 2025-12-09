@@ -6,6 +6,11 @@ local g = v.g
 g.mapleader = ' '
 g.maplocalleader = ' '
 
+
+g.netrw_banner = 0 -- hide top banner
+g.netrw_liststyle = 0 -- tree-view
+g.netrw_browse_split = 0
+
 opt.clipboard = 'unnamedplus' -- system clipboard
 
 o.guicursor = '' -- always block cursor

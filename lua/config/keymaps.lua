@@ -5,6 +5,9 @@ local map = v.keymap.set
 -- last buffer
 map('i', '<C-^>', '<Cmd>b#<CR>', { desc = 'Toggle Between Current And Last Buffer' })
 
+-- file explorer
+map('n', '-', '<Cmd>Ex<CR>', { desc = 'Open neovim default file explorer' })
+
 -- Change inner word
 map('n', '<C-c>', 'ciw', { desc = 'Change Inner Word' })
 
