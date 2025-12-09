@@ -97,12 +97,14 @@ local close_with_q_filetypes = {
 	'empty',
 	'notify',
 	'lspinfo',
-	'fugitive',
+	'markdown',
 	'grug-far',
 	'gitcommit',
 	'dap-float',
 	'gitconfig',
 	'gitrebase',
+	'gitconfig',
+	'gitcommit',
 	'checkhealth',
 	'startuptime',
 	'tsplayground',
@@ -122,7 +124,7 @@ autocmd('FileType', {
 		local bufnr = api.nvim_get_current_buf()
 		vim.keymap.set('n', 'q', function()
 			if #api.nvim_list_wins() > 1 then
-				vim.cmd('close')
+				vim.cmd('quit')
 			else
 				vim.cmd('new')
 				vim.cmd('bdelete! ' .. bufnr)
