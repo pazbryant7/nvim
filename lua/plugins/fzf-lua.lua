@@ -13,6 +13,7 @@ return {
 					layout = 'flex',
 				},
 			},
+
 			keymap = {
 				builtin = {
 					false,
@@ -77,6 +78,18 @@ return {
 			end,
 			desc = 'FzfLua Files',
 		},
+
+		{
+			'<m-c>',
+			function()
+				require('fzf-lua').files({
+					prompt = 'cd> ',
+					cmd = 'fd --type d --hidden --exclude .git',
+				})
+			end,
+			desc = 'FzfLua Files',
+		},
+
 		{
 			'<c-b>',
 			function()
@@ -127,7 +140,7 @@ return {
 			desc = 'FzfLua WorkTrees',
 		},
 		{
-			'<m-c>',
+			'<m-p>',
 			function()
 				require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })
 			end,
@@ -136,14 +149,18 @@ return {
 		{
 			'<leader>ds',
 			function()
-				require('fzf-lua').lsp_document_symbols({ winopts = { preview = { hidden = false } } })
+				require('fzf-lua').lsp_document_symbols({
+					winopts = { preview = { hidden = false } },
+				})
 			end,
 			desc = 'FzfLua Lsp Document Symbols',
 		},
 		{
 			'<leader>ws',
 			function()
-				require('fzf-lua').lsp_workspace_symbols({ winopts = { preview = { hidden = false } } })
+				require('fzf-lua').lsp_workspace_symbols({ winopts = {
+					preview = { hidden = false },
+				} })
 			end,
 			desc = 'FzfLua Lsp Workspace Symbols',
 		},
