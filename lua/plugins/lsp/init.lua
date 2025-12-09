@@ -20,6 +20,7 @@ return {
 				'yamlls',
 				'clangd',
 				'dockerls',
+				'marksman',
 				'basedpyright',
 				'emmet_language_server',
 			},
@@ -71,6 +72,7 @@ return {
 				'debugpy',
 				-- markdown
 				'alex',
+				'marksman',
 				'markdownlint',
 				-- javascript
 				'eslint_d',
