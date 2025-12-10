@@ -9,8 +9,8 @@ function M.get_keymaps()
 	return {
 		{ 'grn', vim.lsp.buf.rename, desc = 'LSP Rename' },
 		{ 'grr', vim.lsp.buf.references, desc = 'LSP References' },
-		{ 'gD', vim.lsp.buf.declaration, desc = 'LSP Goto Declaration' },
 		{ ']d', M.diagnostic_goto(true), desc = 'LSP Next Diagnostic' },
+		{ 'gD', vim.lsp.buf.declaration, desc = 'LSP Goto Declaration' },
 		{ '[d', M.diagnostic_goto(false), desc = 'LSP Prev Diagnostic' },
 		{ ']e', M.diagnostic_goto(true, 'ERROR'), desc = 'LSP Next Error' },
 		{ '[e', M.diagnostic_goto(false, 'ERROR'), desc = 'LSP Prev Error' },
@@ -18,6 +18,7 @@ function M.get_keymaps()
 		{ '[w', M.diagnostic_goto(false, 'WARN'), desc = 'LSP Prev Warning' },
 		{ 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
 		{ 'gt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
+		{ 'gra', vim.lsp.buf.code_action, desc = 'LSP Code Action', mode = { 'n', 'v' } },
 		{
 			'gd',
 			function()
@@ -26,17 +27,18 @@ function M.get_keymaps()
 			desc = 'LSP Goto Definition',
 		},
 		{
-			'gra',
-			vim.lsp.buf.code_action,
-			desc = 'LSP Code Action',
-			mode = { 'n', 'v' },
+			'gO',
+			function()
+				vim.lsp.buf.document_symbol({ on_list = on_list })
+			end,
+			desc = 'LSP Goto Declaration',
 		},
 		{
-			'K',
+			'gW',
 			function()
-				vim.lsp.buf.hover({ border = 'single' })
+				vim.lsp.buf.workspace_symbol(nil, { on_list = on_list })
 			end,
-			desc = 'LSP Hover',
+			desc = 'LSP Goto Declaration',
 		},
 		{
 			'<c-s>',
@@ -47,11 +49,11 @@ function M.get_keymaps()
 			mode = { 'i', 'n' },
 		},
 		{
-			'gO',
+			'K',
 			function()
-				vim.lsp.buf.document_symbol({ loclist = false })
+				vim.lsp.buf.hover({ border = 'single' })
 			end,
-			desc = 'LSP Open Document Symbol',
+			desc = 'LSP Hover',
 		},
 	}
 end
