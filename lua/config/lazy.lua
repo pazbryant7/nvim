@@ -21,16 +21,14 @@ local function is_man_pager()
 	return false
 end
 
-local plugins = is_man_pager() and {
-	{ import = 'plugins.no-neck-pain' },
-} or {
-	{ import = 'plugins' },
-	{ import = 'plugins.lsp.specifics' },
-}
+local plugins = is_man_pager() and { {
+	import = 'plugins.no-neck-pain',
+} } or { {
+	import = 'plugins',
+}, { import = 'plugins.lsp.specifics' } }
 
 require('lazy').setup(plugins, {
 	defaults = { lazy = true },
-	install = { missing = true, colorscheme = { 'unokai' } },
 	checker = { enabled = false, notify = false },
 	change_detection = { notify = false },
 	ui = { border = 'rounded', backdrop = 100 },
