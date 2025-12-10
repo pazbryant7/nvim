@@ -1,0 +1,54 @@
+{
+  "Jujutsu Conventional Commit": {
+    "prefix": [
+      "jj:feat",
+      "jj:fix",
+      "jj:chore",
+      "jj:docs",
+      "jj:style",
+      "jj:refactor",
+      "jj:test",
+      "jj:perf",
+      "jj:ci"
+    ],
+    "body": [
+      "${1|feat,fix,chore,docs,style,refactor,test,perf,ci|}(${2:scope}): ${3:description}"
+    ],
+    "description": "Jujutsu (jj) conventional commit message"
+  },
+  "Jujutsu BREAKING CHANGE": {
+    "prefix": "jj:breaking",
+    "body": ["", "BREAKING CHANGE: ${1:description of the breaking change}"],
+    "description": "Jujutsu BREAKING CHANGE footer"
+  },
+  "Vault backup timestamp": {
+    "prefix": "backup",
+    "body": "vault backup: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+    "description": "Current timestamp for vault backup"
+  },
+  "Chore: spell update": {
+    "prefix": "spell",
+    "body": "chore(spell): update spell dictionary: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+    "description": "Timestamped spell dictionary update"
+  },
+  "Chore: snippets update": {
+    "prefix": "snippets",
+    "body": "chore(snippets): update snippets collection: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+    "description": "Timestamped snippets update"
+  },
+  "Chore: apps update": {
+    "prefix": "apps",
+    "body": "chore(apps): update default package list: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+    "description": "Timestamped apps list update"
+  },
+  "Chore: nvim update": {
+    "prefix": "nvim",
+    "body": "chore(nvim): update neovim sub module: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+    "description": "Timestamped neovim submodule update"
+  },
+  "Chore: plugins update": {
+    "prefix": "plugins",
+    "body": "chore(plugins): update plugins package list: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+    "description": "Timestamped plugins list update"
+  }
+}

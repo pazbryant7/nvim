@@ -1,0 +1,72 @@
+{
+  "Wiki link": {
+    "prefix": "link",
+    "body": "[[${1:title}]]",
+    "description": "Obsidian wiki-style link"
+  },
+  "Inline link": {
+    "prefix": "ilink",
+    "body": "[${1:text}](${2:url})",
+    "description": "Markdown inline link"
+  },
+  "Bold heading": {
+    "prefix": "bh",
+    "body": "# **${1:Bold Heading ${2:bold text}}**",
+    "description": "H1 with bold text"
+  },
+  "Heading 1": {
+    "prefix": "h1",
+    "body": "# ${1:Heading 1}",
+    "description": "Markdown H1"
+  },
+  "Heading 2": {
+    "prefix": "h2",
+    "body": "## ${1:Heading 2}",
+    "description": "Markdown H2"
+  },
+  "Code block": {
+    "prefix": "cb",
+    "body": ["```${1:language}", "${2:code}", "```"],
+    "description": "Fenced code block"
+  },
+  "Unordered list item": {
+    "prefix": "ul",
+    "body": "- ${1:list item}",
+    "description": "Bullet list item"
+  },
+  "Ordered list item": {
+    "prefix": "ol",
+    "body": "1. ${1:list item}",
+    "description": "Numbered list item"
+  },
+  "Task": {
+    "prefix": "task",
+    "body": "- [ ] ${1:task}",
+    "description": "Todo task item"
+  },
+  "Horizontal rule": {
+    "prefix": "hr",
+    "body": "---",
+    "description": "Horizontal divider"
+  },
+  "Bold": {
+    "prefix": "b",
+    "body": "**${1:bold text}**",
+    "description": "Bold text"
+  },
+  "Italic": {
+    "prefix": "i",
+    "body": "*${1:italic text}*",
+    "description": "Italic text"
+  },
+  "Callout note": {
+    "prefix": "callout",
+    "body": ["> [!note] ${1:title}", "> ${2:content}"],
+    "description": "Obsidian note callout"
+  },
+  "Callout todo": {
+    "prefix": "calloutt",
+    "body": ["> [!todo] ${1:title}", "> ${2:content}"],
+    "description": "Obsidian todo callout"
+  }
+}

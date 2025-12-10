@@ -1,0 +1,60 @@
+{
+  "For i loop": {
+    "prefix": "fori",
+    "body": ["for ${1:i} = 1, #${2:list} do", "\t${3}", "end"],
+    "description": "Numeric for loop"
+  },
+  "For value ipairs": {
+    "prefix": "forv",
+    "body": ["for _, ${1:value} in ipairs(${2:list}) do", "\t${3}", "end"],
+    "description": "Iterate array with ipairs"
+  },
+  "For key-value pairs": {
+    "prefix": "forkv",
+    "body": ["for ${1:key}, ${2:value} in pairs(${3:tbl}) do", "\t${4}", "end"],
+    "description": "Iterate table with pairs"
+  },
+  "While loop": {
+    "prefix": "wh",
+    "body": ["while ${1:condition} do", "\t${2}", "end"],
+    "description": "While loop"
+  },
+  "Repeat-until loop": {
+    "prefix": "rpt",
+    "body": ["repeat", "\t${1}", "until ${2:condition}"],
+    "description": "Repeat-until loop"
+  },
+  "If statement": {
+    "prefix": "if",
+    "body": ["if ${1:condition} then", "\t${2}", "end"],
+    "description": "If statement"
+  },
+  "If-else": {
+    "prefix": "ife",
+    "body": ["if ${1:condition} then", "\t${2}", "else", "\t${3}", "end"],
+    "description": "If-else statement"
+  },
+  "If-elseif-else": {
+    "prefix": "ifei",
+    "body": [
+      "if ${1:condition1} then",
+      "\t${2}",
+      "elseif ${3:condition2} then",
+      "\t${4}",
+      "else",
+      "\t${5}",
+      "end"
+    ],
+    "description": "If-elseif-else chain"
+  },
+  "Local function": {
+    "prefix": "fn",
+    "body": ["local function ${1:name}(${2:args})", "\t${3}", "end"],
+    "description": "Local function definition"
+  },
+  "Print inspect": {
+    "prefix": "pr",
+    "body": "print(vim.inspect(${1:value}))",
+    "description": "Print with vim.inspect"
+  }
+}
