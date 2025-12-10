@@ -77,7 +77,13 @@ return {
 			end,
 			desc = 'FzfLua Files',
 		},
-
+		{
+			'<leader>ht',
+			function()
+				require('fzf-lua').help_tags()
+			end,
+			desc = 'FzfLua Help Tags',
+		},
 		{
 			'<m-c>',
 			function()
@@ -88,27 +94,12 @@ return {
 			end,
 			desc = 'FzfLua Files',
 		},
-
 		{
-			'<c-b>',
+			'<leader>b',
 			function()
 				require('fzf-lua').buffers()
 			end,
 			desc = 'FzfLua buffers',
-		},
-		{
-			'<leader>m',
-			function()
-				require('fzf-lua').man_pages()
-			end,
-			desc = 'FzfLua Man Pages',
-		},
-		{
-			'<leader>H',
-			function()
-				require('fzf-lua').help_tags()
-			end,
-			desc = 'FzfLua Help Tags',
 		},
 		{
 			'<leader>k',
@@ -146,24 +137,6 @@ return {
 			desc = "FzfLua Files from Current File's Directory",
 		},
 		{
-			'<leader>ds',
-			function()
-				require('fzf-lua').lsp_document_symbols({
-					winopts = { preview = { hidden = false } },
-				})
-			end,
-			desc = 'FzfLua Lsp Document Symbols',
-		},
-		{
-			'<leader>ws',
-			function()
-				require('fzf-lua').lsp_workspace_symbols({ winopts = {
-					preview = { hidden = false },
-				} })
-			end,
-			desc = 'FzfLua Lsp Workspace Symbols',
-		},
-		{
 			'<leader>th',
 			function()
 				require('fzf-lua').colorschemes({
@@ -193,8 +166,6 @@ return {
 						'^wildcharm$',
 						'^catppuccin$',
 						'^lunaperche$',
-						'^modus%_vivendi$',
-						'^modus%_operandi$',
 						'^catppuccin%-latte$',
 					},
 				})

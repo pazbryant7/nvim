@@ -33,6 +33,18 @@ map('n', '<C-o>', '<C-o>zz', { desc = 'Jump Back To Previous Position And Center
 --  No highlights
 map('n', '<Escape>', '<cmd>noh<CR>', { desc = 'No Search Highlights' })
 
+-- paste without overwriting registers
+map({ 'n', 'v' }, '<leader>p', '"0p', { desc = 'Paste (keep registers)' })
+map({ 'n', 'v' }, '<leader>P', '"0P', { desc = 'Paste before (keep registers)' })
+
+-- yank to system clipboard
+map({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to clipboard' })
+map('n', '<leader>Y', '"+Y', { desc = 'Yank line to clipboard' })
+
+-- delete without overwriting registers
+map({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete (black-hole register)' })
+map('n', '<leader>D', '"_D', { desc = 'Delete line (black-hole register)' })
+
 -- movement left and right
 map({ 'n', 'v', 'o' }, 'H', '^', { desc = 'Go To The Start Of The Line' })
 map({ 'n', 'v', 'o' }, 'L', 'g_', { desc = 'Go To The End Of The Line' })
@@ -68,5 +80,3 @@ map('n', '<leader>gf', '<cmd>GoToFileWithTumux<cr>', {
 	silent = true,
 	desc = 'Open File Under Cursor In New Tmux Pane',
 })
-
-map('n', '<leader>bo', '<cmd>DeleteOtherBuffers<cr>', { desc = 'Delete All Buffers Except Current', silent = true })
