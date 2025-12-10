@@ -1,0 +1,12 @@
+{
+  "TODO comment": {
+    "prefix": "tdo",
+    "body": ["${1|FIX,HACK,WARN,PERF,NOTE,TEST|}: ${2:Description}"],
+    "description": "Insert a TODO/FIX/HACK/WARN/PERF/NOTE/TEST comment"
+  },
+  "Inline code": {
+    "prefix": "co",
+    "body": ["`${1:code}`${2}"],
+    "description": "Insert inline code block"
+  }
+}

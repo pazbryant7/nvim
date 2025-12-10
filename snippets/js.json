@@ -1,0 +1,117 @@
+{
+  "For i loop": {
+    "prefix": "fori",
+    "body": [
+      "for (let ${1:i} = 0; ${1:i} < ${2:array.length}; ${1:i}++) {",
+      "\t${3}",
+      "}"
+    ],
+    "description": "Classic for loop (index)"
+  },
+  "For...of loop": {
+    "prefix": "forof",
+    "body": ["for (const ${1:item} of ${2:iterable}) {", "\t${3}", "}"],
+    "description": "for...of loop"
+  },
+  "For...in loop": {
+    "prefix": "forin",
+    "body": ["for (const ${1:key} in ${2:object}) {", "\t${3}", "}"],
+    "description": "for...in loop"
+  },
+  "While loop": {
+    "prefix": "wh",
+    "body": ["while (${1:condition}) {", "\t${2}", "}"],
+    "description": "while loop"
+  },
+  "Do-while loop": {
+    "prefix": "dowh",
+    "body": ["do {", "\t${1}", "} while (${2:condition});"],
+    "description": "do...while loop"
+  },
+  "If statement": {
+    "prefix": "if",
+    "body": ["if (${1:condition}) {", "\t${2}", "}"],
+    "description": "if statement"
+  },
+  "If-else": {
+    "prefix": "ife",
+    "body": ["if (${1:condition}) {", "\t${2}", "} else {", "\t${3}", "}"],
+    "description": "if...else statement"
+  },
+  "If-else if-else": {
+    "prefix": "ifei",
+    "body": [
+      "if (${1:condition1}) {",
+      "\t${2}",
+      "} else if (${3:condition2}) {",
+      "\t${4}",
+      "} else {",
+      "\t${5}",
+      "}"
+    ],
+    "description": "if...else if...else chain"
+  },
+  "Switch statement": {
+    "prefix": "sw",
+    "body": [
+      "switch (${1:expression}) {",
+      "\tcase ${2:value}:",
+      "\t\t${3}",
+      "\t\tbreak;",
+      "",
+      "\tdefault:",
+      "\t\t${4}",
+      "\t\tbreak;",
+      "}"
+    ],
+    "description": "switch statement"
+  },
+  "Class": {
+    "prefix": "cls",
+    "body": [
+      "class ${1:MyClass} {",
+      "\tconstructor(${2:args}) {",
+      "\t\t${3}",
+      "\t}",
+      "}"
+    ],
+    "description": "Class declaration"
+  },
+  "Class with extends": {
+    "prefix": "clse",
+    "body": [
+      "class ${1:ChildClass} extends ${2:ParentClass} {",
+      "\tconstructor(${3:args}) {",
+      "\t\tsuper(${3:args});",
+      "\t\t${4}",
+      "\t}",
+      "}"
+    ],
+    "description": "Class with inheritance"
+  },
+  "Function declaration": {
+    "prefix": "fn",
+    "body": ["function ${1:myFunction}(${2:params}) {", "\t${3}", "}"],
+    "description": "Traditional function"
+  },
+  "Function expression": {
+    "prefix": "fne",
+    "body": ["const ${1:myFunction} = function(${2:params}) {", "\t${3}", "};"],
+    "description": "Function expression"
+  },
+  "Arrow function": {
+    "prefix": "afn",
+    "body": ["const ${1:myFunction} = (${2:params}) => {", "\t${3}", "};"],
+    "description": "Arrow function"
+  },
+  "IIFE": {
+    "prefix": "iife",
+    "body": ["(() => {", "\t${1:// code to run immediately}", "})();"],
+    "description": "Immediately invoked function expression"
+  },
+  "console.log": {
+    "prefix": "cl",
+    "body": "console.log(${1})${2}",
+    "description": "console.log"
+  }
+}
