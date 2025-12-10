@@ -1,0 +1,80 @@
+{
+  "Shell variable": {
+    "prefix": "va",
+    "body": "\"$${1}\"${2}",
+    "description": "Double-quoted shell variable"
+  },
+  "Home path": {
+    "prefix": "home",
+    "body": "$HOME/${1}",
+    "description": "Path starting from $HOME"
+  },
+  "Shebang + strict mode": {
+    "prefix": "hdr",
+    "body": ["#!/bin/sh", "", "set -eu", "", "${1}"],
+    "description": "POSIX shell script header with set -eu"
+  },
+  "For in loop": {
+    "prefix": "forin",
+    "body": ["for ${1:var} in ${2:item1 item2}; do", "\t${3:# code}", "done"],
+    "description": "Classic for … in … loop"
+  },
+  "While loop": {
+    "prefix": "wh",
+    "body": ["while [ ${1:condition} ]; do", "\t${2:# code}", "done"],
+    "description": "while loop with test"
+  },
+  "Until loop": {
+    "prefix": "until",
+    "body": ["until [ ${1:condition} ]; do", "\t${2:# code}", "done"],
+    "description": "until loop"
+  },
+  "If statement": {
+    "prefix": "if",
+    "body": ["if [ ${1:condition} ]; then", "\t${2:# code}", "fi"],
+    "description": "Simple if"
+  },
+  "If-else": {
+    "prefix": "ife",
+    "body": [
+      "if [ ${1:condition} ]; then",
+      "\t${2:# code}",
+      "else",
+      "\t${3:# code}",
+      "fi"
+    ],
+    "description": "if … else"
+  },
+  "If-elif-else": {
+    "prefix": "ifei",
+    "body": [
+      "if [ ${1:condition1} ]; then",
+      "\t${2:# code}",
+      "elif [ ${3:condition2} ]; then",
+      "\t${4:# code}",
+      "else",
+      "\t${5:# code}",
+      "fi"
+    ],
+    "description": "if … elif … else"
+  },
+  "Case statement": {
+    "prefix": "case",
+    "body": [
+      "case ${1:$variable} in",
+      "\t${2:pattern1})",
+      "\t\t${3:# code}",
+      "\t\t;;",
+      "\t*)",
+      "\t\t${4:# default}",
+      "\t\t;;",
+      "esac"
+    ],
+    "description": "case … in … esac"
+  },
+  "Function": {
+    "prefix": "fn",
+    "body": ["${1:my_function}() {", "\t${2:# code}", "}"],
+    "description": "Shell function definition"
+  }
+}

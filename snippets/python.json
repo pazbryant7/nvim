@@ -1,0 +1,107 @@
+{
+  "For i in range": {
+    "prefix": "fori",
+    "body": ["for ${1:i} in range(len(${2:iterable})):", "\t${3:pass}"],
+    "description": "Loop over indices with range(len())"
+  },
+  "For item in iterable": {
+    "prefix": "forv",
+    "body": ["for ${1:item} in ${2:iterable}:", "\t${3:pass}"],
+    "description": "Simple for loop over iterable"
+  },
+  "For key, value in dict.items()": {
+    "prefix": "forkv",
+    "body": [
+      "for ${1:key}, ${2:value} in ${3:dictionary}.items():",
+      "\t${4:pass}"
+    ],
+    "description": "Loop over dictionary items"
+  },
+  "While loop": {
+    "prefix": "wh",
+    "body": ["while ${1:condition}:", "\t${2:pass}"],
+    "description": "While loop"
+  },
+  "If statement": {
+    "prefix": "if",
+    "body": ["if ${1:condition}:", "\t${2:pass}"],
+    "description": "If statement"
+  },
+  "If-else": {
+    "prefix": "ife",
+    "body": ["if ${1:condition}:", "\t${2:pass}", "else:", "\t${3:pass}"],
+    "description": "If-else statement"
+  },
+  "If-elif-else": {
+    "prefix": "ifei",
+    "body": [
+      "if ${1:condition1}:",
+      "\t${2:pass}",
+      "elif ${3:condition2}:",
+      "\t${4:pass}",
+      "else:",
+      "\t${5:pass}"
+    ],
+    "description": "If-elif-else chain"
+  },
+  "Match statement": {
+    "prefix": "match",
+    "body": [
+      "match ${1:subject}:",
+      "\tcase ${2:pattern}:",
+      "\t\t${3:pass}",
+      "\tcase _:",
+      "\t\t${4:pass}"
+    ],
+    "description": "Structural pattern matching (Python 3.10+)"
+  },
+  "Class definition": {
+    "prefix": "cls",
+    "body": [
+      "class ${1:MyClass}:",
+      "\tdef __init__(self, ${2:args}):",
+      "\t\t${3:pass}"
+    ],
+    "description": "Basic class with __init__"
+  },
+  "Class with inheritance": {
+    "prefix": "clse",
+    "body": [
+      "class ${1:ChildClass}(${2:ParentClass}):",
+      "\tdef __init__(self, ${3:args}):",
+      "\t\tsuper().__init__(${3:args})",
+      "\t\t${4:pass}"
+    ],
+    "description": "Class inheriting from parent"
+  },
+  "Function definition": {
+    "prefix": "def",
+    "body": ["def ${1:my_function}(${2:params}):", "\t${3:pass}"],
+    "description": "Function definition"
+  },
+  "Lambda function": {
+    "prefix": "lam",
+    "body": "lambda ${1:args}: ${2:expression}",
+    "description": "Anonymous lambda function"
+  },
+  "Try-except": {
+    "prefix": "try",
+    "body": [
+      "try:",
+      "\t${1:pass}",
+      "except ${2:Exception} as e:",
+      "\t${3:pass}"
+    ],
+    "description": "Try-except block"
+  },
+  "List comprehension": {
+    "prefix": "lc",
+    "body": "[${1:expression} for ${2:item} in ${3:iterable}]",
+    "description": "Basic list comprehension"
+  },
+  "Print": {
+    "prefix": "pr",
+    "body": "print(${1})",
+    "description": "print() statement"
+  }
+}

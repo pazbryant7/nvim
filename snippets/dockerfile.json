@@ -1,0 +1,7 @@
+{
+  "Vue attribute binding": {
+    "prefix": "va",
+    "body": [":${1:attribute}=\"${2:value}\""],
+    "description": "Vue.js attribute binding (v-bind shorthand)"
+  }
+}

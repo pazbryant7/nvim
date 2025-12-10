@@ -1,0 +1,107 @@
+{
+  "For i loop": {
+    "prefix": "fori",
+    "body": ["for ${1:i} := 0; $1 < ${2:limit}; $1++ {", "\t${3}", "}"],
+    "description": "Classic for loop with index"
+  },
+  "For value range": {
+    "prefix": "forv",
+    "body": ["for _, ${1:v} := range ${2:iterable} {", "\t${3}", "}"],
+    "description": "Range loop over values"
+  },
+  "For key-value range": {
+    "prefix": "forkv",
+    "body": ["for ${1:k}, ${2:v} := range ${3:iterable} {", "\t${4}", "}"],
+    "description": "Range loop with key and value"
+  },
+  "For condition loop": {
+    "prefix": "forw",
+    "body": ["for ${1:condition} {", "\t${2}", "}"],
+    "description": "While-like for loop"
+  },
+  "If statement": {
+    "prefix": "if",
+    "body": ["if ${1:condition} {", "\t${2}", "}"],
+    "description": "If statement"
+  },
+  "If-else": {
+    "prefix": "ife",
+    "body": ["if ${1:condition} {", "\t${2}", "} else {", "\t${3}", "}"],
+    "description": "If-else statement"
+  },
+  "If-else if-else": {
+    "prefix": "ifei",
+    "body": [
+      "if ${1:condition1} {",
+      "\t${2}",
+      "} else if ${3:condition2} {",
+      "\t${4}",
+      "} else {",
+      "\t${5}",
+      "}"
+    ],
+    "description": "If-else if-else chain"
+  },
+  "Switch statement": {
+    "prefix": "sw",
+    "body": [
+      "switch ${1:variable} {",
+      "case ${2:value}:",
+      "\t${3}",
+      "default:",
+      "\t${4}",
+      "}"
+    ],
+    "description": "Switch statement"
+  },
+  "Struct type": {
+    "prefix": "st",
+    "body": ["type ${1:MyStruct} struct {", "\t${2}", "}"],
+    "description": "Struct type definition"
+  },
+  "Function": {
+    "prefix": "fn",
+    "body": ["func ${1:myFunc}(${2:params}) ${3:returnType} {", "\t${4}", "}"],
+    "description": "Function definition"
+  },
+  "Method": {
+    "prefix": "meth",
+    "body": [
+      "func (${1:s} *${2:MyStruct}) ${3:myMethod}(${4:params}) ${5:returnType} {",
+      "\t${6}",
+      "}"
+    ],
+    "description": "Method with receiver"
+  },
+  "Goroutine anonymous": {
+    "prefix": "go",
+    "body": ["go func() {", "\t${1}", "}()"],
+    "description": "Start goroutine with anonymous function"
+  },
+  "If error check": {
+    "prefix": "iferr",
+    "body": [
+      "if err := ${1:someFunc()}; err != nil {",
+      "\t${2:return err}",
+      "}"
+    ],
+    "description": "Common error check pattern"
+  },
+  "Select": {
+    "prefix": "sel",
+    "body": [
+      "select {",
+      "case ${1:msg} := <-${2:ch}:",
+      "\t${3}",
+      "default:",
+      "\t${4}",
+      "}"
+    ],
+    "description": "Select statement"
+  },
+  "fmt.Println": {
+    "prefix": "pr",
+    "body": "fmt.Println(${1})",
+    "description": "Print with fmt.Println"
+  }
+}
