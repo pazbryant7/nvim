@@ -4,9 +4,5 @@ return {
 	config = function()
 		require('treesj').setup()
 	end,
-	keys = {
-    '<space>m',
-    '<space>j',
-    '<space>s',
-  },
+	keys = { '<space>m', '<space>j', '<space>s' },
 }
