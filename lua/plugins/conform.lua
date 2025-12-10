@@ -5,30 +5,48 @@ return {
 	end,
 	opts = {
 		notify_on_error = true,
+
 		formatters_by_ft = {
+			-- Lua
 			lua = { 'stylua' },
+
+			-- JavaScript
 			javascript = { 'prettierd' },
 			javascriptreact = { 'prettierd' },
 			typescript = { 'prettierd' },
 			typescriptreact = { 'prettierd' },
+
+			-- Web stuff
 			css = { 'prettierd' },
+			scss = { 'prettierd' },
+			less = { 'prettierd' },
 			html = { 'prettierd' },
+			vue = { 'prettierd' },
+			astro = { 'prettierd' },
+
+			-- Data / config → all supported
 			json = { 'prettierd' },
 			jsonc = { 'prettierd' },
-			scss = { 'prettier' },
-			less = { 'prettier' },
-			yaml = { 'prettier' },
+			yaml = { 'prettierd' },
+			graphql = { 'prettierd' },
+			markdown = { 'prettierd' },
+			mdx = { 'prettierd' },
+
+			-- Shell
 			sh = { 'shfmt' },
-			fish = { 'fish_indent' },
 			bash = { 'shfmt' },
 			zsh = { 'shfmt' },
+			fish = { 'fish_indent' },
+
+			-- Others
 			go = { 'gofumpt', 'goimports' },
 			python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format' },
 			toml = { 'taplo' },
 			c = { 'clang-format' },
+			cpp = { 'clang-format' },
 			rust = { 'rustfmt' },
-			markdown = { 'prettier' },
 		},
+
 		formatters = {
 			fish_indent = {
 				command = '/usr/bin/fish_indent',
@@ -40,14 +58,14 @@ return {
 			},
 		},
 	},
+
 	keys = {
 		{
 			'<c-f>',
 			function()
 				local mode = vim.fn.mode()
 				vim.cmd(':w')
-
-				if mode == 'v' or mode == 'V' or mode == '\22' then -- \22 is visual block mode
+				if mode == 'v' or mode == 'V' or mode == '\22' then
 					pcall(function()
 						require('conform').format({
 							lsp_format = 'fallback',
