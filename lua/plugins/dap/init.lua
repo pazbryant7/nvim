@@ -36,11 +36,11 @@ return {
 
 	keys = {
 		{
-			'<F3>',
+			'<F1>',
 			function()
-				require('dap').step_out()
+				require('dap').step_over()
 			end,
-			desc = 'Dap: Step Out',
+			desc = 'Dap: Step Over',
 		},
 		{
 			'<F2>',
@@ -50,11 +50,11 @@ return {
 			desc = 'Dap: Step Into',
 		},
 		{
-			'<F1>',
+			'<F3>',
 			function()
-				require('dap').step_over()
+				require('dap').step_out()
 			end,
-			desc = 'Dap: Step Over',
+			desc = 'Dap: Step Out',
 		},
 		{
 			'<F4>',
@@ -79,21 +79,21 @@ return {
 		},
 
 		{
-			'<leader>dt',
+			'<leader><leader>t',
 			function()
 				require('dap').terminate()
 			end,
 			desc = 'Dap: Terminate',
 		},
 		{
-			'<leader>dc',
+			'<leader><leader>c',
 			function()
 				require('dap').clear_breakpoints()
 			end,
 			desc = 'Dap: Clear Breakpoints',
 		},
 		{
-			'<leader>db',
+			'<leader><leader>b',
 			function()
 				require('dap').toggle_breakpoint()
 			end,
@@ -101,7 +101,7 @@ return {
 		},
 
 		{
-			'<leader>dl',
+			'<leader><leader>l',
 			function()
 				require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
 			end,
@@ -109,7 +109,7 @@ return {
 		},
 
 		{
-			'<leader>dp',
+			'<leader><leader>p',
 			function()
 				require('dap.ui.widgets').preview()
 			end,
@@ -117,7 +117,7 @@ return {
 		},
 
 		{
-			'<leader>dh',
+			'<leader><leader>h',
 			function()
 				require('dap.ui.widgets').hover()
 			end,
@@ -126,7 +126,7 @@ return {
 		},
 
 		{
-			'<leader>df',
+			'<leader><leader>f',
 			function()
 				local w = require('dap.ui.widgets')
 				w.centered_float(w.frames)
@@ -135,7 +135,7 @@ return {
 		},
 
 		{
-			'<leader>dS',
+			'<leader><leader>s',
 			function()
 				local w = require('dap.ui.widgets')
 				w.centered_float(w.scopes)
