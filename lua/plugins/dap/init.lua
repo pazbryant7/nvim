@@ -1,8 +1,11 @@
 return {
 	'mfussenegger/nvim-dap',
-
+	dependencies = {
+		{ 'rcarriga/nvim-dap-ui', dependencies = 'nvim-neotest/nvim-nio' },
+	},
 	config = function()
 		local dap = require('dap')
+		require('plugins.dap.ui').setup(dap)
 		require('plugins.dap.signs').setup()
 
 		local function load_and_merge_modules(module_prefix)
