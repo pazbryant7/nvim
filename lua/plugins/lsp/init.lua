@@ -20,8 +20,8 @@ return {
 				'yamlls',
 				'clangd',
 				'dockerls',
-				'marksman',
 				'basedpyright',
+				'markdown_oxide',
 				'emmet_language_server',
 			},
 			automatic_enable = {
@@ -71,8 +71,8 @@ return {
 				'debugpy', -- dap
 				-- markdown
 				'alex',
-				'marksman',
 				'markdownlint',
+				'markdown-oxide',
 				-- javascript
 				'eslint_d',
 				'js-debug-adapter', -- dap
