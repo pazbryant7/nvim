@@ -15,9 +15,9 @@ return {
 				show_help = 'g?',
 				reveal_cwd = '@',
 				trim_right = '>',
-				go_out_plus = '-',
+				go_in_plus = 'L',
 				synchronize = '=',
-				go_in_plus = '<cr>',
+				go_out_plus = '-',
 			},
 		})
 
