@@ -66,23 +66,21 @@ return {
 				'gofumpt',
 				'goimports',
 				'golangci-lint',
-				'delve',
 				-- python
 				'ruff',
-				'debugpy',
+				'debugpy', -- dap
 				-- markdown
 				'alex',
 				'marksman',
 				'markdownlint',
 				-- javascript
 				'eslint_d',
-				'js-debug-adapter',
+				'js-debug-adapter', -- dap
 				-- toml
 				'taplo',
 				-- c
 				'clang-format',
 				-- rust
-				'codelldb',
 			}
 
 			require('mason').setup({
