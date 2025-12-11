@@ -11,7 +11,7 @@ return {
 		end, { desc = 'Multicursor Start' })
 
 		map('n', '<leader>A', function()
-			mc.searchAllAddCursors()
+			mc.matchAllAddCursors()
 		end, { desc = 'Search all add cursors' })
 
 		map({ 'n', 'x' }, '<down>', function()
