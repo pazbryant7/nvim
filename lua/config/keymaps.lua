@@ -5,8 +5,10 @@ local map = v.keymap.set
 -- last buffer
 map('i', '<C-^>', '<Cmd>b#<CR>', { desc = 'Toggle Between Current And Last Buffer' })
 
--- Change inner word
-map('n', '<C-c>', 'ciw', { desc = 'Change Inner Word' })
+-- grep word under cursor
+map('n', '<c-c>', function()
+	vim.cmd('grep! ' .. vim.fn.expand('<cword>'))
+end)
 
 -- In Visual mode, moves the selected lines down and up by one line, then re-indents.
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move Selected Lines Down', silent = true })
