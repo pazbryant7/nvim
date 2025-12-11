@@ -10,34 +10,6 @@ return {
 	},
 	keys = {
 		{
-			'<leader>1',
-			function()
-				require('harpoon'):list():select(1)
-			end,
-			desc = 'Harpoon go to 1',
-		},
-		{
-			'<leader>2',
-			function()
-				require('harpoon'):list():select(2)
-			end,
-			desc = 'Harpoon go to 2',
-		},
-		{
-			'<leader>3',
-			function()
-				require('harpoon'):list():select(3)
-			end,
-			desc = 'Harpoon go to 3',
-		},
-		{
-			'<leader>4',
-			function()
-				require('harpoon'):list():select(4)
-			end,
-			desc = 'Harpoon go to 4',
-		},
-		{
 			'<c-l>',
 			function()
 				require('harpoon'):list():next({ ui_nav_wrap = true })
