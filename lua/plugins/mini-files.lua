@@ -16,7 +16,7 @@ return {
 				reveal_cwd = '@',
 				trim_right = '>',
 				go_in_plus = 'L',
-				synchronize = '=',
+				synchronize = '<cr>',
 				go_out_plus = '-',
 			},
 		})
