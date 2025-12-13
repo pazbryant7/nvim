@@ -1,7 +1,6 @@
 return {
 	'saghen/blink.cmp',
 	version = '1.*',
-	event = 'InsertEnter',
 	opts = {
 		appearance = {
 			nerd_font_variant = 'mono',

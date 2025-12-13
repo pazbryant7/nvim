@@ -1,6 +1,5 @@
 return {
 	'folke/flash.nvim',
-	event = 'VeryLazy',
 	opts = {
 		modes = {
 			char = {
@@ -36,5 +35,11 @@ return {
 				autojump = true,
 			},
 		},
+	},
+	keys = {
+		{ 'f', mode = { 'n', 'x', 'o' }, desc = 'Flash: forward char jump' },
+		{ 'F', mode = { 'n', 'x', 'o' }, desc = 'Flash: backward char jump' },
+		{ 't', mode = { 'n', 'x', 'o' }, desc = 'Flash: forward till char' },
+		{ 'T', mode = { 'n', 'x', 'o' }, desc = 'Flash: backward till char' },
 	},
 }

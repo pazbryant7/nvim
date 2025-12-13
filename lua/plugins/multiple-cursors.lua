@@ -1,6 +1,5 @@
 return {
 	'jake-stewart/multicursor.nvim',
-	event = 'VeryLazy',
 	config = function()
 		local mc = require('multicursor-nvim')
 		mc.setup()
@@ -8,36 +7,35 @@ return {
 
 		map({ 'n', 'x' }, '<c-n>', function()
 			mc.matchAddCursor(1)
-		end, { desc = 'Multicursor Start' })
+		end)
 
 		map('n', '<leader>A', function()
 			mc.matchAllAddCursors()
-		end, { desc = 'Search all add cursors' })
+		end)
 
 		map({ 'n', 'x' }, '<down>', function()
 			mc.lineAddCursor(1)
-		end, { desc = 'Multicursor Add Down' })
+		end)
 
 		map({ 'n', 'x' }, '<up>', function()
 			mc.lineAddCursor(-1)
-		end, { desc = 'Multicursor Add Up' })
+		end)
 
 		map({ 'n', 'x' }, '<leader><down>', function()
 			mc.lineSkipCursor(1)
-		end, { desc = 'Multicursor Skip Down' })
+		end)
 
 		map({ 'n', 'x' }, '<leader><up>', function()
 			mc.lineSkipCursor(-1)
-		end, { desc = 'Multicursor Skip Up' })
+		end)
 
 		map('x', 'q', function()
 			mc.matchSkipCursor(1)
-		end, { desc = 'Multicursor Skip Next' })
+		end)
 
-		map('x', 'Q', mc.deleteCursor, { desc = 'Multicursor Remove Current Cursor' })
-
-		map('x', 'I', mc.insertVisual, { desc = 'Multicursor visual Insert Mode' })
-		map('x', 'A', mc.appendVisual, { desc = 'Multicursor visual Insert Mode Last' })
+		map('x', 'Q', mc.deleteCursor)
+		map('x', 'I', mc.insertVisual)
+		map('x', 'A', mc.appendVisual)
 
 		mc.addKeymapLayer(function(layerSet)
 			layerSet({ 'n', 'x' }, '<left>', mc.prevCursor)
@@ -61,4 +59,20 @@ return {
 		hl(0, 'MultiCursorDisabledVisual', { link = 'Visual' })
 		hl(0, 'MultiCursorDisabledSign', { link = 'SignColumn' })
 	end,
+
+	keys = {
+		{ '<C-n>', mode = { 'n', 'x' }, desc = 'Multicursor: add next match' },
+		{ '<leader>A', mode = 'n', desc = 'Multicursor: add all matches' },
+		{ '<Down>', mode = { 'n', 'x' }, desc = 'Multicursor: add cursor below' },
+		{ '<Up>', mode = { 'n', 'x' }, desc = 'Multicursor: add cursor above' },
+		{ '<leader><Down>', mode = { 'n', 'x' }, desc = 'Multicursor: skip cursor below' },
+		{ '<leader><Up>', mode = { 'n', 'x' }, desc = 'Multicursor: skip cursor above' },
+		{ 'q', mode = 'x', desc = 'Multicursor: skip next match' },
+		{ 'Q', mode = 'x', desc = 'Multicursor: remove cursor' },
+		{ 'I', mode = 'x', desc = 'Multicursor: visual insert' },
+		{ 'A', mode = 'x', desc = 'Multicursor: visual append' },
+		{ '<Left>', mode = { 'n', 'x' }, desc = 'Multicursor: previous cursor' },
+		{ '<Right>', mode = { 'n', 'x' }, desc = 'Multicursor: next cursor' },
+		{ '<Esc>', mode = 'n', desc = 'Multicursor: clear / exit' },
+	},
 }
