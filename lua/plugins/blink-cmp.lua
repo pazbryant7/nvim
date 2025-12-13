@@ -1,7 +1,7 @@
 return {
 	'saghen/blink.cmp',
-	event = 'InsertEnter',
 	version = '1.*',
+	event = 'InsertEnter',
 	opts = {
 		appearance = {
 			nerd_font_variant = 'mono',
@@ -9,7 +9,7 @@ return {
 		cmdline = { enabled = false },
 		completion = {
 			documentation = {
-				auto_show = false,
+				auto_show = true,
 			},
 			accept = {
 				auto_brackets = {
@@ -18,7 +18,7 @@ return {
 			},
 			list = {
 				selection = {
-					preselect = true,
+					preselect = false,
 					auto_insert = true,
 				},
 			},
@@ -29,9 +29,6 @@ return {
 					columns = {
 						{ 'label', 'label_description', gap = 1 },
 						{ 'kind', gap = 1 },
-					},
-					treesitter = {
-						'lsp',
 					},
 				},
 			},
@@ -71,32 +68,28 @@ return {
 			},
 		},
 		fuzzy = {
-			implementation = 'prefer_rust_with_warning',
+			implementation = 'rust',
 		},
 		snippets = {
 			preset = 'default',
 		},
 		signature = {
-			enabled = false,
+			enabled = true,
 		},
 		keymap = {
 			preset = 'none',
+			['<c-y>'] = { 'accept' },
 			['<c-space>'] = { 'hide' },
-			['<c-y>'] = { 'select_and_accept' },
 			['<Up>'] = { 'select_prev' },
-			['<Down>'] = { 'select_next' },
-			['<Tab>'] = { 'snippet_forward', 'fallback' },
-			['<S-Tab>'] = { 'snippet_backward', 'fallback' },
 			['<c-n>'] = { 'select_next' },
 			['<c-p>'] = { 'select_prev' },
+			['<Down>'] = { 'select_next' },
 			['<c-b>'] = { 'scroll_documentation_up' },
 			['<c-f>'] = { 'scroll_documentation_down' },
-			['<c-e>'] = {
-				'show',
-				'show_documentation',
-				'hide_documentation',
-				'hide',
-			},
+			['<Tab>'] = { 'snippet_forward', 'fallback' },
+			['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+			['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
+			['<c-e>'] = { 'show', 'show_documentation', 'hide_documentation', 'hide' },
 		},
 	},
 	opts_extend = { 'sources.default' },
