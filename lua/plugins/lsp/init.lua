@@ -58,6 +58,7 @@ return {
 			local ensure_installed = {
 				-- lua
 				'stylua',
+				'selene', -- development linter
 				'luacheck',
 				-- web dev
 				'prettierd',
@@ -85,6 +86,8 @@ return {
 				-- c
 				'clang-format',
 				-- rust
+				-- language agnostic
+				'typos', -- code source spell checker
 			}
 
 			require('mason').setup({
