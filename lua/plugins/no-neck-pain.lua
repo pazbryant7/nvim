@@ -9,7 +9,7 @@ return {
 		autocmds = {
 			enableOnVimEnter = true,
 			enableOnTabEnter = true,
-			reloadOnColorSchemeChange = true,
+			reloadOnColorSchemeChange = false,
 			skipEnteringNoNeckPainBuffer = true,
 		},
 		mappings = {
