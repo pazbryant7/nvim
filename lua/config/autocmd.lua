@@ -213,18 +213,6 @@ autocmd('BufEnter', {
 	end,
 })
 
--- Obsidian toggle checkbox
-autocmd('User', {
-	pattern = 'ObsidianNoteEnter',
-	group = bryant_group,
-	callback = function(ev)
-		vim.keymap.set('n', '<m-t>', '<cmd>Obsidian toggle_checkbox<cr>', {
-			buffer = ev.buf,
-			desc = 'Toggle checkbox',
-		})
-	end,
-})
-
 -- Window title
 autocmd('BufEnter', {
 	desc = 'Set window title',
