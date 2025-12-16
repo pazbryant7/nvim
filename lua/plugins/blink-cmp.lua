@@ -73,7 +73,7 @@ return {
 			preset = 'default',
 		},
 		signature = {
-			enabled = true,
+			enabled = false,
 		},
 		keymap = {
 			preset = 'none',
@@ -87,7 +87,6 @@ return {
 			['<c-f>'] = { 'scroll_documentation_down' },
 			['<Tab>'] = { 'snippet_forward', 'fallback' },
 			['<S-Tab>'] = { 'snippet_backward', 'fallback' },
-			['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
 			['<c-e>'] = { 'show', 'show_documentation', 'hide_documentation', 'hide' },
 		},
 	},
