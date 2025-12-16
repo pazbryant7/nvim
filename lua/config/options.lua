@@ -39,7 +39,6 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.updatetime = 50
-opt.conceallevel = 0 -- show markdown/obsidian syntax
 o.title = true -- nice tmux/window title
 opt.shortmess:append('sI') -- no splash screen
 
