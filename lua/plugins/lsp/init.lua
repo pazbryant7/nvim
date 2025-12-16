@@ -57,16 +57,13 @@ return {
 					'gopls',
 					'gofumpt',
 					'goimports',
-					'golangci-lint',
 					-- python
 					'ruff',
 					'debugpy',
 					'basedpyright',
 					-- markdown
-					'markdownlint',
 					'markdown-oxide',
 					-- javascript
-					'eslint_d',
 					'js-debug-adapter',
 					'typescript-language-server',
 					-- toml
