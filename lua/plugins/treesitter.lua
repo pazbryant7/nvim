@@ -1,13 +1,10 @@
 return {
 	'nvim-treesitter/nvim-treesitter',
-	event = 'BufEnter',
+	event = 'BufReadPre',
 	build = ':TSUpdate',
 	branch = 'main',
-	opts = {
-		install_dir = vim.fn.stdpath('data') .. '/treesitter',
-	},
-	init = function()
-		local ensureInstalled = {
+	config = function()
+		local parsers = {
 			'go',
 			'lua',
 			'css',
@@ -25,47 +22,38 @@ return {
 			'comment',
 			'markdown',
 			'gitcommit',
-			'typescript',
 			'dockerfile',
+			'typescript',
 			'javascript',
 			'editorconfig',
 			'markdown_inline',
 		}
 
-		local avoid_indent_in = { 'markdown', 'bash', 'sh' }
-
 		if vim.fn.executable('tree-sitter') == 1 then
-			vim.defer_fn(function()
-				require('nvim-treesitter').install(ensureInstalled)
-			end, 1000)
-		else
-			vim.notify(
-				'`tree-sitter-cli` not found. Skipping auto-install of parsers.',
-				vim.log.levels.WARN,
-				{ title = 'Treesitter' }
-			)
+			require('nvim-treesitter').install(parsers)
 		end
 
 		vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 		vim.wo.foldmethod = 'expr'
 
-		local autocmd = vim.api.nvim_create_autocmd
+		local opts = {
+			no_indent = { 'bash', 'markdown', 'sh' },
+			no_highlight = { 'checkhealth', 'lazy', 'mason' },
+		}
 
-		autocmd('FileType', {
-			desc = 'Enable treesitter highlighting and indentation',
+		vim.api.nvim_create_autocmd('FileType', {
+			desc = 'Configure treesitter highlighting and indentation',
+			group = vim.api.nvim_create_augroup('TreesitterSetup', { clear = true }),
 			callback = function(ctx)
-				pcall(vim.treesitter.start, ctx.buf)
-				if not vim.list_contains(avoid_indent_in, ctx.match) then
+				local lang = vim.treesitter.language.get_lang(ctx.match) or ctx.match
+
+				if not vim.list_contains(opts.no_highlight, lang) then
+					pcall(vim.treesitter.start, ctx.buf, lang)
+				end
+
+				if not vim.list_contains(opts.no_indent, lang) then
 					vim.bo[ctx.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 				end
-			end,
-		})
-
-		autocmd({ 'ColorScheme', 'VimEnter' }, {
-			desc = 'Configure treesitter comment parser highlights',
-			callback = function()
-				vim.api.nvim_set_hl(0, '@lsp.type.comment', {})
-				vim.api.nvim_set_hl(0, '@comment.bold', { bold = true })
 			end,
 		})
 	end,
