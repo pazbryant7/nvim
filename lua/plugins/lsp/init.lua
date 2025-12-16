@@ -10,95 +10,87 @@ return {
 	},
 
 	{
-		'mason-org/mason-lspconfig.nvim',
-		opts = {
-			ensure_installed = {
-				'html',
-				'just',
-				'gopls',
-				'cssls',
-				'ts_ls',
-				'jsonls',
-				'bashls',
-				'lua_ls',
-				'yamlls',
-				'clangd',
-				'dockerls',
-				'basedpyright',
-				'markdown_oxide',
-				'emmet_language_server',
-			},
-			automatic_enable = {
-				exclude = { 'ts_ls', 'rust_analyzer' },
-			},
+		'neovim/nvim-lspconfig',
+		event = { 'BufReadPre', 'BufNewFile' },
+		dependencies = {
+			{ 'j-hui/fidget.nvim', opts = {} },
 		},
-		config = function(_, opts)
-			require('mason-lspconfig').setup(opts)
+		config = function()
 			require('plugins.lsp.setup').setup()
 			require('plugins.lsp.attach').on_attach()
 		end,
 	},
 
 	{
-		'neovim/nvim-lspconfig',
-		event = { 'BufReadPre', 'BufNewFile' },
-		dependencies = {
-			'williamboman/mason-lspconfig.nvim',
-			{ 'j-hui/fidget.nvim', opts = {} },
+		'mason-org/mason.nvim',
+		cmd = {
+			'Mason',
+			'MasonUpdate',
 		},
-	},
-
-	{
-		'williamboman/mason.nvim',
-		cmd = 'Mason',
-		dependencies = {
-			'WhoIsSethDaniel/mason-tool-installer.nvim',
+		opts = {
+			ui = {
+				border = 'single',
+			},
 		},
-		config = function()
-			local ensure_installed = {
-				-- lua
-				'stylua',
-				'selene', -- development linter
-				'luacheck',
-				-- web dev
-				'prettierd',
-				'prettier',
-				-- bash
-				'shfmt',
-				'shellcheck',
-				'shellharden',
-				-- golang
-				'gofumpt',
-				'goimports',
-				'golangci-lint',
-				-- python
-				'ruff',
-				'debugpy', -- dap
-				-- markdown
-				'alex',
-				'markdownlint',
-				'markdown-oxide',
-				-- javascript
-				'eslint_d',
-				'js-debug-adapter', -- dap
-				-- toml
-				'taplo',
-				-- c
-				'clang-format',
-				-- rust
-				-- language agnostic
-				'typos', -- code source spell checker
-			}
+		config = function(_, opts)
+			require('mason').setup(opts)
+			local mr = require('mason-registry')
 
-			require('mason').setup({
-				ui = {
-					border = 'single',
-				},
-			})
-
-			require('mason-tool-installer').setup({
-				ensure_installed = ensure_installed,
-			})
+			mr.refresh(function()
+				for _, tool in ipairs({
+					-- lua
+					'stylua',
+					'selene',
+					'luacheck',
+					'lua-language-server',
+					-- web dev
+					'prettier',
+					'prettierd',
+					-- docker
+					'docker-language-server',
+					-- bash
+					'shfmt',
+					'shellcheck',
+					'shellharden',
+					'bash-language-server',
+					-- golang
+					'gopls',
+					'gofumpt',
+					'goimports',
+					'golangci-lint',
+					-- python
+					'ruff',
+					'debugpy',
+					'basedpyright',
+					-- markdown
+					'markdownlint',
+					'markdown-oxide',
+					-- javascript
+					'eslint_d',
+					'js-debug-adapter',
+					'typescript-language-server',
+					-- toml
+					'taplo',
+					-- c
+					'clangd',
+					'clang-format',
+					-- language agnostic
+					'typos', -- code source spell checker
+				}) do
+					local p = mr.get_package(tool)
+					if not p:is_installed() then
+						p:install()
+					end
+				end
+			end)
 		end,
+		keys = {
+			{
+				'<leader>M',
+				mode = 'n',
+				'<cmd>Mason<CR>',
+				desc = 'Mason open',
+			},
+		},
 	},
 }

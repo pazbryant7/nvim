@@ -5,6 +5,21 @@ local function on_list(options)
 	vim.cmd.cfirst()
 end
 
+function M.diagnostic_goto(next, severity)
+	severity = severity and vim.diagnostic.severity[severity] or nil
+
+	local opts = { float = true, severity = severity }
+	if next then
+		opts.count = 1
+	else
+		opts.count = -1
+	end
+
+	return function()
+		vim.diagnostic.jump(opts)
+	end
+end
+
 function M.get_keymaps()
 	return {
 		{ 'grn', vim.lsp.buf.rename, desc = 'LSP Rename' },
@@ -56,21 +71,6 @@ function M.get_keymaps()
 			desc = 'LSP Hover',
 		},
 	}
-end
-
-function M.diagnostic_goto(next, severity)
-	severity = severity and vim.diagnostic.severity[severity] or nil
-
-	local opts = { float = true, severity = severity }
-	if next then
-		opts.count = 1
-	else
-		opts.count = -1
-	end
-
-	return function()
-		vim.diagnostic.jump(opts)
-	end
 end
 
 function M.on_attach(_, buffer)
