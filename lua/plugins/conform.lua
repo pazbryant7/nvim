@@ -64,7 +64,6 @@ return {
 			'<c-f>',
 			function()
 				local mode = vim.fn.mode()
-				vim.cmd(':w')
 				if mode == 'v' or mode == 'V' or mode == '\22' then
 					pcall(function()
 						require('conform').format({
@@ -79,6 +78,10 @@ return {
 					pcall(function()
 						require('conform').format({ lsp_format = 'fallback' })
 					end)
+
+					vim.notify('Code formatted', vim.log.levels.INFO, {
+						title = 'Conform neovim',
+					})
 				end
 			end,
 			mode = { 'n', 'v' },
