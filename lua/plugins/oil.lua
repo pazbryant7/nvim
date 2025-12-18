@@ -21,6 +21,8 @@ return {
 			['g\\'] = { 'actions.toggle_trash', mode = 'n' },
 		},
 		use_default_keymaps = false,
+		skip_confirm_for_simple_edits = true,
+		prompt_save_on_select_new_entry = false,
 	},
 	config = function(_, opts)
 		require('oil').setup(opts)
