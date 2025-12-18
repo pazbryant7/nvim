@@ -16,7 +16,7 @@ o.guicursor = '' -- always block cursor
 o.colorcolumn = '80'
 opt.cmdheight = 0
 opt.laststatus = 0 -- hide statusline
-opt.showmode = true -- still see mode when cmdheight=0
+opt.showmode = false
 opt.showtabline = 0
 opt.termguicolors = true
 
