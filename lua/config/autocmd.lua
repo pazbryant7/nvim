@@ -201,18 +201,6 @@ autocmd('FileType', {
 	end,
 })
 
--- FZF Lua UI select
-autocmd('BufEnter', {
-	desc = 'Register fzf-lua as default select.ui',
-	once = true,
-	group = bryant_group,
-	callback = function()
-		pcall(function()
-			require('fzf-lua').register_ui_select()
-		end)
-	end,
-})
-
 -- Window title
 autocmd('BufEnter', {
 	desc = 'Set window title',

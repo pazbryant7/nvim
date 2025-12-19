@@ -68,6 +68,13 @@ return {
 			live_grep = { hidden = false },
 		}
 	end,
+	config = function(_, opts)
+		require('fzf-lua').setup(opts)
+
+		pcall(function()
+			require('fzf-lua').register_ui_select()
+		end)
+	end,
 
 	keys = {
 		{
