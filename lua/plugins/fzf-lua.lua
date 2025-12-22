@@ -157,6 +157,8 @@ return {
 						'^zellner$',
 						'^retrobox$',
 						'^peachpuff$',
+						'^catppuccin$',
+						'^catppuccin%-latte$',
 					},
 				})
 			end,
