@@ -44,19 +44,15 @@ map('n', '<leader>Y', '"+Y', { desc = 'Yank line to clipboard' })
 map({ 'n', 'v' }, '<leader>d', '"_d', { desc = 'Delete (black-hole register)' })
 map('n', '<leader>D', '"_D', { desc = 'Delete line (black-hole register)' })
 
--- movement left and right
-map({ 'n', 'v', 'o' }, 'H', '^', { desc = 'Go To The Start Of The Line' })
-map({ 'n', 'v', 'o' }, 'L', 'g_', { desc = 'Go To The End Of The Line' })
-
 -- align manually
 map('v', '<', '<gv', { desc = 'Align Items To The Left' })
 map('v', '>', '>gv', { desc = 'Align Items To The Right' })
 
 -- custom rename
-map('n', '<leader>cr', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Custom Rename' })
+map('n', 'gcr', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Custom Rename' })
 
 -- print current path
-map('n', '<leader>cp', function()
+map('n', 'gcp', function()
 	vim.notify(vim.fn.expand('%:p'), vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Print Current Path' })
 
