@@ -1,11 +1,19 @@
 return {
 	'pmizio/typescript-tools.nvim',
-	ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-	dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+	ft = {
+		'javascript',
+		'javascriptreact',
+		'typescript',
+		'typescriptreact',
+	},
+	dependencies = {
+		'nvim-lua/plenary.nvim',
+		'neovim/nvim-lspconfig',
+	},
 	cmd = {
+		'TSToolsFixAll',
 		'TSToolsRenameFile',
 		'TSToolsFileReferences',
-		'TSToolsFixAll',
 		'TSToolsOrganizeImports',
 		'TSToolsAddMissingImports',
 	},
@@ -18,7 +26,7 @@ return {
 				capabilities = capabilities,
 			},
 			settings = {
-				complete_function_calls = true,
+				complete_function_calls = false,
 				expose_as_code_action = 'all',
 				separate_diagnostic_server = true,
 			},
