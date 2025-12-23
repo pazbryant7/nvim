@@ -62,4 +62,4 @@ if g.neovide then
 	g.neovide_cursor_vfx_mode = 'railgun'
 end
 
-vim.cmd('colorscheme lunaperche')
+vim.cmd('colorscheme evening')
