@@ -22,11 +22,14 @@ local function is_man_pager()
 	return false
 end
 
-local plugins = is_man_pager() and { {
-	import = 'plugins.no-neck-pain',
-} } or { {
-	import = 'plugins',
-}, { import = 'plugins.lsp.specifics' } }
+local plugins = { { import = 'plugins' } }
+
+if not is_man_pager() then
+	table.insert(plugins, { import = 'plugins.ui' })
+	table.insert(plugins, { import = 'plugins.lsp.specifics' })
+else
+	table.insert(plugins, { import = 'plugins.no-neck-pain' })
+end
 
 require('lazy').setup(plugins, {
 	defaults = { lazy = true },
