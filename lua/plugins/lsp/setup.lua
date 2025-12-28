@@ -60,6 +60,7 @@ function M.enable_lsp_servers()
 		'lua_ls',
 		'clangd',
 		'dockerls',
+		'superhtml',
 		'basedpyright',
 		'markdown_oxide',
 	})
