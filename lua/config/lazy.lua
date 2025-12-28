@@ -25,7 +25,6 @@ end
 local plugins = { { import = 'plugins' } }
 
 if not is_man_pager() then
-	table.insert(plugins, { import = 'plugins.ui' })
 	table.insert(plugins, { import = 'plugins.lsp.specifics' })
 else
 	table.insert(plugins, { import = 'plugins.no-neck-pain' })
