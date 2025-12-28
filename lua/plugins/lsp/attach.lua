@@ -71,7 +71,7 @@ function M.get_keymaps()
 			desc = 'LSP Hover',
 		},
 		{
-			'<c-space>',
+			'<c-n>',
 			function()
 				vim.diagnostic.open_float({ scope = 'line', border = 'single' })
 			end,
