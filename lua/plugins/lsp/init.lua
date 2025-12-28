@@ -46,6 +46,7 @@ return {
 					-- web dev
 					'prettier',
 					'prettierd',
+					'superhtml',
 					-- docker
 					'docker-language-server',
 					-- bash
