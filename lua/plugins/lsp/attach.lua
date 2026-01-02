@@ -70,13 +70,6 @@ function M.get_keymaps()
 			end,
 			desc = 'LSP Hover',
 		},
-		{
-			'<c-n>',
-			function()
-				vim.diagnostic.open_float({ scope = 'line', border = 'single' })
-			end,
-			desc = 'LSP Show Diagnostic under the line',
-		},
 	}
 end
 
