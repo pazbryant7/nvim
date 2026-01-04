@@ -44,7 +44,6 @@ return {
 			toml = { 'taplo' },
 			c = { 'clang-format' },
 			cpp = { 'clang-format' },
-			rust = { 'rustfmt' },
 		},
 
 		formatters = {
