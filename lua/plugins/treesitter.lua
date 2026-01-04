@@ -10,7 +10,6 @@ return {
 			'css',
 			'tsx',
 			'vim',
-			'rust',
 			'json',
 			'html',
 			'bash',
