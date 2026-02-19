@@ -69,6 +69,13 @@ return {
 		{
 			'<F5>',
 			function()
+				local ok, fzf = pcall(require, 'fzf-lua')
+				if ok then
+					local current = vim.ui.select
+					if not (current and tostring(current):find('fzf')) then
+						fzf.register_ui_select()
+					end
+				end
 				require('dap').continue()
 			end,
 			desc = 'Dap: Continue',
