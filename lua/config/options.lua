@@ -42,7 +42,6 @@ opt.updatetime = 50
 o.title = true -- nice tmux/window title
 opt.shortmess:append('sI') -- no splash screen
 
-opt.iskeyword:append('-') -- - is part of words
 o.spelloptions = 'camel' -- spellcheck camelCase properly
 
 opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
