@@ -6,6 +6,9 @@ local g = v.g
 g.mapleader = ' '
 g.maplocalleader = ' '
 
+-- disable match paren
+g.loaded_matchparen = 1
+
 g.netrw_banner = 0 -- hide top banner
 g.netrw_liststyle = 0 -- tree-view
 g.netrw_browse_split = 0
