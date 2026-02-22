@@ -1,12 +1,14 @@
 return {
 	'mfussenegger/nvim-dap',
 	dependencies = {
+		{ 'theHamsta/nvim-dap-virtual-text' },
 		{ 'rcarriga/nvim-dap-ui', dependencies = 'nvim-neotest/nvim-nio' },
 	},
 	config = function()
 		local dap = require('dap')
 		require('plugins.dap.ui').setup(dap)
 		require('plugins.dap.signs').setup()
+		require('nvim-dap-virtual-text').setup()
 
 		local function load_and_merge_modules(module_prefix)
 			local merged_table = {}
