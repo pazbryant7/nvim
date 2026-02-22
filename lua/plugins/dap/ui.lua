@@ -2,15 +2,58 @@ local M = {}
 
 function M.setup(dap)
 	local ok, dapui = pcall(require, 'dapui')
+
 	if not ok then
 		vim.notify('dapui not available', vim.log.levels.WARN)
 		return
 	end
 
-	dapui.setup() -- use default settings
+	local opts = {
+		layouts = {
+			{
+				elements = {
+
+					{
+						id = 'breakpoints',
+						size = 0.25,
+					},
+					{
+						id = 'scopes',
+						size = 0.25,
+					},
+					{
+						id = 'stacks',
+						size = 0.25,
+					},
+					{
+						id = 'watches',
+						size = 0.25,
+					},
+				},
+				position = 'left',
+				size = 40,
+			},
+			{
+				elements = {
+					{
+						id = 'repl',
+						size = 0.5,
+					},
+					{
+						id = 'console',
+						size = 0.5,
+					},
+				},
+				position = 'bottom',
+				size = 10,
+			},
+		},
+	}
+
+	dapui.setup(opts)
 
 	local open = function()
-		pcall(dapui.open)
+		pcall(dapui.open, { reset = true })
 	end
 	local close = function()
 		pcall(dapui.close)
