@@ -13,6 +13,7 @@ return {
 			'json',
 			'html',
 			'bash',
+			'http',
 			'yaml',
 			'regex',
 			'luadoc',
