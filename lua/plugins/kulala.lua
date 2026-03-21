@@ -7,21 +7,21 @@ return {
 			function()
 				require('kulala').run()
 			end,
-			desc = 'Send request',
+			desc = 'Kulala send request',
 		},
 		{
 			'<leader>Ra',
 			function()
 				require('kulala').run_all()
 			end,
-			desc = 'Send all requests',
+			desc = 'Kulala send all requests',
 		},
 		{
 			'<leader>Rb',
 			function()
 				require('kulala').replay()
 			end,
-			desc = 'Open scratchpad',
+			desc = 'Kulala open scratchpad',
 		},
 	},
 	opts = {
