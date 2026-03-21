@@ -38,7 +38,7 @@ return {
 					['ctrl-f'] = actions.toggle_follow,
 					['ctrl-h'] = actions.toggle_hidden,
 					['enter'] = actions.file_edit_or_qf,
-					['ctrl-q'] = {
+					['alt-q'] = {
 						fn = function(selected, opts)
 							opts.copen = false
 							actions.file_sel_to_qf(selected, opts)
