@@ -19,7 +19,7 @@ return {
 	},
 	keys = {
 		{
-			'<c-q>',
+			'<m-q>',
 			function()
 				require('quicker').toggle({ focus = true, min_height = 15 })
 			end,

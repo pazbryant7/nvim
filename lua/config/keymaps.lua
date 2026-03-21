@@ -10,6 +10,12 @@ map('n', '<c-c>', function()
 	vim.cmd('grep! ' .. vim.fn.expand('<cword>'))
 end)
 
+-- window navigation
+map('n', '<C-h>', '<C-w>h', { desc = 'Move Focus To Left Window' })
+map('n', '<C-j>', '<C-w>j', { desc = 'Move Focus To Lower Window' })
+map('n', '<C-k>', '<C-w>k', { desc = 'Move Focus To Upper Window' })
+map('n', '<C-l>', '<C-w>l', { desc = 'Move Focus To Right Window' })
+
 -- In Visual mode, moves the selected lines down and up by one line, then re-indents.
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move Selected Lines Down', silent = true })
 map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move Selected Lines Up', silent = true })
@@ -61,8 +67,8 @@ map('n', 'ZQ', ':q!<CR>', { desc = 'Quit Without Saving' })
 map('n', 'ZZ', ':wq<CR>', { desc = 'Save And Quit' })
 
 -- navigate quickfix list without "no more items" errors
-map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next Item' })
-map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous Item' })
+map('n', '<m-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next Item' })
+map('n', '<m-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous Item' })
 
 -- usercmd keybinds
 map('n', '<leader>ts', '<cmd>ToggleSpell<cr>', { desc = 'Toggle Spell' })
