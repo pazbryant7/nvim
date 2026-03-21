@@ -42,7 +42,15 @@ return {
 		{ 't', mode = { 'n', 'x', 'o' }, desc = 'Flash: forward till char' },
 		{ 'T', mode = { 'n', 'x', 'o' }, desc = 'Flash: backward till char' },
 		{
-			'gs',
+			's',
+			mode = { 'n', 'x', 'o' },
+			function()
+				require('flash').jump()
+			end,
+			desc = 'Flash',
+		},
+		{
+			'S',
 			mode = { 'n', 'x', 'o' },
 			function()
 				require('flash').treesitter()
