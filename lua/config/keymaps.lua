@@ -6,11 +6,12 @@ local map = v.keymap.set
 map('i', '<C-^>', '<Cmd>b#<CR>', { desc = 'Toggle Between Current And Last Buffer' })
 
 -- grep word under cursor
-map('n', '<c-c>', function()
+map('n', '<m-;>', function()
 	vim.cmd('grep! ' .. vim.fn.expand('<cword>'))
 end)
 
 -- window navigation
+map('n', '<C-c>', '<C-w>o', { desc = 'Close all windows but active' })
 map('n', '<C-h>', '<C-w>h', { desc = 'Move Focus To Left Window' })
 map('n', '<C-j>', '<C-w>j', { desc = 'Move Focus To Lower Window' })
 map('n', '<C-k>', '<C-w>k', { desc = 'Move Focus To Upper Window' })
@@ -76,7 +77,7 @@ map('n', '<leader>ts', '<cmd>ToggleSpell<cr>', { desc = 'Toggle Spell' })
 map('n', '<leader>td', '<cmd>ToggleDiagnostics<cr>', { desc = 'Toggle Diagnostics' })
 
 -- tmux open under cursor in new tmux pane
-map('n', '<leader>gf', '<cmd>GoToFileWithTumux<cr>', {
+map('n', '<leader>gf', '<cmd>GoToFileWithTmux<cr>', {
 	noremap = true,
 	silent = true,
 	desc = 'Open File Under Cursor In New Tmux Pane',
