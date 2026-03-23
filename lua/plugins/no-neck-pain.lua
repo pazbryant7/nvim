@@ -50,6 +50,24 @@ return {
 			},
 		},
 	},
+	config = function(_, opts)
+		require('no-neck-pain').setup(opts)
+
+		local autocmd = vim.api.nvim_create_autocmd
+
+		local filetypes = { 'json.kulala_ui' }
+
+		autocmd('FileType', {
+			pattern = filetypes,
+			callback = function()
+				vim.schedule(function()
+					if require('no-neck-pain').state.enabled then
+						vim.cmd('NoNeckPain')
+					end
+				end)
+			end,
+		})
+	end,
 	keys = {
 		{
 			'<m-l>',
