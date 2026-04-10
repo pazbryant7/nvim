@@ -3,19 +3,7 @@ local v = vim
 local map = v.keymap.set
 
 -- last buffer
-map('i', '<C-^>', '<Cmd>b#<CR>', { desc = 'Toggle Between Current And Last Buffer' })
-
--- grep word under cursor
-map('n', '<m-;>', function()
-	vim.cmd('grep! ' .. vim.fn.expand('<cword>'))
-end)
-
--- window navigation
-map('n', '<C-c>', '<C-w>o', { desc = 'Close all windows but active' })
-map('n', '<C-h>', '<C-w>h', { desc = 'Move Focus To Left Window' })
-map('n', '<C-j>', '<C-w>j', { desc = 'Move Focus To Lower Window' })
-map('n', '<C-k>', '<C-w>k', { desc = 'Move Focus To Upper Window' })
-map('n', '<C-l>', '<C-w>l', { desc = 'Move Focus To Right Window' })
+map('i', '<c-^>', '<Cmd>b#<CR>', { desc = 'Toggle Between Current And Last Buffer' })
 
 -- In Visual mode, moves the selected lines down and up by one line, then re-indents.
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move Selected Lines Down', silent = true })
@@ -24,17 +12,13 @@ map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move Selected Lines Up', silent = tr
 -- In Normal mode, joins the line below to the current line, but keeps the cursor in its original column.
 map('n', 'J', 'mzJ`z', { desc = 'Join Line Below (Preserve Cursor Position)' })
 
--- swap maps
-map({ 'n', 'v' }, ';', ':', { desc = 'Enter Command Mode' })
-map({ 'n', 'v' }, ':', ';', { desc = 'Repeat Last F/T/F/T Search' })
-
 -- Better neovim defaults
 map('n', 'n', 'nzzzv', { desc = 'Next Search Result And Center' })
 map('n', 'N', 'Nzzzv', { desc = 'Previous Search Result And Center' })
-map('n', '<C-u>', '<C-u>zz', { desc = 'Scroll Up And Re-Center View' })
-map('n', '<C-d>', '<C-d>zz', { desc = 'Scroll Down And Re-Center View' })
-map('n', '<C-i>', '<C-i>zz', { desc = 'Jump Forward To Next Position And Center' })
-map('n', '<C-o>', '<C-o>zz', { desc = 'Jump Back To Previous Position And Center' })
+map('n', '<c-u>', '<c-u>zz', { desc = 'Scroll Up And Re-Center View' })
+map('n', '<c-d>', '<c-d>zz', { desc = 'Scroll Down And Re-Center View' })
+map('n', '<c-i>', '<c-i>zz', { desc = 'Jump Forward To Next Position And Center' })
+map('n', '<c-o>', '<c-o>zz', { desc = 'Jump Back To Previous Position And Center' })
 
 --  No highlights
 map('n', '<Escape>', '<cmd>noh<CR>', { desc = 'No Search Highlights' })
@@ -56,7 +40,7 @@ map('v', '<', '<gv', { desc = 'Align Items To The Left' })
 map('v', '>', '>gv', { desc = 'Align Items To The Right' })
 
 -- custom rename
-map('n', 'gcr', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Custom Rename' })
+map('n', 'gcr', [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gI<Left><Left><Left>]], { desc = 'Custom Rename' })
 
 -- print current path
 map('n', 'gcp', function()
@@ -64,12 +48,12 @@ map('n', 'gcp', function()
 end, { desc = 'Print Current Path' })
 
 -- exit
-map('n', 'ZQ', ':q!<CR>', { desc = 'Quit Without Saving' })
-map('n', 'ZZ', ':wq<CR>', { desc = 'Save And Quit' })
+map('n', '<leader>q', ':q!<CR>', { desc = 'Quit Without Saving' })
+map('n', '<leader>Q', ':wq<CR>', { desc = 'Save And Quit' })
 
 -- navigate quickfix list without "no more items" errors
-map('n', '<m-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next Item' })
-map('n', '<m-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous Item' })
+map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next Item' })
+map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous Item' })
 
 -- usercmd keybinds
 map('n', '<leader>ts', '<cmd>ToggleSpell<cr>', { desc = 'Toggle Spell' })
