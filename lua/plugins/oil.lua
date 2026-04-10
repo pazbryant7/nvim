@@ -9,7 +9,7 @@ return {
 			['g?'] = { 'actions.show_help', mode = 'n' },
 			['<CR>'] = 'actions.select',
 			['q'] = { 'actions.close', mode = 'n' },
-			['<C-l>'] = 'actions.refresh',
+			['<c-l>'] = 'actions.refresh',
 			['-'] = { 'actions.parent', mode = 'n' },
 			['_'] = { 'actions.open_cwd', mode = 'n' },
 			['gs'] = { 'actions.change_sort', mode = 'n' },
