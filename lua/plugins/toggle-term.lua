@@ -4,16 +4,16 @@ return {
 	opts = {
 		size = 120,
 		direction = 'vertical',
-		open_mapping = [[<C-\\>]],
+		open_mapping = [[<c-\\>]],
 	},
 	config = function(_, opts)
 		require('toggleterm').setup(opts)
 
 		local function set_terminal_keymaps()
 			local map_opts = { buffer = 0 }
-			vim.keymap.set('t', '<C-l>', [[<C-l>]], map_opts)
-			vim.keymap.set('t', '<esc><esc>', [[<C-\><C-n>]], map_opts)
-			vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], map_opts)
+			vim.keymap.set('t', '<c-l>', [[<C-l>]], map_opts)
+			vim.keymap.set('t', '<esc><esc>', [[<c-\><c-n>]], map_opts)
+			vim.keymap.set('t', '<c-h>', [[<Cmd>wincmd h<CR>]], map_opts)
 		end
 
 		vim.api.nvim_create_autocmd('TermOpen', {
@@ -23,7 +23,7 @@ return {
 	end,
 	keys = {
 		{
-			'<C-\\>',
+			'<c-\\>',
 			mode = { 'n', 't' },
 			'<cmd>ToggleTerm<cr>',
 			desc = 'Toggle Terminal',
