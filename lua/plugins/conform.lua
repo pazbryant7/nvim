@@ -73,11 +73,12 @@ return {
 							},
 						})
 					end)
+					vim.cmd('write')
 				else
 					pcall(function()
 						require('conform').format({ lsp_format = 'fallback' })
 					end)
-
+					vim.cmd('write')
 					vim.notify('Code formatted', vim.log.levels.INFO, {
 						title = 'Conform neovim',
 					})
