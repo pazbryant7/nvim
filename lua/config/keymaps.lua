@@ -9,7 +9,11 @@ map('i', '<c-^>', '<Cmd>b#<CR>', { desc = 'Toggle Between Current And Last Buffe
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move Selected Lines Down', silent = true })
 map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move Selected Lines Up', silent = true })
 
--- In Normal mode, joins the line below to the current line, but keeps the cursor in its original column.
+-- swap maps
+map({ 'n', 'v' }, ';', ':', { desc = 'Enter Command Mode' })
+map({ 'n', 'v' }, ':', ';', { desc = 'Repeat Last F/T/F/T Search' })
+
+-- one line code
 map('n', 'J', 'mzJ`z', { desc = 'Join Line Below (Preserve Cursor Position)' })
 
 -- Better neovim defaults
