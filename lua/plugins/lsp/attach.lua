@@ -25,15 +25,27 @@ function M.get_keymaps()
 		{ 'grn', vim.lsp.buf.rename, desc = 'LSP Rename' },
 		{ 'grr', vim.lsp.buf.references, desc = 'LSP References' },
 		{ ']d', M.diagnostic_goto(true), desc = 'LSP Next Diagnostic' },
-		{ 'gD', vim.lsp.buf.declaration, desc = 'LSP Goto Declaration' },
 		{ '[d', M.diagnostic_goto(false), desc = 'LSP Prev Diagnostic' },
+		{ 'gD', vim.lsp.buf.declaration, desc = 'LSP Goto Declaration' },
 		{ ']e', M.diagnostic_goto(true, 'ERROR'), desc = 'LSP Next Error' },
 		{ '[e', M.diagnostic_goto(false, 'ERROR'), desc = 'LSP Prev Error' },
 		{ ']w', M.diagnostic_goto(true, 'WARN'), desc = 'LSP Next Warning' },
 		{ '[w', M.diagnostic_goto(false, 'WARN'), desc = 'LSP Prev Warning' },
 		{ 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
 		{ 'gt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
-		{ 'gra', vim.lsp.buf.code_action, desc = 'LSP Code Action', mode = { 'n', 'v' } },
+		{
+			'gra',
+			vim.lsp.buf.code_action,
+			desc = 'LSP Code Action',
+			mode = { 'n', 'v' },
+		},
+		{
+			'K',
+			function()
+				vim.lsp.buf.hover({ border = 'single' })
+			end,
+			desc = 'LSP Hover',
+		},
 		{
 			'gd',
 			function()
@@ -56,19 +68,20 @@ function M.get_keymaps()
 			desc = 'LSP Goto Declaration',
 		},
 		{
+			'<c-c>',
+			function()
+				vim.diagnostic.setqflist({ bufnr = 0, open = false })
+				vim.notify('Diagnostics populated in quick fix list', vim.log.levels.INFO, { title = 'Copen' })
+			end,
+			desc = 'Populate diagnostics in quick fix list',
+		},
+		{
 			'<c-s>',
 			function()
 				vim.lsp.buf.signature_help({ border = 'single' })
 			end,
 			desc = 'LSP Signature Help',
 			mode = { 'i', 'n' },
-		},
-		{
-			'K',
-			function()
-				vim.lsp.buf.hover({ border = 'single' })
-			end,
-			desc = 'LSP Hover',
 		},
 	}
 end
