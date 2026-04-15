@@ -4,6 +4,9 @@ return {
 	---@module "quicker"
 	---@type quicker.SetupOptions
 	opts = {
+		opts = {
+			buflisted = false,
+		},
 		keys = {
 			{
 				'<',
@@ -17,6 +20,9 @@ return {
 			},
 		},
 	},
+	config = function(_, opts)
+		require('quicker').setup(opts)
+	end,
 	keys = {
 		{
 			'<c-q>',
