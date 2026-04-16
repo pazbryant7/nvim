@@ -95,11 +95,15 @@ return {
 			'<m-c>',
 			function()
 				require('fzf-lua').files({
-					prompt = 'cd> ',
-					cmd = 'fd --type d --hidden --exclude .git',
+					cmd = 'fd --type d',
+					actions = {
+						['default'] = function(selected)
+							require('oil').open(selected[1])
+						end,
+					},
 				})
 			end,
-			desc = 'FzfLua Files',
+			desc = 'FzfLua Directories',
 		},
 		{
 			'<leader>b',
