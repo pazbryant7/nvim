@@ -2,9 +2,10 @@ return {
 	'stevearc/oil.nvim',
 	cmd = 'Oil',
 	lazy = false,
-	---@module 'oil'
-	---@type oil.SetupOpts
+	priority = 1000,
 	opts = {
+		default_file_explorer = true,
+
 		keymaps = {
 			['g?'] = { 'actions.show_help', mode = 'n' },
 			['<CR>'] = 'actions.select',
