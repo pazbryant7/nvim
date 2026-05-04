@@ -119,7 +119,9 @@ return {
 			end
 		end
 
+		vim.api.nvim_set_hl(0, 'SnippetTabstop', {})
 		vim.api.nvim_set_hl(0, 'SnippetTabstopActive', {})
+		vim.api.nvim_set_hl(0, 'BlinkCmpKindSnippet', {})
 
 		vim.keymap.set('n', '\\\\', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp Completion' })
 	end,
