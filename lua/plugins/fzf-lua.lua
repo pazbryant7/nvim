@@ -1,7 +1,16 @@
 return {
 	'ibhagwan/fzf-lua',
+	cmd = { 'FzfLua' },
+
 	opts = function()
 		local actions = require('fzf-lua.actions')
+
+		local chafa_formats = { 'png', 'jpg', 'jpeg', 'gif', 'webp', 'svg' }
+
+		local chafa_extensions = {}
+		for _, ext in ipairs(chafa_formats) do
+			chafa_extensions[ext] = { 'chafa', '{file}' }
+		end
 
 		return {
 			winopts = {
@@ -28,16 +37,17 @@ return {
 					['ctrl-e'] = 'end-of-line',
 				},
 			},
+
 			actions = {
 				files = {
 					false,
+					['enter'] = actions.file_edit_or_qf,
 					['ctrl-s'] = actions.file_split,
 					['ctrl-v'] = actions.file_vsplit,
 					['ctrl-t'] = actions.file_tabedit,
 					['ctrl-i'] = actions.toggle_ignore,
 					['ctrl-f'] = actions.toggle_follow,
 					['ctrl-h'] = actions.toggle_hidden,
-					['enter'] = actions.file_edit_or_qf,
 					['ctrl-q'] = {
 						fn = function(selected, opts)
 							opts.copen = false
@@ -47,110 +57,54 @@ return {
 					},
 				},
 			},
+
 			previewers = {
-				builtin = {
-					extensions = {
-						['png'] = { 'chafa', '{file}' },
-						['jpg'] = { 'chafa', '{file}' },
-						['jpeg'] = { 'chafa', '{file}' },
-						['gif'] = { 'chafa', '{file}' },
-						['webp'] = { 'chafa', '{file}' },
-						['svg'] = { 'chafa', '{file}' },
-					},
-				},
+				builtin = { extensions = chafa_extensions },
 			},
-			files = {
-				hidden = false,
-			},
-			grep = {
-				hidden = false,
-			},
+
+			files = { hidden = false },
+			grep = { hidden = false },
 			live_grep = { hidden = false },
 		}
 	end,
-	config = function(_, opts)
-		require('fzf-lua').setup(opts)
 
-		pcall(function()
-			require('fzf-lua').register_ui_select()
-		end)
+	config = function(_, opts)
+		local fzf = require('fzf-lua')
+		fzf.setup(opts)
+		pcall(fzf.register_ui_select)
 	end,
 
-	keys = {
-		{
-			'<c-p>',
-			function()
-				require('fzf-lua').files()
-			end,
-			desc = 'FzfLua Files',
-		},
-		{
-			'<leader>ht',
-			function()
-				require('fzf-lua').help_tags()
-			end,
-			desc = 'FzfLua Help Tags',
-		},
-		{
-			'<m-c>',
-			function()
-				require('fzf-lua').files({
+	keys = (function()
+		local function fzf(method, picker_opts)
+			return function()
+				require('fzf-lua')[method](picker_opts)
+			end
+		end
+
+		return {
+			{ '<c-p>', fzf('files'), desc = 'Files' },
+			{ '<leader>k', fzf('keymaps'), desc = 'Keymaps' },
+			{ '<leader>b', fzf('buffers'), desc = 'Buffers' },
+			{ '<leader>ht', fzf('help_tags'), desc = 'Help Tags' },
+			{ '<c-t>', fzf('live_grep_native'), desc = 'Live Grep' },
+			{ 'z=', fzf('spell_suggest'), desc = 'Spell Suggestions' },
+			{ '<leader>wt', fzf('git_worktrees'), desc = 'Git Worktrees' },
+			{ '<m-p>', fzf('files', { cwd = vim.fn.expand('%:p:h') }), desc = 'Files (cwd of current file)' },
+			{
+				'<m-c>',
+				fzf('files', {
 					cmd = 'fd --type d',
 					actions = {
 						['default'] = function(selected)
 							require('oil').open(selected[1])
 						end,
 					},
-				})
-			end,
-			desc = 'FzfLua Directories',
-		},
-		{
-			'<leader>b',
-			function()
-				require('fzf-lua').buffers()
-			end,
-			desc = 'FzfLua buffers',
-		},
-		{
-			'<leader>k',
-			function()
-				require('fzf-lua').keymaps()
-			end,
-			desc = 'FzfLua Show Key Maps',
-		},
-		{
-			'<c-t>',
-			function()
-				require('fzf-lua').live_grep_native()
-			end,
-			desc = 'FzfLua Live Grep',
-		},
-		{
-			'z=',
-			function()
-				require('fzf-lua').spell_suggest()
-			end,
-			desc = 'FzfLua Spell Suggestions',
-		},
-		{
-			'<leader>wt',
-			function()
-				require('fzf-lua').git_worktrees()
-			end,
-			desc = 'FzfLua WorkTrees',
-		},
-		{
-			'<m-p>',
-			function()
-				require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })
-			end,
-			desc = "FzfLua Files from Current File's Directory",
-		},
-		{
-			'<leader>th',
-			function()
-				require('fzf-lua').colorschemes({
+				}),
+				desc = 'Directories',
+			},
+			{
+				'<leader>th',
+				fzf('colorschemes', {
 					ignore_patterns = {
 						'^ron$',
 						'^vim$',
@@ -179,9 +133,9 @@ return {
 						'^lunaperche$',
 						'^catppuccin%-latte$',
 					},
-				})
-			end,
-			desc = 'FzfLua Switch Colorschemes',
-		},
-	},
+				}),
+				desc = 'Colorschemes',
+			},
+		}
+	end)(),
 }
