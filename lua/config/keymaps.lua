@@ -47,7 +47,7 @@ map('v', '>', '>gv', { desc = 'Align Items To The Right' })
 map('n', 'gcr', [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gI<Left><Left><Left>]], { desc = 'Custom Rename' })
 
 -- print current path
-map('n', 'gcp', function()
+map('n', '<leader>cp', function()
 	vim.notify(vim.fn.expand('%:p'), vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Print Current Path' })
 
