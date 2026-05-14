@@ -44,7 +44,8 @@ return {
 					'prettierd',
 					'superhtml',
 					-- docker
-					'docker-language-server',
+					'dockerfile-language-server',
+					'docker-compose-language-service',
 					-- bash
 					'shfmt',
 					'shellcheck',
