@@ -73,9 +73,13 @@ autocmd('RecordingEnter', {
 	group = bryant_group,
 	callback = function()
 		vim.opt.cmdheight = 1
-		vim.notify(string.format('key: %s', vim.fn.reg_recording()), vim.log.levels.INFO, {
-			title = 'Neovim Alert',
-		})
+		vim.notify(
+			string.format('key: %s', vim.fn.reg_recording()),
+			vim.log.levels.INFO,
+			{
+				title = 'Neovim Alert',
+			}
+		)
 	end,
 })
 
@@ -145,7 +149,11 @@ autocmd('BufHidden', {
 	group = bryant_group,
 	desc = 'Remove unnamed buffers',
 	callback = function(event)
-		if event.file == '' and vim.bo[event.buf].buftype == '' and not vim.bo[event.buf].modified then
+		if
+			event.file == ''
+			and vim.bo[event.buf].buftype == ''
+			and not vim.bo[event.buf].modified
+		then
 			vim.schedule(function()
 				pcall(api.nvim_buf_delete, event.buf, {})
 			end)

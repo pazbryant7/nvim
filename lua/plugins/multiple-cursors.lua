@@ -65,8 +65,16 @@ return {
 		{ '<leader>A', mode = 'n', desc = 'Multicursor: add all matches' },
 		{ '<Down>', mode = { 'n', 'x' }, desc = 'Multicursor: add cursor below' },
 		{ '<Up>', mode = { 'n', 'x' }, desc = 'Multicursor: add cursor above' },
-		{ '<leader><Down>', mode = { 'n', 'x' }, desc = 'Multicursor: skip cursor below' },
-		{ '<leader><Up>', mode = { 'n', 'x' }, desc = 'Multicursor: skip cursor above' },
+		{
+			'<leader><Down>',
+			mode = { 'n', 'x' },
+			desc = 'Multicursor: skip cursor below',
+		},
+		{
+			'<leader><Up>',
+			mode = { 'n', 'x' },
+			desc = 'Multicursor: skip cursor above',
+		},
 		{ 'q', mode = 'x', desc = 'Multicursor: skip next match' },
 		{ 'Q', mode = 'x', desc = 'Multicursor: remove cursor' },
 		{ 'I', mode = 'x', desc = 'Multicursor: visual insert' },
