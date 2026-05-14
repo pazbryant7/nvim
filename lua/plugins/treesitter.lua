@@ -53,7 +53,8 @@ return {
 				end
 
 				if not vim.list_contains(opts.no_indent, lang) then
-					vim.bo[ctx.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					vim.bo[ctx.buf].indentexpr =
+						"v:lua.require'nvim-treesitter'.indentexpr()"
 				end
 			end,
 		})
