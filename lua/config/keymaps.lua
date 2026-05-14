@@ -64,6 +64,9 @@ map('n', '<leader>ts', '<cmd>ToggleSpell<cr>', { desc = 'Toggle Spell' })
 
 map('n', '<leader>td', '<cmd>ToggleDiagnostics<cr>', { desc = 'Toggle Diagnostics' })
 
+-- lsp info
+map('n', '<leader>li', '<cmd>checkhealth vim.lsp<cr>', { desc = 'Lsp Info' })
+
 -- tmux open under cursor in new tmux pane
 map('n', '<leader>gf', '<cmd>GoToFileWithTmux<cr>', {
 	noremap = true,
