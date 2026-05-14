@@ -71,7 +71,11 @@ function M.get_keymaps()
 			'<c-c>',
 			function()
 				vim.diagnostic.setqflist({ bufnr = 0, open = false })
-				vim.notify('Diagnostics populated in quick fix list', vim.log.levels.INFO, { title = 'Copen' })
+				vim.notify(
+					'Diagnostics populated in quick fix list',
+					vim.log.levels.INFO,
+					{ title = 'Copen' }
+				)
 			end,
 			desc = 'Populate diagnostics in quick fix list',
 		},
