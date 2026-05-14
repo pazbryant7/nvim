@@ -34,7 +34,11 @@ return {
 			'<c-y>',
 			function()
 				require('harpoon'):list():add()
-				vim.notify('file added to harpoon', vim.log.levels.INFO, { title = 'Harpoon' })
+				vim.notify(
+					'file added to harpoon',
+					vim.log.levels.INFO,
+					{ title = 'Harpoon' }
+				)
 			end,
 			desc = 'Harpoon add',
 		},

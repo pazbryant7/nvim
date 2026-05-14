@@ -89,7 +89,11 @@ return {
 			{ '<c-t>', fzf('live_grep_native'), desc = 'Live Grep' },
 			{ 'z=', fzf('spell_suggest'), desc = 'Spell Suggestions' },
 			{ '<leader>wt', fzf('git_worktrees'), desc = 'Git Worktrees' },
-			{ '<m-p>', fzf('files', { cwd = vim.fn.expand('%:p:h') }), desc = 'Files (cwd of current file)' },
+			{
+				'<m-p>',
+				fzf('files', { cwd = vim.fn.expand('%:p:h') }),
+				desc = 'Files (cwd of current file)',
+			},
 			{
 				'<m-c>',
 				fzf('files', {

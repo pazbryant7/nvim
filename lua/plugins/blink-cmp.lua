@@ -54,7 +54,8 @@ return {
 				lsp = {
 					transform_items = function(_, items)
 						local wanted = {}
-						local SnippetKind = require('blink.cmp.types').CompletionItemKind.Snippet
+						local SnippetKind =
+							require('blink.cmp.types').CompletionItemKind.Snippet
 
 						for _, item in ipairs(items) do
 							if item.kind ~= SnippetKind then
@@ -125,6 +126,11 @@ return {
 		vim.api.nvim_set_hl(0, 'BlinkCmpSnippetActive', {})
 		vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpActiveParameter', {})
 
-		vim.keymap.set('n', '\\\\', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp Completion' })
+		vim.keymap.set(
+			'n',
+			'\\\\',
+			ToggleAutoCompletion,
+			{ desc = 'Toggle Blink Cmp Completion' }
+		)
 	end,
 }
