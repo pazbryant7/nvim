@@ -72,7 +72,12 @@ function M.get_capabilities()
 		},
 	}
 	local blink_capabilities = require('blink.cmp').get_lsp_capabilities()
-	return vim.tbl_deep_extend('force', {}, blink_capabilities, custom_capabilities)
+	return vim.tbl_deep_extend(
+		'force',
+		{},
+		blink_capabilities,
+		custom_capabilities
+	)
 end
 
 function M.setup_capabilities()
