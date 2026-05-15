@@ -68,18 +68,6 @@ function M.get_keymaps()
 			desc = 'LSP Goto Declaration',
 		},
 		{
-			'<c-c>',
-			function()
-				vim.diagnostic.setqflist({ bufnr = 0, open = false })
-				vim.notify(
-					'Diagnostics populated in quick fix list',
-					vim.log.levels.INFO,
-					{ title = 'Copen' }
-				)
-			end,
-			desc = 'Populate diagnostics in quick fix list',
-		},
-		{
 			'<c-s>',
 			function()
 				vim.lsp.buf.signature_help({ border = 'single' })
