@@ -120,12 +120,6 @@ return {
 			end
 		end
 
-		vim.api.nvim_set_hl(0, 'SnippetTabstop', {})
-		vim.api.nvim_set_hl(0, 'BlinkCmpKindSnippet', {})
-		vim.api.nvim_set_hl(0, 'SnippetTabstopActive', {})
-		vim.api.nvim_set_hl(0, 'BlinkCmpSnippetActive', {})
-		vim.api.nvim_set_hl(0, 'BlinkCmpSignatureHelpActiveParameter', {})
-
 		vim.keymap.set(
 			'n',
 			'\\\\',
