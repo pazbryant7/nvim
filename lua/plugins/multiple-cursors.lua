@@ -45,8 +45,6 @@ return {
 					mc.enableCursors()
 				elseif mc.hasCursors() then
 					mc.clearCursors()
-				else
-					vim.cmd('noh')
 				end
 			end)
 		end)
