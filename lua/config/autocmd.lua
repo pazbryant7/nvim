@@ -219,3 +219,16 @@ autocmd('BufEnter', {
 		vim.o.titlestring = vim.fn.expand('%:t')
 	end,
 })
+
+-- enable docker compose lsp server
+autocmd({ 'BufEnter', 'BufWinEnter' }, {
+	pattern = {
+		'compose*.yml',
+		'compose*.yaml',
+		'docker-compose*.yml',
+		'docker-compose*.yaml',
+	},
+	callback = function()
+		vim.bo.filetype = 'yaml.docker-compose'
+	end,
+})
