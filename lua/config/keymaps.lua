@@ -50,7 +50,12 @@ map(
 )
 
 --  No highlights
-map('n', '<Escape>', '<cmd>noh<CR>', { desc = 'No Search Highlights' })
+map(
+	{ 'v', 'x', 'n' },
+	'<Escape>',
+	'<cmd>noh<CR>',
+	{ desc = 'No Search Highlights' }
+)
 
 -- paste without overwriting registers
 map({ 'n', 'v' }, '<leader>p', '"0p', { desc = 'Paste (keep registers)' })
