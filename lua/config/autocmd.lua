@@ -232,3 +232,17 @@ autocmd({ 'BufEnter', 'BufWinEnter' }, {
 		vim.bo.filetype = 'yaml.docker-compose'
 	end,
 })
+
+-- disable snippets highlight
+autocmd({ 'BufEnter', 'BufWinEnter', 'ColorScheme' }, {
+	desc = 'Disalbe snippets highlight colors',
+	callback = function()
+		local set_hl = api.nvim_set_hl
+		local opts = { link = 'NONE' }
+		set_hl(0, 'SnippetTabstop', opts)
+		set_hl(0, 'BlinkCmpKindSnippet', opts)
+		set_hl(0, 'SnippetTabstopActive', opts)
+		set_hl(0, 'BlinkCmpSnippetActive', opts)
+		set_hl(0, 'BlinkCmpSignatureHelpActiveParameter', opts)
+	end,
+})
