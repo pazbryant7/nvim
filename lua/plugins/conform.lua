@@ -12,39 +12,40 @@ return {
 
 			-- JavaScript
 			javascript = { 'prettierd' },
-			javascriptreact = { 'prettierd' },
 			typescript = { 'prettierd' },
+			javascriptreact = { 'prettierd' },
 			typescriptreact = { 'prettierd' },
 
 			-- Web stuff
 			css = { 'prettierd' },
-			scss = { 'prettierd' },
-			less = { 'prettierd' },
-			html = { 'prettierd' },
 			vue = { 'prettierd' },
+			html = { 'prettierd' },
+			less = { 'prettierd' },
+			scss = { 'prettierd' },
 			astro = { 'prettierd' },
 
 			-- Data / config → all supported
+			mdx = { 'prettierd' },
+			yaml = { 'prettierd' },
 			json = { 'prettierd' },
 			jsonc = { 'prettierd' },
-			yaml = { 'prettierd' },
 			graphql = { 'prettierd' },
 			markdown = { 'prettierd' },
-			mdx = { 'prettierd' },
 
 			-- Shell
 			sh = { 'shfmt' },
-			bash = { 'shfmt' },
 			zsh = { 'shfmt' },
+			bash = { 'shfmt' },
 			fish = { 'fish_indent' },
 
 			-- Others
-			go = { 'gofumpt', 'goimports' },
-			python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format' },
+			just = { 'just' },
 			toml = { 'taplo' },
+			rust = { 'rustfmt' },
 			c = { 'clang-format' },
 			cpp = { 'clang-format' },
-			rust = { 'rustfmt' },
+			go = { 'gofumpt', 'goimports' },
+			python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format' },
 		},
 
 		formatters = {
