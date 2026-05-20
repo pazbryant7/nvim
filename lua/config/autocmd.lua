@@ -1,8 +1,11 @@
 local api = vim.api
+local set_hl = api.nvim_set_hl
 local autocmd = api.nvim_create_autocmd
 local augroup = api.nvim_create_augroup
 
 local bryant_group = augroup('bryant_group', { clear = true })
+local dreyer_group =
+	vim.api.nvim_create_augroup('DreyerWarnings', { clear = true })
 
 -- Highlight on yank
 autocmd('TextYankPost', {
@@ -244,5 +247,41 @@ autocmd({ 'BufEnter', 'BufWinEnter', 'ColorScheme' }, {
 		set_hl(0, 'SnippetTabstopActive', opts)
 		set_hl(0, 'BlinkCmpSnippetActive', opts)
 		set_hl(0, 'BlinkCmpSignatureHelpActiveParameter', opts)
+	end,
+})
+
+-- avoid using weak/filler words in English by Derye's
+local dreyer_words = {
+	'very',
+	'rather',
+	'really',
+	'quite',
+	'just',
+	'so',
+	'pretty',
+	'actually',
+	'in fact',
+	'of course',
+	'surely',
+	'that said',
+}
+
+set_hl(0, 'DreyerWarning', {
+	fg = '#ebae34',
+	undercurl = true,
+	sp = '#ebae34',
+})
+
+local dreyer_pattern = [[\v<(]] .. table.concat(dreyer_words, '|') .. [[)>]]
+autocmd({ 'FileType' }, {
+	desc = "Avoid using weak/filler words in English prose (Dreyer's English)",
+	group = dreyer_group,
+	pattern = { 'markdown', 'text', 'gitcommit' },
+	callback = function(ev)
+		if vim.b[ev.buf].dreyer_match_added then
+			return
+		end
+		vim.fn.matchadd('DreyerWarning', dreyer_pattern)
+		vim.b[ev.buf].dreyer_match_added = true
 	end,
 })
