@@ -49,7 +49,9 @@ opt.updatetime = 50
 o.title = true -- nice tmux/window title
 opt.shortmess:append('sI') -- no splash screen
 
+opt.spell = false
 o.spelloptions = 'camel' -- spellcheck camelCase properly
+opt.spelllang = { 'en_us', 'es' }
 
 opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
 opt.grepformat = '%f:%l:%c:%m'
