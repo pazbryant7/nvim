@@ -54,8 +54,7 @@ return {
 				lsp = {
 					transform_items = function(_, items)
 						local wanted = {}
-						local SnippetKind =
-							require('blink.cmp.types').CompletionItemKind.Snippet
+						local SnippetKind = require('blink.cmp.types').CompletionItemKind.Snippet
 
 						for _, item in ipairs(items) do
 							if item.kind ~= SnippetKind then
@@ -120,11 +119,6 @@ return {
 			end
 		end
 
-		vim.keymap.set(
-			'n',
-			'\\\\',
-			ToggleAutoCompletion,
-			{ desc = 'Toggle Blink Cmp Completion' }
-		)
+		vim.keymap.set('n', '\\\\', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp Completion' })
 	end,
 }
