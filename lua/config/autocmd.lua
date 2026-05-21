@@ -4,8 +4,7 @@ local autocmd = api.nvim_create_autocmd
 local augroup = api.nvim_create_augroup
 
 local bryant_group = augroup('bryant_group', { clear = true })
-local dreyer_group =
-	vim.api.nvim_create_augroup('DreyerWarnings', { clear = true })
+local dreyer_group = vim.api.nvim_create_augroup('DreyerWarnings', { clear = true })
 
 -- Highlight on yank
 autocmd('TextYankPost', {
@@ -76,13 +75,9 @@ autocmd('RecordingEnter', {
 	group = bryant_group,
 	callback = function()
 		vim.opt.cmdheight = 1
-		vim.notify(
-			string.format('key: %s', vim.fn.reg_recording()),
-			vim.log.levels.INFO,
-			{
-				title = 'Neovim Alert',
-			}
-		)
+		vim.notify(string.format('key: %s', vim.fn.reg_recording()), vim.log.levels.INFO, {
+			title = 'Neovim Alert',
+		})
 	end,
 })
 
@@ -152,11 +147,7 @@ autocmd('BufHidden', {
 	group = bryant_group,
 	desc = 'Remove unnamed buffers',
 	callback = function(event)
-		if
-			event.file == ''
-			and vim.bo[event.buf].buftype == ''
-			and not vim.bo[event.buf].modified
-		then
+		if event.file == '' and vim.bo[event.buf].buftype == '' and not vim.bo[event.buf].modified then
 			vim.schedule(function()
 				pcall(api.nvim_buf_delete, event.buf, {})
 			end)
