@@ -24,14 +24,14 @@ return {
 			desc = 'Harpoon previous harpoon',
 		},
 		{
-			'<c-e>',
+			'<leader>e',
 			function()
 				require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())
 			end,
 			desc = 'Harpoon toggle quick menu',
 		},
 		{
-			'<c-y>',
+			'<leader>a',
 			function()
 				require('harpoon'):list():add()
 				vim.notify(
