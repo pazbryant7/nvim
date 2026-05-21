@@ -20,7 +20,7 @@ g.netrw_browse_split = 0
 opt.clipboard = 'unnamedplus' -- system clipboard
 
 o.guicursor = '' -- always block cursor
-o.colorcolumn = '80'
+vim.o.colorcolumn = '80,120'
 opt.cmdheight = 0
 opt.laststatus = 0 -- hide statusline
 opt.showmode = false
