@@ -68,12 +68,12 @@ function M.get_keymaps()
 			desc = 'LSP Goto Declaration',
 		},
 		{
-			'<c-s>',
+			'<c-k>',
 			function()
 				vim.lsp.buf.signature_help({ border = 'single' })
 			end,
 			desc = 'LSP Signature Help',
-			mode = { 'i', 'n' },
+			mode = { 'i' },
 		},
 	}
 end
