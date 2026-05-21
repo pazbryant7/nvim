@@ -5,4 +5,5 @@ if vim.bo.ft ~= 'markdown' then
 end
 
 o.wrap = true
+o.spell = true
 o.textwidth = 80
