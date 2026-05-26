@@ -1,12 +1,12 @@
 local api = vim.api
+local lsp = vim.lsp
 local set_hl = api.nvim_set_hl
 local autocmd = api.nvim_create_autocmd
 local augroup = api.nvim_create_augroup
 
 local bryant_group = augroup('bryant_group', { clear = true })
-local dreyer_group = vim.api.nvim_create_augroup('DreyerWarnings', { clear = true })
+local dreyer_group = api.nvim_create_augroup('DreyerWarnings', { clear = true })
 
--- Highlight on yank
 autocmd('TextYankPost', {
 	desc = 'Highlight when yanking (copying) text',
 	group = bryant_group,
@@ -15,7 +15,6 @@ autocmd('TextYankPost', {
 	end,
 })
 
--- Cursorline management
 autocmd({ 'WinEnter', 'BufEnter', 'InsertLeave' }, {
 	desc = 'Enable cursorline',
 	group = bryant_group,
@@ -32,7 +31,6 @@ autocmd({ 'WinLeave', 'BufLeave', 'InsertEnter' }, {
 	end,
 })
 
--- Go to last location when opening a buffer
 autocmd('BufReadPost', {
 	desc = 'Go to last loc when opening a buffer',
 	group = bryant_group,
@@ -45,7 +43,6 @@ autocmd('BufReadPost', {
 	end,
 })
 
--- Ignore diagnostics in node_modules
 autocmd({ 'BufNewFile', 'BufRead' }, {
 	desc = 'Ignore diagnostics in node_modules',
 	group = bryant_group,
@@ -55,21 +52,18 @@ autocmd({ 'BufNewFile', 'BufRead' }, {
 	end,
 })
 
--- General FileType settings
 autocmd('FileType', {
 	desc = 'Disable auto-comment',
 	group = bryant_group,
 	command = 'set formatoptions-=o',
 })
 
--- Terminal settings
 autocmd('TermOpen', {
 	desc = 'Remove columns in terminal',
 	group = bryant_group,
 	command = 'setlocal signcolumn=no',
 })
 
--- Recording notifications
 autocmd('RecordingEnter', {
 	desc = 'Notify when starting macro',
 	group = bryant_group,
@@ -90,7 +84,6 @@ autocmd('RecordingLeave', {
 	end,
 })
 
--- Windows closeable with 'q'
 local close_with_q_filetypes = {
 	'qf',
 	'man',
@@ -142,7 +135,6 @@ autocmd('FileType', {
 	end,
 })
 
--- Remove unnamed buffers
 autocmd('BufHidden', {
 	group = bryant_group,
 	desc = 'Remove unnamed buffers',
@@ -155,7 +147,6 @@ autocmd('BufHidden', {
 	end,
 })
 
--- Wrap lines in nofile buffers
 autocmd('BufEnter', {
 	desc = 'Wrap lines in no file type',
 	group = bryant_group,
@@ -167,7 +158,6 @@ autocmd('BufEnter', {
 	end,
 })
 
--- Intelligent relative number
 autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'WinEnter' }, {
 	group = bryant_group,
 	desc = 'Enable relative number',
@@ -188,14 +178,12 @@ autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave' }, {
 	end,
 })
 
--- Remove trailing whitespace on save
 autocmd('BufWritePre', {
 	group = bryant_group,
 	desc = 'Remove all trailing whitespace on save',
 	command = [[:%s/\s\+$//e]],
 })
 
--- EditorConfig syntax
 autocmd('FileType', {
 	desc = 'Enable editorconfig syntax',
 	group = bryant_group,
@@ -205,7 +193,6 @@ autocmd('FileType', {
 	end,
 })
 
--- Window title
 autocmd('BufEnter', {
 	desc = 'Set window title',
 	group = bryant_group,
@@ -214,7 +201,6 @@ autocmd('BufEnter', {
 	end,
 })
 
--- enable docker compose lsp server
 autocmd({ 'BufEnter', 'BufWinEnter' }, {
 	pattern = {
 		'compose*.yml',
@@ -227,11 +213,9 @@ autocmd({ 'BufEnter', 'BufWinEnter' }, {
 	end,
 })
 
--- disable snippets highlight
 autocmd({ 'BufEnter', 'BufWinEnter', 'ColorScheme' }, {
 	desc = 'Disalbe snippets highlight colors',
 	callback = function()
-		local set_hl = api.nvim_set_hl
 		local opts = { link = 'NONE' }
 		set_hl(0, 'SnippetTabstop', opts)
 		set_hl(0, 'BlinkCmpKindSnippet', opts)
@@ -241,7 +225,18 @@ autocmd({ 'BufEnter', 'BufWinEnter', 'ColorScheme' }, {
 	end,
 })
 
--- avoid using weak/filler words in English by Derye's
+autocmd('LspAttach', {
+	desc = 'Disable  LSP features',
+	group = bryant_group,
+	callback = function(args)
+		lsp.document_color.enable(false)
+		local client = lsp.get_client_by_id(args.data.client_id)
+		if client then
+			client.server_capabilities.semanticTokensProvider = nil
+		end
+	end,
+})
+
 local dreyer_words = {
 	'very',
 	'rather',
