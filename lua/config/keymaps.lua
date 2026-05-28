@@ -24,9 +24,6 @@ map('n', '<c-d>', '<c-d>zz', { desc = 'Scroll Down And Re-Center View' })
 map('n', '<c-i>', '<c-i>zz', { desc = 'Jump Forward To Next Position And Center' })
 map('n', '<c-o>', '<c-o>zz', { desc = 'Jump Back To Previous Position And Center' })
 
---  No highlights
-map('n', '<c-c>', '<cmd>noh<CR>', { desc = 'No Search Highlights' })
-
 -- paste without overwriting registers
 map({ 'n', 'v' }, '<leader>p', '"0p', { desc = 'Paste (keep registers)' })
 map({ 'n', 'v' }, '<leader>P', '"0P', { desc = 'Paste before (keep registers)' })
