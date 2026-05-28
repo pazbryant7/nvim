@@ -89,6 +89,8 @@ return {
 			{ '<c-t>', fzf('live_grep_native'), desc = 'Live Grep' },
 			{ 'z=', fzf('spell_suggest'), desc = 'Spell Suggestions' },
 			{ '<leader>wt', fzf('git_worktrees'), desc = 'Git Worktrees' },
+			{ '<leader>s', fzf('lsp_document_symbols'), desc = 'Document Symbols' },
+			{ '<leader>S', fzf('lsp_workspace_symbols'), desc = 'Workspace Symbols' },
 			{
 				'<m-p>',
 				fzf('files', { cwd = vim.fn.expand('%:p:h') }),
