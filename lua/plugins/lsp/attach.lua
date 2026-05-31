@@ -58,14 +58,14 @@ function M.get_keymaps()
 			function()
 				vim.lsp.buf.document_symbol({ on_list = on_list })
 			end,
-			desc = 'LSP Goto Declaration',
+			desc = 'Document Symbol QuickFix List',
 		},
 		{
 			'gW',
 			function()
 				vim.lsp.buf.workspace_symbol(nil, { on_list = on_list })
 			end,
-			desc = 'LSP Goto Declaration',
+			desc = 'Workspace Symbol QuickFix List',
 		},
 		{
 			'<c-k>',
@@ -74,6 +74,15 @@ function M.get_keymaps()
 			end,
 			desc = 'LSP Signature Help',
 			mode = { 'i' },
+		},
+		{
+			'<m-d>',
+			function()
+				vim.diagnostic.setqflist({ open = false })
+				vim.notify('Diagnostics loaded into quickfix', vim.log.levels.INFO, { title = 'Neovim Alert' })
+			end,
+			desc = 'Diagnostics into QuickFix List',
+			mode = { 'n' },
 		},
 	}
 end
