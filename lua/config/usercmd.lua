@@ -22,12 +22,12 @@ end, {
 	desc = 'Sort lines by length (shortest to longest)',
 })
 
-usercmd('ToggleSpell', function()
+usercmd('Spell', function()
 	vim.o.spell = not vim.o.spell
 	vim.notify('spell is ' .. (vim.o.spell and 'on' or 'off'), vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Spell toggle' })
 
-usercmd('ToggleDiagnostics', function()
+usercmd('Diagnostics', function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 	local is_enabled = vim.diagnostic.is_enabled()
 	local msg = is_enabled and 'enabled' or 'disabled'
