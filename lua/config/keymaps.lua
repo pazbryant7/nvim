@@ -57,9 +57,7 @@ map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next Item' })
 map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous Item' })
 
 -- usercmd keybinds
-map('n', '<leader>ts', '<cmd>ToggleSpell<cr>', { desc = 'Toggle Spell' })
-
-map('n', '<leader>td', '<cmd>ToggleDiagnostics<cr>', { desc = 'Toggle Diagnostics' })
+map('n', '<leader>ts', '<cmd>Spell<cr>', { desc = 'Toggle Spell' })
 
 -- lsp info
 map('n', '<leader>li', '<cmd>checkhealth vim.lsp<cr>', { desc = 'Lsp Info' })
