@@ -24,14 +24,14 @@ return {
 			desc = 'Harpoon previous harpoon',
 		},
 		{
-			'<leader>e',
+			'<c-e>',
 			function()
 				require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())
 			end,
 			desc = 'Harpoon toggle quick menu',
 		},
 		{
-			'<leader>a',
+			'<c-y>',
 			function()
 				require('harpoon'):list():add()
 				vim.notify('file added to harpoon', vim.log.levels.INFO, { title = 'Harpoon' })
