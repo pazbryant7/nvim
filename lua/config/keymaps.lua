@@ -2,6 +2,9 @@ local v = vim
 
 local map = v.keymap.set
 
+-- no highlights
+map('n', '<esc>', '<Cmd>noh<CR>', { desc = 'No highlights' })
+
 -- last buffer
 map('i', '<c-^>', '<Cmd>b#<CR>', { desc = 'Toggle Between Current And Last Buffer' })
 
