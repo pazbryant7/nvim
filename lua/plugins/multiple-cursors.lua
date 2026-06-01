@@ -3,6 +3,7 @@ return {
 	config = function()
 		local mc = require('multicursor-nvim')
 		mc.setup()
+
 		local map = vim.keymap.set
 
 		map({ 'n', 'x' }, '<c-n>', function()
@@ -37,16 +38,19 @@ return {
 		map('x', 'I', mc.insertVisual)
 		map('x', 'A', mc.appendVisual)
 
+		map('n', '<esc>', function()
+			if not mc.cursorsEnabled() then
+				mc.enableCursors()
+			elseif mc.hasCursors() then
+				mc.clearCursors()
+			else
+				vim.cmd('noh')
+			end
+		end, { desc = 'No highlights / clear cursors' })
+
 		mc.addKeymapLayer(function(layerSet)
 			layerSet({ 'n', 'x' }, '<left>', mc.prevCursor)
 			layerSet({ 'n', 'x' }, '<right>', mc.nextCursor)
-			layerSet('n', '<esc>', function()
-				if not mc.cursorsEnabled() then
-					mc.enableCursors()
-				elseif mc.hasCursors() then
-					mc.clearCursors()
-				end
-			end)
 		end)
 
 		local hl = vim.api.nvim_set_hl
