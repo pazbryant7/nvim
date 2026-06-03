@@ -271,3 +271,13 @@ autocmd({ 'FileType' }, {
 		vim.b[ev.buf].dreyer_match_added = true
 	end,
 })
+
+autocmd({ 'BufEnter', 'BufWinEnter' }, {
+	desc = 'Set and update title string dynamically',
+	group = bryant_group,
+	callback = function()
+		local file = vim.fn.expand('%:t')
+		local dir = vim.fn.expand('%:p:h:t')
+		vim.opt.titlestring = dir .. '/' .. file
+	end,
+})

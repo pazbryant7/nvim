@@ -55,6 +55,8 @@ opt.spelllang = { 'en_us', 'es' }
 opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
 opt.grepformat = '%f:%l:%c:%m'
 
+opt.title = true
+
 -- folding options
 o.foldenable = true
 o.foldcolumn = '0'
