@@ -20,7 +20,7 @@ g.netrw_browse_split = 0
 opt.clipboard = 'unnamedplus' -- system clipboard
 
 o.guicursor = '' -- always block cursor
-vim.o.colorcolumn = '80,120'
+o.colorcolumn = '80,120'
 opt.cmdheight = 0
 opt.laststatus = 0 -- hide statusline
 opt.showmode = false
@@ -46,7 +46,6 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.updatetime = 50
-o.title = true -- nice tmux/window title
 opt.shortmess:append('sI') -- no splash screen
 
 opt.spell = false
