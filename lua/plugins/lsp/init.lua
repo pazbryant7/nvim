@@ -40,8 +40,7 @@ return {
 					'luacheck',
 					'lua-language-server',
 					-- web dev
-					'prettier',
-					'prettierd',
+					'oxfmt',
 					'superhtml',
 					-- docker
 					'dockerfile-language-server',
