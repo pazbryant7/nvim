@@ -43,7 +43,8 @@ function M.set_diagnostics()
 			},
 		},
 		float = {
-			max_width = 100,
+			wrap = true,
+			max_width = 70,
 			focusable = true,
 			style = 'minimal',
 			border = 'single',
