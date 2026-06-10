@@ -237,6 +237,19 @@ autocmd('LspAttach', {
 	end,
 })
 
+autocmd('QuickFixCmdPost', {
+	desc = 'Open copen after a grep search',
+	group = bryant_group,
+	callback = function()
+		for _, win in ipairs(vim.fn.getwininfo()) do
+			if win.quickfix == 1 then
+				return
+			end
+		end
+		vim.cmd('copen')
+	end,
+})
+
 local dreyer_words = {
 	'very',
 	'rather',

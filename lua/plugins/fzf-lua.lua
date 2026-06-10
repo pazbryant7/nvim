@@ -50,7 +50,6 @@ return {
 					['ctrl-h'] = actions.toggle_hidden,
 					['ctrl-q'] = {
 						fn = function(selected, opts)
-							opts.copen = false
 							actions.file_sel_to_qf(selected, opts)
 						end,
 						prefix = 'select-all',

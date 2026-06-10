@@ -2,6 +2,7 @@ local M = {}
 
 local function on_list(options)
 	vim.fn.setqflist({}, 'r', options)
+	vim.cmd.copen()
 	vim.cmd.cfirst()
 end
 
@@ -76,10 +77,9 @@ function M.get_keymaps()
 			mode = { 'i' },
 		},
 		{
-			'<m-d>',
+			'gQ',
 			function()
-				vim.diagnostic.setqflist({ open = false })
-				vim.notify('Diagnostics loaded into quickfix', vim.log.levels.INFO, { title = 'Neovim Alert' })
+				vim.diagnostic.setqflist({ open = true })
 			end,
 			desc = 'Diagnostics into QuickFix List',
 			mode = { 'n' },
