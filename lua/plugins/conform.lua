@@ -5,48 +5,41 @@ return {
 	end,
 	opts = {
 		notify_on_error = true,
-
 		formatters_by_ft = {
 			-- Lua
 			lua = { 'stylua' },
-
-			-- JavaScript
-			javascript = { 'prettierd' },
-			typescript = { 'prettierd' },
-			javascriptreact = { 'prettierd' },
-			typescriptreact = { 'prettierd' },
-
-			-- Web stuff
-			css = { 'prettierd' },
-			vue = { 'prettierd' },
-			html = { 'prettierd' },
-			less = { 'prettierd' },
-			scss = { 'prettierd' },
-			astro = { 'prettierd' },
-
-			-- Data / config → all supported
-			mdx = { 'prettierd' },
-			yaml = { 'prettierd' },
-			json = { 'prettierd' },
-			jsonc = { 'prettierd' },
-			graphql = { 'prettierd' },
-			markdown = { 'prettierd' },
-
+			-- JavaScript / TypeScript (using OXC)
+			javascript = { 'oxfmt' },
+			typescript = { 'oxfmt' },
+			javascriptreact = { 'oxfmt' },
+			typescriptreact = { 'oxfmt' },
+			-- Web stuff (all handled by OXC now)
+			css = { 'oxfmt' },
+			vue = { 'oxfmt' },
+			html = { 'oxfmt' },
+			less = { 'oxfmt' },
+			scss = { 'oxfmt' },
+			astro = { 'oxfmt' },
+			-- Data / config (all handled by OXC now)
+			mdx = { 'oxfmt' },
+			yaml = { 'oxfmt' },
+			json = { 'oxfmt' },
+			jsonc = { 'oxfmt' },
+			graphql = { 'oxfmt' },
+			markdown = { 'oxfmt' },
+			toml = { 'oxfmt' },
 			-- Shell
 			sh = { 'shfmt' },
 			zsh = { 'shfmt' },
 			bash = { 'shfmt' },
 			fish = { 'fish_indent' },
-
 			-- Others
 			just = { 'just' },
-			toml = { 'taplo' },
 			c = { 'clang-format' },
 			cpp = { 'clang-format' },
 			go = { 'gofumpt', 'goimports' },
 			python = { 'ruff_organize_imports', 'ruff_fix', 'ruff_format' },
 		},
-
 		formatters = {
 			fish_indent = {
 				command = '/usr/bin/fish_indent',
@@ -58,7 +51,6 @@ return {
 			},
 		},
 	},
-
 	keys = {
 		{
 			'<c-f>',
