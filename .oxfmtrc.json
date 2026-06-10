@@ -1,6 +1,5 @@
 {
   "printWidth": 80,
-  "proseWrap": "always",
   "tabWidth": 2,
   "useTabs": false,
   "semi": true,
@@ -11,9 +10,7 @@
     {
       "files": ["*.md", "*.markdown"],
       "options": {
-        "parser": "markdown",
         "printWidth": 80,
-        "proseWrap": "always",
         "tabWidth": 2,
         "useTabs": false
       }
