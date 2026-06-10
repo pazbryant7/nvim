@@ -48,8 +48,13 @@ map('n', 'gcr', [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gI<Left><Left><Left>]], { desc =
 
 -- print current path
 map('n', '<leader>cp', function()
-	vim.notify(vim.fn.expand('%:p'), vim.log.levels.INFO, { title = 'Neovim Alert' })
+	local path = vim.fn.expand('%:p')
+	vim.fn.setreg('+', path)
+	vim.notify(path, vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Print Current Path' })
+
+-- lsp info
+map('n', '<leader>li', '<cmd>checkhealth vim.lsp<cr>', { desc = 'Lsp Info' })
 
 -- exit
 map('n', '<leader>q', ':q!<CR>', { desc = 'Quit Without Saving' })
@@ -61,11 +66,7 @@ map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous I
 
 -- usercmd keybinds
 map('n', '<leader>ts', '<cmd>Spell<cr>', { desc = 'Toggle Spell' })
-
--- lsp info
-map('n', '<leader>li', '<cmd>checkhealth vim.lsp<cr>', { desc = 'Lsp Info' })
-
--- tmux open under cursor in new tmux pane
+map('n', '<leader>rn', ':RenameFile<CR>', { noremap = true, silent = true })
 map('n', '<leader>gf', '<cmd>GoToFileWithTmux<cr>', {
 	noremap = true,
 	silent = true,

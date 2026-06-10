@@ -34,6 +34,17 @@ usercmd('Diagnostics', function()
 	vim.notify(string.format('Diagnostic has been %s', msg), vim.log.levels.INFO, { title = 'Neovim Alert' })
 end, { desc = 'Diagnostics toggle' })
 
+usercmd('RenameFile', function()
+	local old_name = vim.fn.expand('%')
+	local new_name = vim.fn.input('Rename to: ', old_name)
+
+	if new_name ~= '' and new_name ~= old_name then
+		vim.fn.system('mv ' .. old_name .. ' ' .. new_name)
+		vim.cmd('edit ' .. new_name)
+		vim.cmd('bdelete #')
+	end
+end, {})
+
 -- tmux
 
 local function open_in_tmux_split(file)
