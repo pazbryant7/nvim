@@ -1,6 +1,6 @@
 local M = {}
 
-function M.on_list(options)
+local function on_list(options)
 	vim.fn.setqflist({}, 'r', options)
 	vim.cmd.copen()
 	vim.cmd.cfirst()
@@ -33,7 +33,7 @@ function M.get_keymaps()
 		{ ']w', M.diagnostic_goto(true, 'WARN'), desc = 'LSP Next Warning' },
 		{ '[w', M.diagnostic_goto(false, 'WARN'), desc = 'LSP Prev Warning' },
 		{ 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
-		{ 'gt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
+		{ 'grt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
 		{
 			'gra',
 			vim.lsp.buf.code_action,
