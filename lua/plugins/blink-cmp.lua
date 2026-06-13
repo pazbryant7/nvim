@@ -94,6 +94,8 @@ return {
 	opts_extend = { 'sources.default' },
 	config = function(_, opts)
 		local blink = require('blink.cmp')
+		local usercmd = vim.api.nvim_create_user_command
+
 		blink.setup(opts)
 
 		local autoCompletionEnabled = true
@@ -111,14 +113,12 @@ return {
 			print('Auto completion disabled')
 		end
 
-		local function ToggleAutoCompletion()
+		usercmd('BlinkToggle', function()
 			if autoCompletionEnabled then
 				DisableAutoCompletion()
 			else
 				EnableAutoCompletion()
 			end
-		end
-
-		vim.keymap.set('n', '\\\\', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp Completion' })
+		end, { desc = 'Toggle Blink Autocompletion' })
 	end,
 }
