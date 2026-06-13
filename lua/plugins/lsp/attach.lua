@@ -1,6 +1,6 @@
 local M = {}
 
-local function on_list(options)
+function M.on_list(options)
 	vim.fn.setqflist({}, 'r', options)
 	vim.cmd.copen()
 	vim.cmd.cfirst()
@@ -55,20 +55,6 @@ function M.get_keymaps()
 			desc = 'LSP Goto Definition',
 		},
 		{
-			'gO',
-			function()
-				vim.lsp.buf.document_symbol({ on_list = on_list })
-			end,
-			desc = 'Document Symbol QuickFix List',
-		},
-		{
-			'gW',
-			function()
-				vim.lsp.buf.workspace_symbol(nil, { on_list = on_list })
-			end,
-			desc = 'Workspace Symbol QuickFix List',
-		},
-		{
 			'<c-k>',
 			function()
 				vim.lsp.buf.signature_help({ border = 'single' })
@@ -80,6 +66,7 @@ function M.get_keymaps()
 			'gQ',
 			function()
 				vim.diagnostic.setqflist({ open = true })
+				vim.cmd('wincmd p')
 			end,
 			desc = 'Diagnostics into QuickFix List',
 			mode = { 'n' },

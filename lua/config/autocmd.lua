@@ -247,6 +247,7 @@ autocmd('QuickFixCmdPost', {
 			end
 		end
 		vim.cmd('copen')
+		vim.cmd('wincmd p')
 	end,
 })
 
