@@ -2,8 +2,12 @@ local M = {}
 
 local function on_list(options)
 	vim.fn.setqflist({}, 'r', options)
-	vim.cmd.copen()
-	vim.cmd.cfirst()
+	if #options.items > 1 then
+		vim.cmd.copen()
+		vim.cmd.cfirst()
+	else
+		vim.cmd.cfirst()
+	end
 end
 
 function M.diagnostic_goto(next, severity)
