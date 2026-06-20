@@ -61,8 +61,6 @@ return {
 					'markdown-oxide',
 					-- javascript
 					'typescript-language-server',
-					-- toml
-					'taplo',
 					-- c
 					'clangd',
 					'clang-format',
