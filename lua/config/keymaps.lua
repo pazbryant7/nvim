@@ -47,11 +47,7 @@ map('v', '>', '>gv', { desc = 'Align Items To The Right' })
 map('n', 'gcr', [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gI<Left><Left><Left>]], { desc = 'Custom Rename' })
 
 -- print current path
-map('n', '<leader>cp', function()
-	local path = vim.fn.expand('%:p')
-	vim.fn.setreg('+', path)
-	vim.notify(path, vim.log.levels.INFO, { title = 'Neovim Alert' })
-end, { desc = 'Print Current Path' })
+map('n', '<leader>cp', '<cmd>CurrentPath<cr>', { desc = 'Show and copy current path into the clipboard' })
 
 -- lsp info
 map('n', '<leader>li', '<cmd>checkhealth vim.lsp<cr>', { desc = 'Lsp Info' })
@@ -65,5 +61,6 @@ map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next Item' })
 map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous Item' })
 
 -- usercmd keybinds
+map('n', '<leader>j', ':Jump ', { desc = 'Pre-fill :Jump command' })
 map('n', '<leader>ts', '<cmd>SpellToggle<cr>', { desc = 'Toggle Spell' })
-map('n', '<leader>rn', ':RenameFile<CR>', { noremap = true, silent = true })
+map('n', '<leader>rn', '<cmd>RenameFile<cr>', { desc = 'Rename current file' })

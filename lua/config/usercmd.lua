@@ -36,4 +36,36 @@ usercmd('RenameFile', function()
 		vim.cmd('edit ' .. new_name)
 		vim.cmd('bdelete #')
 	end
-end, {})
+end, { desc = 'Toggle Spell' })
+
+usercmd('CurrentPath', function()
+	local path = vim.fn.expand('%:p')
+	vim.fn.setreg('+', path)
+	vim.notify(path, vim.log.levels.INFO, { title = 'Neovim Alert' })
+end, { desc = 'Get current path' })
+
+usercmd('Jump', function(opts)
+	local input = opts.args
+	local row_str, col_str = input:match('(%d+)[^%d]+(%d+)')
+
+	if not row_str then
+		row_str = input:match('(%d+)')
+		col_str = '1'
+	end
+
+	if row_str then
+		local row = tonumber(row_str) or 1
+		local col = (tonumber(col_str) or 1) - 1
+
+		col = math.max(0, col)
+
+		local max_lines = vim.api.nvim_buf_line_count(0)
+		row = math.min(row, max_lines)
+		row = math.max(1, row)
+
+		pcall(vim.api.nvim_win_set_cursor, 0, { row, col })
+		vim.cmd('normal! zz')
+	else
+		print('Invalid format! Use: row:col (e.g., 9:19)')
+	end
+end, { nargs = 1, desc = 'Jump directly to row:column' })
