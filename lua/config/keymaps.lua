@@ -65,10 +65,5 @@ map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next Item' })
 map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous Item' })
 
 -- usercmd keybinds
-map('n', '<leader>ts', '<cmd>Spell<cr>', { desc = 'Toggle Spell' })
+map('n', '<leader>ts', '<cmd>SpellToggle<cr>', { desc = 'Toggle Spell' })
 map('n', '<leader>rn', ':RenameFile<CR>', { noremap = true, silent = true })
-map('n', '<leader>gf', '<cmd>GoToFileWithTmux<cr>', {
-	noremap = true,
-	silent = true,
-	desc = 'Open File Under Cursor In New Tmux Pane',
-})
