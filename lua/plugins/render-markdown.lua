@@ -6,5 +6,13 @@ return {
 	},
 	---@module 'render-markdown'
 	---@type render.md.UserConfig
-	opts = {},
+	opts = {
+		heading = {
+			width = 'block',
+			min_width = 80,
+		},
+		link = {
+			enabled = false,
+		},
+	},
 }
