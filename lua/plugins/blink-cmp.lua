@@ -2,6 +2,12 @@ return {
 	'saghen/blink.cmp',
 	event = 'InsertEnter',
 	version = '1.*',
+	init = function()
+		-- runs at startup before lazy loading kicks in
+		if os.getenv('LEETCODE') ~= nil then
+			vim.diagnostic.enable(false)
+		end
+	end,
 	opts = {
 		appearance = {
 			nerd_font_variant = 'mono',
@@ -55,13 +61,11 @@ return {
 					transform_items = function(_, items)
 						local wanted = {}
 						local SnippetKind = require('blink.cmp.types').CompletionItemKind.Snippet
-
 						for _, item in ipairs(items) do
 							if item.kind ~= SnippetKind then
 								table.insert(wanted, item)
 							end
 						end
-
 						return wanted
 					end,
 				},
@@ -93,32 +97,37 @@ return {
 	},
 	opts_extend = { 'sources.default' },
 	config = function(_, opts)
+		local cmp_enabled = os.getenv('LEETCODE') == nil
+
+		opts.enabled = function()
+			return cmp_enabled
+		end
+
 		local blink = require('blink.cmp')
+
 		blink.setup(opts)
 
-		local autoCompletionEnabled = true
-
 		local function EnableAutoCompletion()
-			vim.b.completion = true
-			autoCompletionEnabled = true
-			print('Auto completion enabled')
+			cmp_enabled = true
+			vim.diagnostic.enable(true)
+			print('Auto completion & diagnostics enabled')
 		end
 
 		local function DisableAutoCompletion()
-			vim.b.completion = false
+			cmp_enabled = false
 			blink.hide()
-			autoCompletionEnabled = false
-			print('Auto completion disabled')
+			vim.diagnostic.enable(false)
+			print('Auto completion & diagnostics disabled')
 		end
 
 		local function ToggleAutoCompletion()
-			if autoCompletionEnabled then
+			if cmp_enabled then
 				DisableAutoCompletion()
 			else
 				EnableAutoCompletion()
 			end
 		end
 
-		vim.keymap.set('n', '\\\\', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp Completion' })
+		vim.keymap.set('n', '\\\\', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp & Diagnostics' })
 	end,
 }
