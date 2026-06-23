@@ -2,7 +2,11 @@ return {
 	{
 		'folke/lazydev.nvim',
 		ft = 'lua', -- only load on lua files
-		opts = {},
+		opts = {
+			library = {
+				'nvim-dap-ui',
+			},
+		},
 	},
 
 	{
@@ -56,10 +60,12 @@ return {
 					'goimports',
 					-- python
 					'ruff',
+					'debugpy',
 					'basedpyright',
 					-- markdown
 					'markdown-oxide',
 					-- javascript
+					'js-debug-adapter',
 					'typescript-language-server',
 					-- c
 					'clangd',
