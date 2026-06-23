@@ -31,7 +31,7 @@ function M.setup(dap)
 					},
 				},
 				position = 'left',
-				size = 40,
+				size = 65,
 			},
 			{
 				elements = {

@@ -7,32 +7,28 @@ return {
 	config = function()
 		local dap = require('dap')
 		require('plugins.dap.ui').setup(dap)
+		require('nvim-dap-virtual-text').setup({ enabled = true })
 		require('plugins.dap.signs').setup()
-		require('nvim-dap-virtual-text').setup({ show_stop_reason = true })
 
 		local function load_and_merge_modules(module_prefix)
-			local merged_table = {}
-			local search_path = vim.fn.stdpath('config') .. '/lua/' .. module_prefix:gsub('%.', '/')
-			local files_iterator = vim.fs.dir(search_path)
-			if not files_iterator then
-				vim.notify('DAP config directory not found: ' .. search_path, vim.log.levels.WARN)
-				return merged_table
+			local path = vim.fn.stdpath('config') .. '/lua/' .. module_prefix:gsub('%.', '/')
+			local iter = vim.fs.dir(path)
+			if not iter then
+				vim.notify('DAP config directory not found: ' .. path, vim.log.levels.WARN)
+				return {}
 			end
-
-			for file_name, file_type in files_iterator do
-				if file_type == 'file' and file_name:match('%.lua$') then
-					local module_name = file_name:gsub('%.lua$', '')
-					local module_path = module_prefix .. '.' .. module_name
-					local ok, content = pcall(require, module_path)
-					if ok and type(content) == 'table' then
-						merged_table = vim.tbl_extend('force', merged_table, content)
-					else
-						vim.notify('Failed to load DAP module: ' .. module_path, vim.log.levels.ERROR)
-					end
+			return vim.iter(iter):fold({}, function(acc, name, ftype)
+				if ftype ~= 'file' or not name:match('%.lua$') then
+					return acc
 				end
-			end
-
-			return merged_table
+				local mod = module_prefix .. '.' .. name:gsub('%.lua$', '')
+				local ok, t = pcall(require, mod)
+				if not ok or type(t) ~= 'table' then
+					vim.notify('Failed to load DAP module: ' .. mod, vim.log.levels.ERROR)
+					return acc
+				end
+				return vim.tbl_extend('force', acc, t)
+			end)
 		end
 
 		dap.adapters = load_and_merge_modules('plugins.dap.adapters')
