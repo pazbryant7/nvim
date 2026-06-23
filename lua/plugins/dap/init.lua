@@ -8,7 +8,7 @@ return {
 		local dap = require('dap')
 		require('plugins.dap.ui').setup(dap)
 		require('plugins.dap.signs').setup()
-		require('nvim-dap-virtual-text').setup()
+		require('nvim-dap-virtual-text').setup({ show_stop_reason = true })
 
 		local function load_and_merge_modules(module_prefix)
 			local merged_table = {}
