@@ -8,5 +8,10 @@
     "prefix": "co",
     "body": ["`${1:code}`${2}"],
     "description": "Insert inline code block"
+  },
+  "Date Markdown Filename": {
+    "prefix": "today",
+    "body": ["${CURRENT_DATE}-${CURRENT_MONTH}-${CURRENT_YEAR}.md"],
+    "description": "Insert current date as DD-MM-YYYY.md filename"
   }
 }
