@@ -4,7 +4,7 @@ return {
 	version = '1.*',
 	init = function()
 		-- runs at startup before lazy loading kicks in
-		if os.getenv('LEETCODE') ~= nil then
+		if os.getenv('KATA') ~= nil then
 			vim.diagnostic.enable(false)
 		end
 	end,
@@ -97,7 +97,7 @@ return {
 	},
 	opts_extend = { 'sources.default' },
 	config = function(_, opts)
-		local cmp_enabled = os.getenv('LEETCODE') == nil
+		local cmp_enabled = os.getenv('KATA') == nil
 
 		opts.enabled = function()
 			return cmp_enabled
