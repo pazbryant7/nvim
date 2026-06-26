@@ -71,4 +71,4 @@ if g.neovide then
 	g.neovide_cursor_vfx_mode = 'railgun'
 end
 
-vim.cmd('colorscheme catppuccin')
+vim.cmd('colorscheme habamax')

@@ -3,7 +3,6 @@ return {
 	event = 'InsertEnter',
 	version = '1.*',
 	init = function()
-		-- runs at startup before lazy loading kicks in
 		if os.getenv('KATA') ~= nil then
 			vim.diagnostic.enable(false)
 		end
