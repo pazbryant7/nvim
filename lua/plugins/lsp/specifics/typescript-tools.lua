@@ -1,5 +1,6 @@
 return {
 	'pmizio/typescript-tools.nvim',
+	enabled = os.getenv('KATA') == nil,
 	ft = {
 		'javascript',
 		'javascriptreact',

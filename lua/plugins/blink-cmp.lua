@@ -2,11 +2,7 @@ return {
 	'saghen/blink.cmp',
 	event = 'InsertEnter',
 	version = '1.*',
-	init = function()
-		if os.getenv('KATA') ~= nil then
-			vim.diagnostic.enable(false)
-		end
-	end,
+	enabled = os.getenv('KATA') == nil,
 	opts = {
 		appearance = {
 			nerd_font_variant = 'mono',
@@ -96,37 +92,6 @@ return {
 	},
 	opts_extend = { 'sources.default' },
 	config = function(_, opts)
-		local cmp_enabled = os.getenv('KATA') == nil
-
-		opts.enabled = function()
-			return cmp_enabled
-		end
-
-		local blink = require('blink.cmp')
-
-		blink.setup(opts)
-
-		local function EnableAutoCompletion()
-			cmp_enabled = true
-			vim.diagnostic.enable(true)
-			print('Auto completion & diagnostics enabled')
-		end
-
-		local function DisableAutoCompletion()
-			cmp_enabled = false
-			blink.hide()
-			vim.diagnostic.enable(false)
-			print('Auto completion & diagnostics disabled')
-		end
-
-		local function ToggleAutoCompletion()
-			if cmp_enabled then
-				DisableAutoCompletion()
-			else
-				EnableAutoCompletion()
-			end
-		end
-
-		vim.keymap.set('n', '\\\\', ToggleAutoCompletion, { desc = 'Toggle Blink Cmp & Diagnostics' })
+		require('blink.cmp').setup(opts)
 	end,
 }

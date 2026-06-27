@@ -1,5 +1,6 @@
 return {
 	'nvim-treesitter/nvim-treesitter',
+	enabled = os.getenv('KATA') == nil,
 	event = 'BufReadPre',
 	build = ':TSUpdate',
 	branch = 'main',

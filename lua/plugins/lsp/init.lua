@@ -9,6 +9,7 @@ return {
 
 	{
 		'neovim/nvim-lspconfig',
+		enabled = os.getenv('KATA') == nil,
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
 			{ 'j-hui/fidget.nvim', opts = {} },
