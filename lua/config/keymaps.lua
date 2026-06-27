@@ -5,6 +5,9 @@ local map = v.keymap.set
 -- no highlights
 map('n', '<esc>', '<Cmd>noh<CR>', { desc = 'No highlights' })
 
+-- change inner word
+map('n', '<c-c>', 'ciw', { desc = 'Change inner word' })
+
 -- last buffer
 map('i', '<c-^>', '<Cmd>b#<CR>', { desc = 'Toggle Between Current And Last Buffer' })
 
