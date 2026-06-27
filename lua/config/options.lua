@@ -46,6 +46,7 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.updatetime = 50
+opt.conceallevel = 0 -- show markdown/obsidian syntax
 opt.shortmess:append('sI') -- no splash screen
 
 opt.spell = false
