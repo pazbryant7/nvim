@@ -153,7 +153,7 @@ return {
 		},
 
 		open_notes_in = 'current',
-		ui = { enable = false },
+		ui = { enable = true },
 
 		attachments = {
 			folder = '50-Assets/imgs/',
