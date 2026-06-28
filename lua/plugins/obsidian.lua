@@ -57,7 +57,7 @@ return {
 			folder = '01-Dailynotes',
 			alias_format = alias_fmt,
 			default_tags = { 'Daily-notes' },
-			template = '30-Templates/Daily.md',
+			template = '40-Templates/Daily.md',
 		},
 
 		completion = {
@@ -75,7 +75,7 @@ return {
 		},
 
 		templates = {
-			folder = '30-Templates',
+			folder = '40-Templates',
 			date_format = date_fmt,
 			time_format = time_fmt,
 			substitutions = {
