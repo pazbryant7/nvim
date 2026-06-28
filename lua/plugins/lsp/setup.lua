@@ -5,7 +5,6 @@ local servers = {
 	clangd = {},
 	dockerls = {},
 	basedpyright = {},
-	markdown_oxide = {},
 	docker_compose_language_service = {},
 	gopls = {
 		settings = {
