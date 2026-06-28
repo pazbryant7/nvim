@@ -60,8 +60,6 @@ return {
 					-- python
 					'ruff',
 					'basedpyright',
-					-- markdown
-					'markdown-oxide',
 					-- javascript
 					'typescript-language-server',
 					-- c
