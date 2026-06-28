@@ -1,8 +1,25 @@
 {
+  "YAML Frontmatter": {
+    "prefix": "yaml",
+    "body": [
+      "---",
+      "tags: [${1:tag}]",
+      "aliases: [${2:alias}]",
+      "---",
+      "",
+      "$0"
+    ],
+    "description": "Obsidian YAML Frontmatter"
+  },
   "Wiki link": {
     "prefix": "link",
     "body": "[[${1:title}]]",
     "description": "Obsidian wiki-style link"
+  },
+  "Wiki Image Embed": {
+    "prefix": "img",
+    "body": "![[${1:image_name.png}]]",
+    "description": "Obsidian image embed"
   },
   "Inline link": {
     "prefix": "ilink",
@@ -11,7 +28,7 @@
   },
   "Bold heading": {
     "prefix": "bh",
-    "body": "# **${1:Bold Heading ${2:bold text}}**",
+    "body": "# **${1:Bold Heading}**",
     "description": "H1 with bold text"
   },
   "Heading 1": {
@@ -24,10 +41,20 @@
     "body": "## ${1:Heading 2}",
     "description": "Markdown H2"
   },
+  "Heading 3": {
+    "prefix": "h3",
+    "body": "### ${1:Heading 3}",
+    "description": "Markdown H3"
+  },
   "Code block": {
     "prefix": "cb",
-    "body": ["```${1:language}", "${2:code}", "```"],
+    "body": ["```${1:language}", "${2:code}", "```", "$0"],
     "description": "Fenced code block"
+  },
+  "Inline code": {
+    "prefix": "ic",
+    "body": "`${1:code}`",
+    "description": "Inline code snippet"
   },
   "Unordered list item": {
     "prefix": "ul",
@@ -44,6 +71,22 @@
     "body": "- [ ] ${1:task}",
     "description": "Todo task item"
   },
+  "Blockquote": {
+    "prefix": "bq",
+    "body": "> ${1:quote}",
+    "description": "Markdown blockquote"
+  },
+  "Markdown Table 3x3": {
+    "prefix": "table",
+    "body": [
+      "| ${1:Header 1} | ${2:Header 2} | ${3:Header 3} |",
+      "| --- | --- | --- |",
+      "| ${4:Item} | ${5:Item} | ${6:Item} |",
+      "| ${7:Item} | ${8:Item} | ${9:Item} |",
+      "$0"
+    ],
+    "description": "Basic 3-column Markdown table"
+  },
   "Horizontal rule": {
     "prefix": "hr",
     "body": "---",
@@ -59,14 +102,29 @@
     "body": "*${1:italic text}*",
     "description": "Italic text"
   },
+  "Highlight": {
+    "prefix": "hl",
+    "body": "==${1:highlighted text}==",
+    "description": "Obsidian highlight"
+  },
+  "Strikethrough": {
+    "prefix": "strike",
+    "body": "~~${1:strikethrough text}~~",
+    "description": "Strikethrough text"
+  },
   "Callout note": {
     "prefix": "callout",
-    "body": ["> [!note] ${1:title}", "> ${2:content}"],
+    "body": ["> [!note] ${1:title}", "> ${2:content}", "$0"],
     "description": "Obsidian note callout"
   },
   "Callout todo": {
     "prefix": "calloutt",
-    "body": ["> [!todo] ${1:title}", "> ${2:content}"],
+    "body": ["> [!todo] ${1:title}", "> ${2:content}", "$0"],
     "description": "Obsidian todo callout"
+  },
+  "Callout warning": {
+    "prefix": "calloutw",
+    "body": ["> [!warning] ${1:title}", "> ${2:content}", "$0"],
+    "description": "Obsidian warning callout"
   }
 }
