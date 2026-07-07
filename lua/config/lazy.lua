@@ -15,20 +15,15 @@ vim.opt.rtp:prepend(lazypath)
 
 local function is_man_pager()
 	for _, arg in ipairs(vim.v.argv) do
-		if arg == '+Man!' or arg:match('^%+Man') then
+		if arg:match('^%+Man') then
 			return true
 		end
 	end
 	return false
 end
 
-local plugins = { { import = 'plugins' } }
-
-if not is_man_pager() then
-	table.insert(plugins, { import = 'plugins.lsp.specifics' })
-else
-	table.insert(plugins, { import = 'plugins.no-neck-pain' })
-end
+local plugins = is_man_pager() and { { import = 'plugins.no-neck-pain' } }
+	or { { import = 'plugins' }, { import = 'plugins.lsp.specifics' } }
 
 require('lazy').setup(plugins, {
 	defaults = { lazy = true },
