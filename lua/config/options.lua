@@ -2,6 +2,7 @@ local v = vim
 local opt = v.opt
 local o = v.o
 local g = v.g
+local wo = v.wo
 
 g.mapleader = ' '
 g.maplocalleader = ' '
@@ -55,6 +56,9 @@ opt.spelllang = { 'en_us', 'es' }
 
 opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
 opt.grepformat = '%f:%l:%c:%m'
+
+wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+wo.foldmethod = 'expr'
 
 opt.title = true
 

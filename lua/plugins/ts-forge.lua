@@ -5,7 +5,6 @@ return {
 		'TSInstall',
 		'TSUpdate',
 	},
-	event = 'BufReadPre',
 	config = function()
 		require('ts-forge').setup({
 			auto_install = true,
