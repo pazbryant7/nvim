@@ -5,6 +5,7 @@ local autocmd = api.nvim_create_autocmd
 local augroup = api.nvim_create_augroup
 
 local bryant_group = augroup('bryant_group', { clear = true })
+local tree_sitter_group = augroup('tree_sitter', { clear = true })
 local dreyer_group = api.nvim_create_augroup('DreyerWarnings', { clear = true })
 
 autocmd('TextYankPost', {
@@ -293,5 +294,28 @@ autocmd({ 'BufEnter', 'BufWinEnter' }, {
 		local file = vim.fn.expand('%:t')
 		local dir = vim.fn.expand('%:p:h:t')
 		vim.opt.titlestring = dir .. '/' .. file
+	end,
+})
+
+local opts = {
+	no_indent = { 'bash', 'markdown', 'sh' },
+	no_highlight = { 'checkhealth', 'lazy', 'mason' },
+}
+
+autocmd({ 'FileType' }, {
+	desc = 'Configure treesitter highlighting and indentation',
+	group = tree_sitter_group,
+	callback = function(ctx)
+		local lang = vim.treesitter.language.get_lang(ctx.match) or ctx.match
+
+		if not vim.list_contains(opts.no_highlight, lang) then
+			if not vim.treesitter.highlighter.active[ctx.buf] then
+				pcall(vim.treesitter.start, ctx.buf, lang)
+			end
+		end
+
+		if not vim.list_contains(opts.no_indent, lang) then
+			vim.bo[ctx.buf].indentexpr = 'v:lua.vim.treesitter.indentexpr()'
+		end
 	end,
 })
