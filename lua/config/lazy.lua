@@ -22,7 +22,12 @@ local function is_man_pager()
 	return false
 end
 
+local function is_lf_bulk_rename()
+	return vim.env.LF_BULK_RENAME == '1'
+end
+
 local plugins = is_man_pager() and { { import = 'plugins.no-neck-pain' } }
+	or is_lf_bulk_rename() and { { import = 'plugins.multiple-cursors' } }
 	or { { import = 'plugins' }, { import = 'plugins.lsp.specifics' } }
 
 require('lazy').setup(plugins, {
