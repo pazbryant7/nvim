@@ -1,31 +1,46 @@
 return {
-	'reybits/ts-forge.nvim',
+	'romus204/tree-sitter-manager.nvim',
+	event = 'FileType',
 	enabled = os.getenv('KATA') == nil,
 	cmd = {
+		'TSManager',
 		'TSInstall',
 		'TSUpdate',
 	},
 	config = function()
-		require('ts-forge').setup({
+		require('tree-sitter-manager').setup({
 			auto_install = true,
 			ensure_installed = {
+				'go',
 				'lua',
 				'css',
 				'tsx',
 				'vim',
-				'cpp',
 				'json',
 				'html',
 				'bash',
+				'http',
 				'yaml',
 				'regex',
+				'luadoc',
 				'python',
 				'vimdoc',
+				'comment',
 				'markdown',
+				'gitcommit',
+				'dockerfile',
 				'typescript',
 				'javascript',
+				'editorconfig',
 				'markdown_inline',
 			},
+			nohighlight = {
+				'checkhealth',
+				'lazy',
+				'mason',
+			},
+			min_width = 30,
+			min_height = 20,
 		})
 	end,
 }
