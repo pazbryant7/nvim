@@ -6,6 +6,7 @@ local servers = {
 	clangd = {},
 	dockerls = {},
 	basedpyright = {},
+  superhtml = {},
 	docker_compose_language_service = {},
 	gopls = {
 		settings = {
