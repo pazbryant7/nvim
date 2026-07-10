@@ -37,34 +37,11 @@ return {
 
 			mr.refresh(function()
 				for _, tool in ipairs({
-					-- lua
-					'stylua',
-					'selene',
-					'luacheck',
-					'lua-language-server',
-					-- web dev
-					'oxfmt',
-					'superhtml',
-					-- docker
-					'dockerfile-language-server',
-					'docker-compose-language-service',
-					-- bash
 					'shfmt',
 					'shellcheck',
 					'shellharden',
 					'bash-language-server',
-					-- golang
-					'gopls',
-					'gofumpt',
-					'goimports',
-					-- python
-					'ruff',
-					'basedpyright',
-					-- javascript
-					'typescript-language-server',
-					-- c
-					'clangd',
-					'clang-format',
+
 					-- nix
 					'nil',
 					'statix',
