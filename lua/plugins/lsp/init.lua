@@ -65,6 +65,10 @@ return {
 					-- c
 					'clangd',
 					'clang-format',
+					-- nix
+					'nil',
+					'statix',
+					'nixfmt',
 					-- language agnostic
 					'typos', -- code source spell checker
 				}) do

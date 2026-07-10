@@ -1,6 +1,7 @@
 local M = {}
 
 local servers = {
+	nil_ls = {},
 	bashls = {},
 	clangd = {},
 	dockerls = {},
