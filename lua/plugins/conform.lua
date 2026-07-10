@@ -33,6 +33,8 @@ return {
 			zsh = { 'shfmt' },
 			bash = { 'shfmt' },
 			fish = { 'fish_indent' },
+			-- Nix
+			nix = { 'nixfmt' },
 			-- Others
 			just = { 'just' },
 			c = { 'clang-format' },
