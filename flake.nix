@@ -26,6 +26,10 @@
             luaPackages.luacheck
             lua-language-server
 
+            # ── node ────────────────
+            nodejs-slim
+            nodejs-slim.npm
+
             # ── language agnostic ────────────────
             typos
             just
@@ -35,6 +39,12 @@
             corepack enable
             echo "⚡ Dev environment ready"
             echo "Lua: $(lua -v)"
+            echo "NodeJS: $(node --version)"
+
+            if [ -z "$IN_NIX_ZSH" ]; then
+              export IN_NIX_ZSH=1
+              exec zsh
+            fi
           '';
         };
 

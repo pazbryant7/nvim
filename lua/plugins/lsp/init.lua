@@ -9,7 +9,9 @@ return {
 
 	{
 		'neovim/nvim-lspconfig',
-		enabled = os.getenv('KATA') == nil,
+		enabled = function()
+			return os.getenv('IN_NIX_SHELL') ~= nil or os.getenv('IN_NIX_ZSH') ~= nil
+		end,
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
 			{ 'j-hui/fidget.nvim', opts = {} },
@@ -18,51 +20,5 @@ return {
 			require('plugins.lsp.setup').setup()
 			require('plugins.lsp.attach').on_attach()
 		end,
-	},
-
-	{
-		'mason-org/mason.nvim',
-		cmd = {
-			'Mason',
-			'MasonUpdate',
-		},
-		opts = {
-			ui = {
-				border = 'single',
-			},
-		},
-		config = function(_, opts)
-			require('mason').setup(opts)
-			local mr = require('mason-registry')
-
-			mr.refresh(function()
-				for _, tool in ipairs({
-					'shfmt',
-					'shellcheck',
-					'shellharden',
-					'bash-language-server',
-
-					-- nix
-					'nil',
-					'statix',
-					'nixfmt',
-					-- language agnostic
-					'typos', -- code source spell checker
-				}) do
-					local p = mr.get_package(tool)
-					if not p:is_installed() then
-						p:install()
-					end
-				end
-			end)
-		end,
-		keys = {
-			{
-				'<leader>M',
-				mode = 'n',
-				'<cmd>Mason<CR>',
-				desc = 'Mason open',
-			},
-		},
 	},
 }
