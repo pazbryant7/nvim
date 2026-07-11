@@ -4,12 +4,33 @@ return {
 
 	opts = function()
 		local actions = require('fzf-lua.actions')
+		local path = require('fzf-lua.path')
 
-		local chafa_formats = { 'png', 'jpg', 'jpeg', 'gif', 'webp', 'svg' }
+		local fmts = { 'png', 'jpg', 'jpeg', 'gif', 'webp', 'svg' }
 
-		local chafa_extensions = {}
-		for _, ext in ipairs(chafa_formats) do
-			chafa_extensions[ext] = { 'chafa', '{file}' }
+		local extensions = {}
+		for _, ext in ipairs(fmts) do
+			extensions[ext] = { 'chafa', '{file}' }
+		end
+
+		local function on_list(opts)
+			vim.fn.setqflist({}, ' ', opts)
+			if #opts.items > 1 then
+				require('quicker').open()
+			end
+			vim.cmd.cfirst()
+		end
+
+		local function set_to_qf(items, opts)
+			return vim.tbl_map(function(entry)
+				local file = path.entry_to_file(entry, opts)
+				return {
+					filename = file.path,
+					lnum = file.line or 1,
+					col = file.col or 1,
+					text = entry,
+				}
+			end, items)
 		end
 
 		return {
@@ -50,7 +71,7 @@ return {
 					['ctrl-h'] = actions.toggle_hidden,
 					['ctrl-q'] = {
 						fn = function(selected, opts)
-							actions.file_sel_to_qf(selected, opts)
+							on_list({ title = 'FzfLua', items = set_to_qf(selected, opts) })
 						end,
 						prefix = 'select-all',
 					},
@@ -58,7 +79,7 @@ return {
 			},
 
 			previewers = {
-				builtin = { extensions = chafa_extensions },
+				builtin = { extensions = extensions },
 			},
 
 			files = { hidden = false },
