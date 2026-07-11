@@ -9,9 +9,11 @@ return {
 	},
 	config = function()
 		require('tree-sitter-manager').setup({
-			auto_install = true,
+			auto_install = false,
 			ensure_installed = {
 				'go',
+				'c',
+				'cpp',
 				'lua',
 				'css',
 				'tsx',
