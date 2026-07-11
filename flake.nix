@@ -33,6 +33,9 @@
             # ── language agnostic ────────────────
             typos
             just
+
+            # ── compilers ────────────────
+            gcc
           ];
 
           shellHook = ''
