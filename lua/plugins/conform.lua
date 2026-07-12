@@ -72,9 +72,6 @@ return {
 					pcall(function()
 						require('conform').format({ lsp_format = 'fallback' })
 					end)
-					vim.notify('Code formatted', vim.log.levels.INFO, {
-						title = 'Conform neovim',
-					})
 				end
 			end,
 			mode = { 'n', 'v' },
