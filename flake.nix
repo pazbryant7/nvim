@@ -30,6 +30,10 @@
             nodejs-slim
             nodejs-slim.npm
 
+            # ── json ────────────────
+            oxfmt
+
+
             # ── language agnostic ────────────────
             typos
             just
