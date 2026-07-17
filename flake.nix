@@ -39,6 +39,7 @@
 
             # ── compilers ────────────────
             gcc
+            cargo
           ];
 
           shellHook = ''
