@@ -10,9 +10,9 @@ return {
 	{
 		'neovim/nvim-lspconfig',
 		enabled = function()
-			return os.getenv('IN_NIX_SHELL') ~= nil or vim.g.force_lspconfig == true
+			return os.getenv('IN_NIX_SHELL') ~= nil
 		end,
-	  event = { 'BufReadPre', 'BufNewFile' },
+		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
 			{ 'j-hui/fidget.nvim', opts = {} },
 		},
