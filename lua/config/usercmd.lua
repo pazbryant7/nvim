@@ -69,9 +69,3 @@ usercmd('Jump', function(opts)
 		print('Invalid format! Use: row:col (e.g., 9:19)')
 	end
 end, { nargs = 1, desc = 'Jump directly to row:column' })
-
-usercmd('LspEnable', function()
-	vim.g.force_lspconfig = true
-	require('lazy').load({ plugins = { 'nvim-lspconfig' } })
-	vim.cmd('doautocmd FileType')
-end, { desc = 'Enable Lsp by Force' })
