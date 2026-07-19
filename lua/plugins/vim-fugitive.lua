@@ -13,7 +13,6 @@ return {
 			mode = 'n',
 			desc = 'Fugitive: Git status (summary window)',
 		},
-		{ '<leader>gb', ':Git blame<CR>', mode = { 'n', 'v' }, desc = 'Git Blame' },
 	},
 	config = function()
 		vim.g.fugitive_summary_format = '%d %s (%cr) <%an>'
