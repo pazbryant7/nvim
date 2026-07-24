@@ -179,7 +179,6 @@ return {
 		{ '<leader>oy', '<cmd>Obsidian yesterday<CR>', desc = 'Obsidian Yesterday' },
 		{ '<leader>od', '<cmd>Obsidian dailies<CR>', desc = 'Obsidian Dailies List' },
 
-		{ '<leader>on', '<cmd>Obsidian new<CR>', desc = 'Obsidian New Note' },
 		{ '<leader>or', '<cmd>Obsidian rename<CR>', desc = 'Obsidian Rename Note' },
 		{ '<leader>ob', '<cmd>Obsidian backlinks<CR>', desc = 'Obsidian Show Backlinks' },
 		{ '<leader>oc', '<cmd>Obsidian toc<CR>', desc = 'Obsidian Table of Contents' },
@@ -190,6 +189,7 @@ return {
 		{ '<leader>oT', '<cmd>Obsidian template<CR>', desc = 'Obsidian Insert Template' },
 		{ '<leader>ou', '<cmd>Obsidian unique_note<CR>', desc = 'Obsidian Unique Note' },
 
+		{ '<leader>on', '<cmd>Obsidian new<CR>', desc = 'Obsidian New Note' },
 		{
 			'<leader>zf',
 			function()
