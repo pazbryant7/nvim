@@ -13,9 +13,6 @@ return {
 			return os.getenv('IN_NIX_SHELL') ~= nil
 		end,
 		event = { 'BufReadPre', 'BufNewFile' },
-		dependencies = {
-			{ 'j-hui/fidget.nvim', opts = {} },
-		},
 		config = function()
 			require('plugins.lsp.setup').setup()
 			require('plugins.lsp.attach').on_attach()
