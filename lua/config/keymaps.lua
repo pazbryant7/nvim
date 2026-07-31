@@ -46,6 +46,10 @@ map('n', '<leader>D', '"_D', { desc = 'Delete line (black-hole register)' })
 map('v', '<', '<gv', { desc = 'Align Items To The Left' })
 map('v', '>', '>gv', { desc = 'Align Items To The Right' })
 
+-- manage marks
+map('n', '<leader>ms', '<cmd>marks<CR>', { desc = 'Show marks list' })
+map('n', '<leader>md', '<cmd>delmarks! | delmarks A-Z<CR>', { desc = 'Delete all local and global marks' })
+
 -- custom rename
 map('n', 'gcr', [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gI<Left><Left><Left>]], { desc = 'Custom Rename' })
 
