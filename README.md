@@ -30,7 +30,7 @@ but complete editing experience. Free for anyone to use or adapt.
 │       ├── blink-cmp.lua     # Completion engine
 │       ├── fzf-lua.lua       # Fuzzy finder
 │       ├── conform.lua       # Formatting
-│       ├── treesitter.lua    # Syntax highlighting
+│       ├── treesitter-manager.lua    # Syntax highlighting
 │       ├── harpoon.lua       # File navigation
 │       ├── oil.lua           # File explorer
 │       ├── vim-fugitive.lua  # Git integration
@@ -38,8 +38,6 @@ but complete editing experience. Free for anyone to use or adapt.
 │       ├── toggle-term.lua   # Integrated terminal
 │       ├── multiple-cursors.lua
 │       ├── no-neck-pain.lua  # Centered layout
-│       ├── nvim-surround.lua
-│       ├── quicker.lua       # Quickfix improvements
 │       └── transparent.lua
 ├── after/
 │   ├── lsp/                  # Per-LSP overrides (gopls, lua_ls, basedpyright)
@@ -59,23 +57,19 @@ but complete editing experience. Free for anyone to use or adapt.
 
 ## Plugins
 
-| Plugin               | Purpose                                        |
-| -------------------- | ---------------------------------------------- |
-| **lazy.nvim**        | Plugin manager                                 |
-| **blink-cmp**        | Completion engine                              |
-| **fzf-lua**          | Fuzzy finding — files, buffers, grep, and more |
-| **nvim-treesitter**  | Syntax highlighting and code parsing           |
-| **conform.nvim**     | Code formatting (per filetype)                 |
-| **harpoon**          | Quick navigation between pinned files          |
-| **oil.nvim**         | File explorer as a buffer                      |
-| **vim-fugitive**     | Git workflow inside Neovim                     |
-| **kulala.nvim**      | HTTP client — run `.http` files inline         |
-| **toggleterm.nvim**  | Integrated terminal                            |
-| **multiple-cursors** | Multi-cursor editing                           |
-| **no-neck-pain**     | Centers the buffer for focused writing         |
-| **nvim-surround**    | Surround text objects with ease                |
-| **quicker.nvim**     | Better quickfix list experience                |
-| **transparent.nvim** | Transparent background support                 |
+| Plugin                 | Purpose                                        |
+| ---------------------- | ---------------------------------------------- |
+| **lazy.nvim**          | Plugin manager                                 |
+| **blink-cmp**          | Completion engine                              |
+| **fzf-lua**            | Fuzzy finding — files, buffers, grep, and more |
+| **treesitter-manager** | Syntax highlighting and code parsing           |
+| **conform.nvim**       | Code formatting (per filetype)                 |
+| **harpoon**            | Quick navigation between pinned files          |
+| **oil.nvim**           | File explorer as a buffer                      |
+| **vim-fugitive**       | Git workflow inside Neovim                     |
+| **kulala.nvim**        | HTTP client — run `.http` files inline         |
+| **multiple-cursors**   | Multi-cursor editing                           |
+| **no-neck-pain**       | Centers the buffer for focused writing         |
 
 ## LSP
 

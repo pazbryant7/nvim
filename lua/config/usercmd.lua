@@ -69,3 +69,19 @@ usercmd('Jump', function(opts)
 		print('Invalid format! Use: row:col (e.g., 9:19)')
 	end
 end, { nargs = 1, desc = 'Jump directly to row:column' })
+
+usercmd('ToggleQuickFixList', function()
+	local qf_open = false
+	for _, win in ipairs(vim.fn.getwininfo()) do
+		if win.quickfix == 1 then
+			qf_open = true
+			break
+		end
+	end
+
+	if qf_open then
+		vim.cmd('cclose')
+	else
+		vim.cmd('copen')
+	end
+end, { desc = 'Toggle the quickfix window' })

@@ -16,7 +16,7 @@ return {
 		local function on_list(opts)
 			vim.fn.setqflist({}, ' ', opts)
 			if #opts.items > 1 then
-				require('quicker').open()
+				vim.cmd.copen()
 			end
 			vim.cmd.cfirst()
 		end

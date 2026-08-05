@@ -64,6 +64,7 @@ map('n', '<leader>q', ':q!<CR>', { desc = 'Quit Without Saving' })
 map('n', '<leader>Q', ':wq<CR>', { desc = 'Save And Quit' })
 
 -- navigate quickfix list without "no more items" errors
+map("n", "<c-q>", "<cmd>ToggleQuickFixList<CR>", { desc = "Toggle quickfix" })
 map('n', '<c-k>', '<cmd>silent! cnext<CR>zz', { desc = 'Quickfix: Next Item' })
 map('n', '<c-j>', '<cmd>silent! cprevious<CR>zz', { desc = 'Quickfix: Previous Item' })
 
