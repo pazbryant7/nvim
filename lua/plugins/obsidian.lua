@@ -172,57 +172,48 @@ return {
 		checkbox = { order = { ' ', 'x', '~' } },
 	},
 
-	keys = {
-		{ '<leader>oo', '<cmd>Obsidian<CR>', desc = 'Obsidian Open' },
-		{ '<c-t>', '<cmd>Obsidian search<CR>', desc = 'Obsidian Search' },
-		{ '<c-p>', '<cmd>Obsidian quick_switch<CR>', desc = 'Obsidian Quick Switch' },
-		{ '<leader>oW', '<cmd>Obsidian workspace<CR>', desc = 'Obsidian Switch Workspace' },
+	config = function(_, opts)
+		require('obsidian').setup(opts)
 
-		{ '<leader>ot', '<cmd>Obsidian today<CR>', desc = 'Obsidian Today' },
-		{ '<leader>oy', '<cmd>Obsidian yesterday<CR>', desc = 'Obsidian Yesterday' },
-		{ '<leader>od', '<cmd>Obsidian dailies<CR>', desc = 'Obsidian Dailies List' },
+		local map = vim.keymap.set
 
-		{ '<leader>or', '<cmd>Obsidian rename<CR>', desc = 'Obsidian Rename Note' },
-		{ '<leader>ob', '<cmd>Obsidian backlinks<CR>', desc = 'Obsidian Show Backlinks' },
-		{ '<leader>oc', '<cmd>Obsidian toc<CR>', desc = 'Obsidian Table of Contents' },
-		{ '<leader>of', '<cmd>Obsidian follow_link<CR>', desc = 'Obsidian Follow Link' },
-		{ '<leader>ok', '<cmd>Obsidian check<CR>', desc = 'Obsidian Check Vault' },
-		{ '<leader>og', '<cmd>Obsidian tags<CR>', desc = 'Obsidian Search Tags' },
-		{ '<leader>oT', '<cmd>Obsidian template<CR>', desc = 'Obsidian Insert Template' },
+		map('n', '<leader>oo', '<cmd>Obsidian<CR>', { desc = 'Obsidian Open' })
+		map('n', '<c-t>', '<cmd>Obsidian search<CR>', { desc = 'Obsidian Search' })
+		map('n', '<c-p>', '<cmd>Obsidian quick_switch<CR>', { desc = 'Obsidian Quick Switch' })
+		map('n', '<leader>oW', '<cmd>Obsidian workspace<CR>', { desc = 'Obsidian Switch Workspace' })
 
-		{
-			'<leader>on',
-			function()
-				local title = vim.fn.input('Note title: ')
-				if title == '' then
-					return
-				end
-				vim.cmd('Obsidian new ' .. title)
-			end,
-			desc = 'Obsidian New Note',
-		},
-		{
-			'<leader>zf',
-			function()
-				new_note('Fleeting')
-			end,
-			desc = 'Obsidian New Fleeting Note',
-		},
-		{
-			'<leader>zp',
-			function()
-				new_note('Permanent')
-			end,
-			desc = 'Obsidian New Permanent Note',
-		},
-		{
-			'<leader>zl',
-			function()
-				new_note('Literature')
-			end,
-			desc = 'Obsidian New Literature Note',
-		},
+		map('n', '<leader>ot', '<cmd>Obsidian today<CR>', { desc = 'Obsidian Today' })
+		map('n', '<leader>oy', '<cmd>Obsidian yesterday<CR>', { desc = 'Obsidian Yesterday' })
+		map('n', '<leader>od', '<cmd>Obsidian dailies<CR>', { desc = 'Obsidian Dailies List' })
 
-		{ '<leader>op', '<cmd>Obsidian paste_img<CR>', desc = 'Obsidian Paste Image' },
-	},
+		map('n', '<leader>or', '<cmd>Obsidian rename<CR>', { desc = 'Obsidian Rename Note' })
+		map('n', '<leader>ob', '<cmd>Obsidian backlinks<CR>', { desc = 'Obsidian Show Backlinks' })
+		map('n', '<leader>oc', '<cmd>Obsidian toc<CR>', { desc = 'Obsidian Table of Contents' })
+		map('n', '<leader>of', '<cmd>Obsidian follow_link<CR>', { desc = 'Obsidian Follow Link' })
+		map('n', '<leader>ok', '<cmd>Obsidian check<CR>', { desc = 'Obsidian Check Vault' })
+		map('n', '<leader>og', '<cmd>Obsidian tags<CR>', { desc = 'Obsidian Search Tags' })
+		map('n', '<leader>oT', '<cmd>Obsidian template<CR>', { desc = 'Obsidian Insert Template' })
+
+		map('n', '<leader>on', function()
+			local title = vim.fn.input('Note title: ')
+			if title == '' then
+				return
+			end
+			vim.cmd('Obsidian new ' .. title)
+		end, { desc = 'Obsidian New Note' })
+
+		map('n', '<leader>zf', function()
+			new_note('Fleeting')
+		end, { desc = 'Obsidian New Fleeting Note' })
+
+		map('n', '<leader>zp', function()
+			new_note('Permanent')
+		end, { desc = 'Obsidian New Permanent Note' })
+
+		map('n', '<leader>zl', function()
+			new_note('Literature')
+		end, { desc = 'Obsidian New Literature Note' })
+
+		map('n', '<leader>op', '<cmd>Obsidian paste_img<CR>', { desc = 'Obsidian Paste Image' })
+	end,
 }
