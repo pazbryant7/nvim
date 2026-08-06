@@ -51,6 +51,7 @@ end
 return {
 	'obsidian-nvim/obsidian.nvim',
 	dependencies = { 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim' },
+
 	event = (function()
 		local events = {}
 		for _, root in ipairs({ NOTES_DIR, YT_DIR }) do
@@ -60,7 +61,9 @@ return {
 		end
 		return events
 	end)(),
+
 	cmd = { 'Obsidian' },
+
 	opts = {
 		legacy_commands = false,
 
@@ -171,8 +174,8 @@ return {
 
 	keys = {
 		{ '<leader>oo', '<cmd>Obsidian<CR>', desc = 'Obsidian Open' },
-		{ '<leader>os', '<cmd>Obsidian quick_switch<CR>', desc = 'Obsidian Quick Switch' },
-		{ '<leader>oS', '<cmd>Obsidian search<CR>', desc = 'Obsidian Search' },
+		{ '<c-t>', '<cmd>Obsidian search<CR>', desc = 'Obsidian Search' },
+		{ '<c-p>', '<cmd>Obsidian quick_switch<CR>', desc = 'Obsidian Quick Switch' },
 		{ '<leader>oW', '<cmd>Obsidian workspace<CR>', desc = 'Obsidian Switch Workspace' },
 
 		{ '<leader>ot', '<cmd>Obsidian today<CR>', desc = 'Obsidian Today' },
@@ -185,11 +188,19 @@ return {
 		{ '<leader>of', '<cmd>Obsidian follow_link<CR>', desc = 'Obsidian Follow Link' },
 		{ '<leader>ok', '<cmd>Obsidian check<CR>', desc = 'Obsidian Check Vault' },
 		{ '<leader>og', '<cmd>Obsidian tags<CR>', desc = 'Obsidian Search Tags' },
-
 		{ '<leader>oT', '<cmd>Obsidian template<CR>', desc = 'Obsidian Insert Template' },
-		{ '<leader>ou', '<cmd>Obsidian unique_note<CR>', desc = 'Obsidian Unique Note' },
 
-		{ '<leader>on', '<cmd>Obsidian new<CR>', desc = 'Obsidian New Note' },
+		{
+			'<leader>on',
+			function()
+				local title = vim.fn.input('Note title: ')
+				if title == '' then
+					return
+				end
+				vim.cmd('Obsidian new ' .. title)
+			end,
+			desc = 'Obsidian New Note',
+		},
 		{
 			'<leader>zf',
 			function()
