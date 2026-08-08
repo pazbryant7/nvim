@@ -97,7 +97,8 @@ return {
 	keys = (function()
 		local function fzf(method, picker_opts)
 			return function()
-				require('fzf-lua')[method](picker_opts)
+				local opts = type(picker_opts) == 'function' and picker_opts() or picker_opts
+				require('fzf-lua')[method](opts)
 			end
 		end
 
@@ -112,7 +113,9 @@ return {
 			{ '<leader>S', fzf('lsp_workspace_symbols'), desc = 'Workspace Symbols' },
 			{
 				'<m-p>',
-				fzf('files', { cwd = vim.fn.expand('%:p:h') }),
+				fzf('files', function()
+					return { cwd = vim.fn.expand('%:p:h') }
+				end),
 				desc = 'Files (cwd of current file)',
 			},
 			{
