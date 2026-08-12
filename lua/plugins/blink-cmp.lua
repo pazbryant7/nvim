@@ -1,8 +1,10 @@
 return {
 	'saghen/blink.cmp',
+  enabled = function()
+    return os.getenv('IN_NIX_SHELL') ~= nil
+  end,
 	event = 'InsertEnter',
 	version = '1.*',
-	enabled = os.getenv('KATA') == nil,
 	opts = {
 		appearance = {
 			nerd_font_variant = 'mono',
