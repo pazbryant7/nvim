@@ -1,8 +1,8 @@
 return {
 	'stevearc/conform.nvim',
-  enabled = function()
-    return os.getenv('IN_NIX_SHELL') ~= nil
-  end,
+	enabled = function()
+		return os.getenv('IN_NIX_SHELL') ~= nil
+	end,
 	init = function()
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 	end,
