@@ -1,8 +1,5 @@
 return {
 	'saghen/blink.cmp',
-  enabled = function()
-    return os.getenv('IN_NIX_SHELL') ~= nil
-  end,
 	event = 'InsertEnter',
 	version = '1.*',
 	opts = {
@@ -42,6 +39,7 @@ return {
 				'snippets',
 				'lsp',
 				'path',
+				'buffer',
 			},
 			providers = {
 				lazydev = {
