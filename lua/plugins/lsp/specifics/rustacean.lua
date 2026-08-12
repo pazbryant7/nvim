@@ -1,8 +1,8 @@
 return {
 	'mrcjkb/rustaceanvim',
-  enabled = function()
-    return os.getenv('IN_NIX_SHELL') ~= nil
-  end,
+	enabled = function()
+		return require('config.utils').executables_exist('rust-analyzer', 'cargo')
+	end,
 	version = '^6',
 	ft = 'rust',
 	config = function()
