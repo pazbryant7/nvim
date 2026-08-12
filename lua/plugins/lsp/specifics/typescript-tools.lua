@@ -1,6 +1,8 @@
 return {
 	'pmizio/typescript-tools.nvim',
-	enabled = os.getenv('KATA') == nil,
+  enabled = function()
+    return os.getenv('IN_NIX_SHELL') ~= nil
+  end,
 	ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
 	dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
 	cmd = {
