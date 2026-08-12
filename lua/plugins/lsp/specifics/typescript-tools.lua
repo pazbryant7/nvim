@@ -1,8 +1,8 @@
 return {
 	'pmizio/typescript-tools.nvim',
-  enabled = function()
-    return os.getenv('IN_NIX_SHELL') ~= nil
-  end,
+	enabled = function()
+		return require('config.utils').executables_exist('node', 'tsc')
+	end,
 	ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
 	dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
 	cmd = {
