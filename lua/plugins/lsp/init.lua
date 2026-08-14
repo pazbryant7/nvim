@@ -1,13 +1,5 @@
 return {
 	{
-		'folke/lazydev.nvim',
-		ft = 'lua', -- only load on lua files
-		opts = {
-			library = {},
-		},
-	},
-
-	{
 		'neovim/nvim-lspconfig',
 		enabled = function()
 			return os.getenv('IN_NIX_SHELL') ~= nil
