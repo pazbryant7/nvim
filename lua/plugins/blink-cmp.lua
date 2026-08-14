@@ -2,11 +2,18 @@ return {
 	'saghen/blink.cmp',
 	event = 'InsertEnter',
 	version = '1.*',
+
 	opts = {
+		enabled = function()
+			return vim.b.completion ~= false
+		end,
+
 		appearance = {
 			nerd_font_variant = 'mono',
 		},
+
 		cmdline = { enabled = false },
+
 		completion = {
 			documentation = {
 				auto_show = true,
@@ -33,6 +40,7 @@ return {
 				},
 			},
 		},
+
 		sources = {
 			default = {
 				'snippets',
@@ -50,25 +58,31 @@ return {
 					transform_items = function(_, items)
 						local wanted = {}
 						local SnippetKind = require('blink.cmp.types').CompletionItemKind.Snippet
+
 						for _, item in ipairs(items) do
 							if item.kind ~= SnippetKind then
 								table.insert(wanted, item)
 							end
 						end
+
 						return wanted
 					end,
 				},
 			},
 		},
+
 		fuzzy = {
 			implementation = 'rust',
 		},
+
 		snippets = {
 			preset = 'default',
 		},
+
 		signature = {
 			enabled = false,
 		},
+
 		keymap = {
 			preset = 'none',
 			['<c-y>'] = { 'accept' },
@@ -84,8 +98,23 @@ return {
 			['<c-e>'] = { 'show', 'show_documentation', 'hide_documentation', 'hide' },
 		},
 	},
+
 	opts_extend = { 'sources.default' },
+
 	config = function(_, opts)
-		require('blink.cmp').setup(opts)
+		local blink = require('blink.cmp')
+
+		blink.setup(opts)
+
+		vim.keymap.set('n', '\\\\', function()
+			vim.b.completion = vim.b.completion == false
+
+			if vim.b.completion then
+				vim.notify('Blink: enabled')
+			else
+				blink.hide()
+				vim.notify('Blink: disabled')
+			end
+		end, { desc = 'Toggle Blink completion' })
 	end,
 }
