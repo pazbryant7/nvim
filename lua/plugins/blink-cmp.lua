@@ -46,7 +46,6 @@ return {
 				'snippets',
 				'lsp',
 				'path',
-				'buffer',
 			},
 			providers = {
 				snippets = {
