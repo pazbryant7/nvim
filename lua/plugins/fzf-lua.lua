@@ -103,7 +103,7 @@ return {
 		end
 
 		return {
-			{ '<c-p>', fzf('files'), desc = 'Files' },
+			{ '<c-f>', fzf('files'), desc = 'Files' },
 			{ '<leader>k', fzf('keymaps'), desc = 'Keymaps' },
 			{ '<leader>b', fzf('buffers'), desc = 'Buffers' },
 			{ '<leader>ht', fzf('help_tags'), desc = 'Help Tags' },
@@ -112,7 +112,7 @@ return {
 			{ '<leader>s', fzf('lsp_document_symbols'), desc = 'Document Symbols' },
 			{ '<leader>S', fzf('lsp_workspace_symbols'), desc = 'Workspace Symbols' },
 			{
-				'<m-p>',
+				'<m-f>',
 				fzf('files', function()
 					return { cwd = vim.fn.expand('%:p:h') }
 				end),

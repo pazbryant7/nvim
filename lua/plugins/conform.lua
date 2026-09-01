@@ -58,7 +58,7 @@ return {
 	},
 	keys = {
 		{
-			'<c-f>',
+			'<c-c>',
 			function()
 				local mode = vim.fn.mode()
 				if mode == 'v' or mode == 'V' or mode == '\22' then
