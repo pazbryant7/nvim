@@ -179,7 +179,7 @@ return {
 
 		map('n', '<leader>oo', '<cmd>Obsidian<CR>', { desc = 'Obsidian Open' })
 		map('n', '<c-t>', '<cmd>Obsidian search<CR>', { desc = 'Obsidian Search' })
-		map('n', '<c-p>', '<cmd>Obsidian quick_switch<CR>', { desc = 'Obsidian Quick Switch' })
+		map('n', '<c-f>', '<cmd>Obsidian quick_switch<CR>', { desc = 'Obsidian Quick Switch' })
 		map('n', '<leader>oW', '<cmd>Obsidian workspace<CR>', { desc = 'Obsidian Switch Workspace' })
 
 		map('n', '<leader>ot', '<cmd>Obsidian today<CR>', { desc = 'Obsidian Today' })
