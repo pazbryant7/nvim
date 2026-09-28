@@ -5,7 +5,6 @@ local autocmd = api.nvim_create_autocmd
 local augroup = api.nvim_create_augroup
 
 local bryant_group = augroup('bryant_group', { clear = true })
-local tree_sitter_group = augroup('tree_sitter', { clear = true })
 local dreyer_group = api.nvim_create_augroup('DreyerWarnings', { clear = true })
 
 autocmd('TextYankPost', {
@@ -100,9 +99,7 @@ local close_with_q_filetypes = {
 	'gitconfig',
 	'gitcommit',
 	'gitrebase',
-	'gitconfig',
 	'dap-float',
-	'gitcommit',
 	'checkhealth',
 	'startuptime',
 	'tsplayground',
@@ -195,15 +192,8 @@ autocmd('FileType', {
 	end,
 })
 
-autocmd('BufEnter', {
-	desc = 'Set window title',
-	group = bryant_group,
-	callback = function()
-		vim.o.titlestring = vim.fn.expand('%:t')
-	end,
-})
-
 autocmd({ 'BufEnter', 'BufWinEnter' }, {
+	group = bryant_group,
 	pattern = {
 		'compose*.yml',
 		'compose*.yaml',
@@ -216,7 +206,8 @@ autocmd({ 'BufEnter', 'BufWinEnter' }, {
 })
 
 autocmd({ 'BufEnter', 'BufWinEnter', 'ColorScheme' }, {
-	desc = 'Disalbe snippets highlight colors',
+	desc = 'Disable snippet highlight colors',
+	group = bryant_group,
 	callback = function()
 		local opts = { link = 'NONE' }
 		set_hl(0, 'SnippetTabstop', opts)
