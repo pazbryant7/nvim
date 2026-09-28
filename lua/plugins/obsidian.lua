@@ -37,7 +37,7 @@ local function new_note(template)
 	if title == '' or template == '' then
 		return print('Error: A title and template name must be provided.')
 	end
-	vim.cmd('Obsidian new_from_template ' .. title .. ' ' .. template)
+	vim.cmd.Obsidian({ 'new_from_template', title, template })
 end
 
 local function zettel_customizations()
@@ -199,7 +199,7 @@ return {
 			if title == '' then
 				return
 			end
-			vim.cmd('Obsidian new ' .. title)
+			vim.cmd.Obsidian({ 'new', title })
 		end, { desc = 'Obsidian New Note' })
 
 		map('n', '<leader>zf', function()
