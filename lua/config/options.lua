@@ -2,7 +2,6 @@ local v = vim
 local opt = v.opt
 local o = v.o
 local g = v.g
-local wo = v.wo
 
 g.mapleader = ' '
 g.maplocalleader = ' '
@@ -13,10 +12,6 @@ g.loaded_matchparen = 1
 -- disable netrw
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
-
-g.netrw_banner = 0 -- hide top banner
-g.netrw_liststyle = 0 -- tree-view
-g.netrw_browse_split = 0
 
 opt.clipboard = 'unnamedplus' -- system clipboard
 
@@ -65,7 +60,6 @@ o.foldcolumn = '0'
 o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldclose:'
 o.foldlevel = 99
 o.foldlevelstart = 99
-opt.foldlevelstart = 99
 
 if g.neovide then
 	o.guifont = 'Maple Mono:h9.5:w1.2:#h-none'
