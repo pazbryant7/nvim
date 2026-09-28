@@ -43,7 +43,6 @@
           ];
 
           shellHook = ''
-            corepack enable
             echo "⚡ Dev environment ready"
             echo "Lua: $(lua -v)"
             echo "NodeJS: $(node --version)"
