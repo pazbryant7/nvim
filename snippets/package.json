@@ -20,7 +20,7 @@
       },
       {
         "language": "go",
-        "path": "./dockerfile.json"
+        "path": "./go.json"
       },
       {
         "language": "jjdescription",
