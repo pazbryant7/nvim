@@ -54,10 +54,11 @@ return {
 		require('no-neck-pain').setup(opts)
 
 		local autocmd = vim.api.nvim_create_autocmd
-
+		local group = vim.api.nvim_create_augroup('no_neck_pain_filetypes', { clear = true })
 		local filetypes = { 'json.kulala_ui' }
 
 		autocmd('FileType', {
+			group = group,
 			pattern = filetypes,
 			callback = function()
 				vim.schedule(function()
