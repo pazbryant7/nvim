@@ -9,8 +9,8 @@ but complete editing experience. Free for anyone to use or adapt.
 ```
 .
 ├── init.lua                  # Entry point
-├── lazy-lock.json            # Plugin lockfile
 ├── justfile                  # Convenience commands
+├── flake.nix                 # Pinned development environment
 ├── .stylua.toml              # Lua formatter config
 ├── lua/
 │   ├── config/               # Core Neovim settings
@@ -26,17 +26,16 @@ but complete editing experience. Free for anyone to use or adapt.
 │       │   ├── setup.lua
 │       │   ├── attach.lua
 │       │   └── specifics/
+│       │       ├── rustacean.lua
 │       │       └── typescript-tools.lua
 │       ├── blink-cmp.lua     # Completion engine
 │       ├── fzf-lua.lua       # Fuzzy finder
 │       ├── conform.lua       # Formatting
-│       ├── treesitter-manager.lua    # Syntax highlighting
-│       ├── harpoon.lua       # File navigation
+│       ├── treesitter.lua    # Syntax highlighting
 │       ├── oil.lua           # File explorer
 │       ├── vim-fugitive.lua  # Git integration
 │       ├── kulala.lua        # HTTP client
-│       ├── toggle-term.lua   # Integrated terminal
-│       ├── multiple-cursors.lua
+│       ├── obsidian.lua      # Markdown knowledge base
 │       ├── no-neck-pain.lua  # Centered layout
 │       └── transparent.lua
 ├── after/
@@ -57,19 +56,18 @@ but complete editing experience. Free for anyone to use or adapt.
 
 ## Plugins
 
-| Plugin                 | Purpose                                        |
-| ---------------------- | ---------------------------------------------- |
-| **lazy.nvim**          | Plugin manager                                 |
-| **blink-cmp**          | Completion engine                              |
-| **fzf-lua**            | Fuzzy finding — files, buffers, grep, and more |
-| **treesitter-manager** | Syntax highlighting and code parsing           |
-| **conform.nvim**       | Code formatting (per filetype)                 |
-| **harpoon**            | Quick navigation between pinned files          |
-| **oil.nvim**           | File explorer as a buffer                      |
-| **vim-fugitive**       | Git workflow inside Neovim                     |
-| **kulala.nvim**        | HTTP client — run `.http` files inline         |
-| **multiple-cursors**   | Multi-cursor editing                           |
-| **no-neck-pain**       | Centers the buffer for focused writing         |
+| Plugin              | Purpose                                        |
+| ------------------- | ---------------------------------------------- |
+| **lazy.nvim**       | Plugin manager                                 |
+| **blink-cmp**       | Completion engine                              |
+| **fzf-lua**         | Fuzzy finding — files, buffers, grep, and more |
+| **nvim-treesitter** | Syntax highlighting and code parsing           |
+| **conform.nvim**    | Code formatting (per filetype)                 |
+| **oil.nvim**        | File explorer as a buffer                      |
+| **vim-fugitive**    | Git workflow inside Neovim                     |
+| **kulala.nvim**     | HTTP client — run `.http` files inline         |
+| **obsidian.nvim**   | Markdown knowledge-base workflow               |
+| **no-neck-pain**    | Centers the buffer for focused writing         |
 
 ## LSP
 
@@ -80,6 +78,7 @@ overrides in `after/lsp/`:
 - **lua_ls** — Lua
 - **basedpyright** — Python
 - **typescript-tools** — TypeScript / JavaScript
+- **rustaceanvim** — Rust
 
 ## Snippets
 
