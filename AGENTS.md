@@ -12,7 +12,7 @@
 - `init.lua` is the runtime entry point. It loads core settings from `lua/config/`, bootstraps lazy.nvim in `lua/config/lazy.lua`, then loads commands, mappings, and autocommands.
 - Each file in `lua/plugins/` returns a lazy.nvim plugin specification. The standard startup import loads `plugins` plus `plugins.lsp.specifics`; put shared LSP setup in `lua/plugins/lsp/` and plugin-specific integrations in `lua/plugins/lsp/specifics/`.
 - Per-server Neovim LSP overrides belong in `after/lsp/`; filetype behavior belongs in `after/ftplugin/`. Custom completion snippets are VSCode-format JSON in `snippets/`.
-- Normal plugin loading is bypassed for `+Man` pager sessions and when `LF_BULK_RENAME=1`; those modes load only their respective minimal plugin specs.
+- Normal plugin loading is bypassed for `+Man` pager sessions, which load only the centered-layout plugin spec.
 
 ## Runtime constraints
 
