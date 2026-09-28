@@ -1,7 +1,7 @@
 return {
 	'mrcjkb/rustaceanvim',
 	enabled = function()
-		return require('config.utils').executables_exist('rust-analyzer', 'cargo')
+		return require('config.utils').executables_exist('/usr/lib/rustup/bin/rust-analyzer', 'cargo')
 	end,
 	version = '^6',
 	ft = 'rust',
