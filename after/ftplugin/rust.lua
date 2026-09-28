@@ -39,5 +39,10 @@ end, opts)
 opts.desc = '[R]ust Quick [D]ebug'
 map('n', '<leader>rD', function()
 	vim.notify('🎯 Quick debug current file...', vim.log.levels.INFO)
-	require('dap').continue()
+	local ok, dap = pcall(require, 'dap')
+	if not ok then
+		vim.notify('nvim-dap is not installed', vim.log.levels.WARN, { title = 'Rust debug' })
+		return
+	end
+	dap.continue()
 end, opts)
