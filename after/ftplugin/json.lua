@@ -1,3 +1,1 @@
-local v = vim
-local opt = v.opt
-opt.conceallevel = 0
+vim.opt_local.conceallevel = 0
