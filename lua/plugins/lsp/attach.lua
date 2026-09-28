@@ -79,24 +79,12 @@ function M.get_keymaps()
 end
 
 function M.on_attach(_, buffer)
-	local Keys = require('lazy.core.handler.keys')
-	local keymaps = {}
-	for _, value in ipairs(M.get_keymaps()) do
-		local keys = Keys.parse(value)
-		if keys[2] == vim.NIL or keys[2] == false then
-			keymaps[keys.id] = nil
-		else
-			-- Preserve the original mode from the keymap definition
-			keys.mode = value.mode or keys.mode or 'n'
-			keymaps[keys.id] = keys
-		end
-	end
-	for _, keys in pairs(keymaps) do
-		local opts = Keys.opts(keys)
-		opts.has = nil
-		opts.silent = true
-		opts.buffer = buffer
-		vim.keymap.set(keys.mode, keys.lhs, keys.rhs, opts)
+	for _, keymap in ipairs(M.get_keymaps()) do
+		vim.keymap.set(keymap.mode or 'n', keymap[1], keymap[2], {
+			buffer = buffer,
+			desc = keymap.desc,
+			silent = true,
+		})
 	end
 end
 
