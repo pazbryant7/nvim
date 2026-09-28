@@ -32,11 +32,16 @@ usercmd('RenameFile', function()
 	local new_name = vim.fn.input('Rename to: ', old_name)
 
 	if new_name ~= '' and new_name ~= old_name then
-		vim.fn.system('mv ' .. old_name .. ' ' .. new_name)
-		vim.cmd('edit ' .. new_name)
-		vim.cmd('bdelete #')
+		vim.fn.system({ 'mv', '--', old_name, new_name })
+		if vim.v.shell_error ~= 0 then
+			vim.notify('Could not rename ' .. old_name, vim.log.levels.ERROR, { title = 'Neovim Alert' })
+			return
+		end
+
+		vim.cmd.edit(vim.fn.fnameescape(new_name))
+		vim.cmd.bdelete('#')
 	end
-end, { desc = 'Toggle Spell' })
+end, { desc = 'Rename current file' })
 
 usercmd('CurrentPath', function()
 	local path = vim.fn.expand('%:p')
