@@ -13,41 +13,29 @@ end
 function M.diagnostic_goto(next, severity)
 	severity = severity and vim.diagnostic.severity[severity] or nil
 
-	local opts = { float = true, severity = severity }
-	if next then
-		opts.count = 1
-	else
-		opts.count = -1
-	end
-
 	return function()
-		vim.diagnostic.jump(opts)
+		vim.diagnostic.jump({
+			count = (next and 1 or -1) * vim.v.count1,
+			float = true,
+			severity = severity,
+		})
 	end
 end
 
 function M.get_keymaps()
 	return {
-		{ 'grn', vim.lsp.buf.rename, desc = 'LSP Rename' },
-		{ 'grr', vim.lsp.buf.references, desc = 'LSP References' },
-		{ ']d', M.diagnostic_goto(true), desc = 'LSP Next Diagnostic' },
-		{ '[d', M.diagnostic_goto(false), desc = 'LSP Prev Diagnostic' },
 		{ 'gD', vim.lsp.buf.declaration, desc = 'LSP Goto Declaration' },
+
 		{ ']e', M.diagnostic_goto(true, 'ERROR'), desc = 'LSP Next Error' },
 		{ '[e', M.diagnostic_goto(false, 'ERROR'), desc = 'LSP Prev Error' },
+
 		{ ']w', M.diagnostic_goto(true, 'WARN'), desc = 'LSP Next Warning' },
 		{ '[w', M.diagnostic_goto(false, 'WARN'), desc = 'LSP Prev Warning' },
-		{ 'gri', vim.lsp.buf.implementation, desc = 'LSP Goto Implementation' },
-		{ 'grt', vim.lsp.buf.type_definition, desc = 'LSP Goto Type Definition' },
-		{
-			'gra',
-			vim.lsp.buf.code_action,
-			desc = 'LSP Code Action',
-			mode = { 'n', 'v' },
-		},
+
 		{
 			'K',
 			function()
-				vim.lsp.buf.hover({ border = 'single' })
+				vim.lsp.buf.hover()
 			end,
 			desc = 'LSP Hover',
 		},
@@ -58,33 +46,20 @@ function M.get_keymaps()
 			end,
 			desc = 'LSP Goto Definition',
 		},
-		{
-			'<c-k>',
-			function()
-				vim.lsp.buf.signature_help({ border = 'single' })
-			end,
-			desc = 'LSP Signature Help',
-			mode = { 'i' },
-		},
-		{
-			'gQ',
-			function()
-				vim.diagnostic.setqflist({ open = true })
-				vim.cmd('wincmd p')
-			end,
-			desc = 'Diagnostics into QuickFix List',
-			mode = { 'n' },
-		},
 	}
 end
 
-function M.on_attach(_, buffer)
+function M.on_attach(client, buffer)
 	for _, keymap in ipairs(M.get_keymaps()) do
-		vim.keymap.set(keymap.mode or 'n', keymap[1], keymap[2], {
-			buffer = buffer,
-			desc = keymap.desc,
-			silent = true,
-		})
+		local skip_hover = keymap[1] == 'K'
+			and (vim.bo[buffer].filetype == 'rust' or not client:supports_method('textDocument/hover'))
+		if not skip_hover then
+			vim.keymap.set(keymap.mode or 'n', keymap[1], keymap[2], {
+				buffer = buffer,
+				desc = keymap.desc,
+				silent = true,
+			})
+		end
 	end
 end
 

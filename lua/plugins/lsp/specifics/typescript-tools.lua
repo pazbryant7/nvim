@@ -14,7 +14,6 @@ return {
 	},
 	config = function()
 		require('typescript-tools').setup({
-			on_attach = require('plugins.lsp.attach').on_attach,
 			capabilities = require('plugins.lsp.setup').get_capabilities(),
 			settings = {
 				complete_function_calls = false,

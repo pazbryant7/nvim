@@ -219,13 +219,14 @@ autocmd({ 'BufEnter', 'BufWinEnter', 'ColorScheme' }, {
 })
 
 autocmd('LspAttach', {
-	desc = 'Disable  LSP features',
+	desc = 'Configure LSP buffer',
 	group = bryant_group,
 	callback = function(args)
 		lsp.document_color.enable(false)
 		local client = lsp.get_client_by_id(args.data.client_id)
 		if client then
 			client.server_capabilities.semanticTokensProvider = nil
+			require('plugins.lsp.attach').on_attach(client, args.buf)
 		end
 	end,
 })
