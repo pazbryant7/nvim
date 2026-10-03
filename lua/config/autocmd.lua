@@ -95,7 +95,6 @@ local close_with_q_filetypes = {
 	'lspinfo',
 	'fugitive',
 	'grug-far',
-	'markdown',
 	'gitconfig',
 	'gitcommit',
 	'gitrebase',
@@ -130,7 +129,7 @@ autocmd('FileType', {
 					{ title = 'Neovim Alert' }
 				)
 			end
-		end, { buffer = bufnr, remap = false })
+		end, { buffer = bufnr, desc = 'Close window' })
 	end,
 })
 

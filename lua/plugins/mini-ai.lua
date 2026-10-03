@@ -14,8 +14,8 @@ return {
 			mappings = {
 				around = 'a',
 				inside = 'i',
-				around_next = 'an',
-				inside_next = 'in',
+				around_next = '',
+				inside_next = '',
 				around_last = 'al',
 				inside_last = 'il',
 				goto_left = '[g',
@@ -41,8 +41,6 @@ return {
 	keys = {
 		{ 'il', mode = { 'x', 'o' }, desc = 'Mini.AI: inside last' },
 		{ 'al', mode = { 'x', 'o' }, desc = 'Mini.AI: around last' },
-		{ 'in', mode = { 'x', 'o' }, desc = 'Mini.AI: inside next' },
-		{ 'an', mode = { 'x', 'o' }, desc = 'Mini.AI: around next' },
 		{ 'i', mode = { 'x', 'o' }, desc = 'Mini.AI: inside textobject' },
 		{ 'a', mode = { 'x', 'o' }, desc = 'Mini.AI: around textobject' },
 		{ '[g', mode = { 'n', 'x', 'o' }, desc = 'Mini.AI: go to left edge' },
