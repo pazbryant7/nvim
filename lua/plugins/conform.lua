@@ -78,7 +78,7 @@ return {
 				end
 			end,
 			mode = { 'n', 'v' },
-			desc = 'Format Buffer/Selection',
+			desc = 'Conform Format Buffer/Selection',
 		},
 	},
 }

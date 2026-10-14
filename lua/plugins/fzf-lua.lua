@@ -103,20 +103,20 @@ return {
 		end
 
 		return {
-			{ '<c-f>', fzf('files'), desc = 'Files' },
-			{ '<leader>k', fzf('keymaps'), desc = 'Keymaps' },
-			{ '<leader>b', fzf('buffers'), desc = 'Buffers' },
-			{ '<leader>ht', fzf('help_tags'), desc = 'Help Tags' },
-			{ '<c-t>', fzf('live_grep_native'), desc = 'Live Grep' },
-			{ 'z=', fzf('spell_suggest'), desc = 'Spell Suggestions' },
-			{ '<leader>s', fzf('lsp_document_symbols'), desc = 'Document Symbols' },
-			{ '<leader>S', fzf('lsp_workspace_symbols'), desc = 'Workspace Symbols' },
+			{ '<c-f>', fzf('files'), desc = 'FzfLua: Files' },
+			{ '<leader>k', fzf('keymaps'), desc = 'FzfLua: Keymaps' },
+			{ '<leader>b', fzf('buffers'), desc = 'FzfLua: Buffers' },
+			{ '<leader>ht', fzf('help_tags'), desc = 'FzfLua: Help Tags' },
+			{ '<c-t>', fzf('live_grep_native'), desc = 'FzfLua: Live Grep' },
+			{ 'z=', fzf('spell_suggest'), desc = 'FzfLua: Spell Suggestions' },
+			{ '<leader>s', fzf('lsp_document_symbols'), desc = 'FzfLua: Document Symbols' },
+			{ '<leader>S', fzf('lsp_workspace_symbols'), desc = 'FzfLua: Workspace Symbols' },
 			{
 				'<m-f>',
 				fzf('files', function()
 					return { cwd = vim.fn.expand('%:p:h') }
 				end),
-				desc = 'Files (cwd of current file)',
+				desc = 'FzfLua: Files (cwd of current file)',
 			},
 			{
 				'<m-c>',
@@ -128,7 +128,7 @@ return {
 						end,
 					},
 				}),
-				desc = 'Directories',
+				desc = 'FzfLua: Directories',
 			},
 			{
 				'<leader>th',
@@ -176,7 +176,7 @@ return {
 						'^randombones_light$',
 					},
 				}),
-				desc = 'Colorschemes',
+				desc = 'FzfLua: Colorschemes',
 			},
 		}
 	end)(),

@@ -48,7 +48,7 @@ return {
 				end
 				enabled = not enabled
 			end,
-			desc = 'Toggle transparency',
+			desc = 'Transparent: Toggle transparency',
 		},
 	},
 }
