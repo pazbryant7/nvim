@@ -67,4 +67,5 @@ if g.neovide then
 	g.neovide_cursor_vfx_mode = 'railgun'
 end
 
+-- Fallback for sessions that intentionally skip normal plugin loading (+Man).
 vim.cmd('colorscheme habamax')

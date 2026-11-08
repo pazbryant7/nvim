@@ -259,10 +259,20 @@ local dreyer_words = {
 	'that said',
 }
 
-set_hl(0, 'DreyerWarning', {
-	fg = '#ebae34',
-	undercurl = true,
-	sp = '#ebae34',
+local function set_dreyer_warning()
+	set_hl(0, 'DreyerWarning', {
+		fg = '#ebae34',
+		undercurl = true,
+		sp = '#ebae34',
+	})
+end
+
+set_dreyer_warning()
+
+autocmd('ColorScheme', {
+	desc = "Restore Dreyer's English warning highlight",
+	group = dreyer_group,
+	callback = set_dreyer_warning,
 })
 
 local dreyer_pattern = [[\v<(]] .. table.concat(dreyer_words, '|') .. [[)>]]
