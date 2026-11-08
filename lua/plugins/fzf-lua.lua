@@ -1,6 +1,10 @@
 return {
 	'ibhagwan/fzf-lua',
 	cmd = { 'FzfLua' },
+	dependencies = {
+		'folke/todo-comments.nvim',
+		'nvim-mini/mini.icons',
+	},
 
 	opts = function()
 		local actions = require('fzf-lua.actions')
@@ -34,6 +38,10 @@ return {
 		end
 
 		return {
+			defaults = {
+				file_icons = 'mini',
+			},
+
 			winopts = {
 				height = 0.60,
 				width = 0.60,
@@ -104,6 +112,13 @@ return {
 
 		return {
 			{ '<c-f>', fzf('files'), desc = 'FzfLua: Files' },
+			{
+				'<leader>ft',
+				function()
+					require('todo-comments.fzf').todo()
+				end,
+				desc = 'Todo Comments: Search',
+			},
 			{ '<leader>k', fzf('keymaps'), desc = 'FzfLua: Keymaps' },
 			{ '<leader>b', fzf('buffers'), desc = 'FzfLua: Buffers' },
 			{ '<leader>ht', fzf('help_tags'), desc = 'FzfLua: Help Tags' },
