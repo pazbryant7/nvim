@@ -1,10 +1,17 @@
 return {
 	'stevearc/oil.nvim',
 	cmd = 'Oil',
+	dependencies = { 'nvim-mini/mini.icons' },
 	lazy = false,
 	priority = 1000,
 	opts = {
 		default_file_explorer = true,
+		columns = {
+			'icon',
+			{ 'permissions', highlight = 'Type' },
+			{ 'size', highlight = 'String' },
+			{ 'mtime', highlight = 'Keyword' },
+		},
 
 		keymaps = {
 			['g?'] = { 'actions.show_help', mode = 'n' },

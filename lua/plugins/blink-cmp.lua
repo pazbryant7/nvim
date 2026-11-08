@@ -2,6 +2,7 @@ return {
 	'saghen/blink.cmp',
 	event = 'InsertEnter',
 	version = '1.*',
+	dependencies = { 'nvim-mini/mini.icons' },
 
 	opts = {
 		enabled = function()
@@ -102,6 +103,13 @@ return {
 
 	config = function(_, opts)
 		local blink = require('blink.cmp')
+		local mini_icons = require('mini.icons')
+
+		local kind_icons = {}
+		for _, kind in ipairs(vim.lsp.protocol.CompletionItemKind) do
+			kind_icons[kind] = mini_icons.get('lsp', kind)
+		end
+		opts.appearance.kind_icons = kind_icons
 
 		blink.setup(opts)
 
