@@ -1,9 +1,6 @@
 return {
 	'tpope/vim-fugitive',
 	cmd = { 'G', 'Git', 'Gclog', 'Gdiffsplit' },
-	cond = function()
-		return vim.fn.isdirectory('.git') == 1
-	end,
 	keys = {
 		{
 			'<c-g>',
