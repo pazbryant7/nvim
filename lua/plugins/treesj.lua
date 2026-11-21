@@ -6,6 +6,6 @@ return {
 		use_default_keymaps = false,
 	},
 	keys = {
-    { '<leader>mm', '<cmd>TSJToggle<cr>', desc = 'TreeSJ: Toggle' },
-  },
+		{ '<leader>mm', '<cmd>TSJToggle<cr>', desc = 'TreeSJ: Toggle' },
+	},
 }
