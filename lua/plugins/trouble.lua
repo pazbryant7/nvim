@@ -9,6 +9,6 @@ return {
 		{ '<leader>xl', '<cmd>Trouble loclist toggle<cr>', desc = 'Trouble: Location list' },
 		{ '<leader>xq', '<cmd>Trouble qflist toggle<cr>', desc = 'Trouble: Quickfix list' },
 		{ '<leader>xs', '<cmd>Trouble symbols toggle focus=false<cr>', desc = 'Trouble: Symbols' },
-		{ '<leader>xt', '<cmd>Trouble todo toggle<cr>', desc = 'Trouble: Todo comments' },
+		{ '<leader>xt', '<cmd>TodoTrouble toggle<cr>', desc = 'Trouble: Todo Comments' },
 	},
 }

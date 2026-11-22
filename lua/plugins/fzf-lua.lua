@@ -2,7 +2,6 @@ return {
 	'ibhagwan/fzf-lua',
 	cmd = { 'FzfLua' },
 	dependencies = {
-		'folke/todo-comments.nvim',
 		'nvim-mini/mini.icons',
 	},
 
@@ -115,7 +114,7 @@ return {
 			{
 				'<leader>ft',
 				function()
-					require('todo-comments.fzf').todo()
+					vim.cmd.TodoFzfLua()
 				end,
 				desc = 'Todo Comments: Search',
 			},
