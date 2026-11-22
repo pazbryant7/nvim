@@ -4,7 +4,7 @@ return {
 		return require('config.utils').executables_exist('node', 'tsc')
 	end,
 	ft = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-	dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+	dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig', 'saghen/blink.cmp' },
 	cmd = {
 		'TSToolsFixAll',
 		'TSToolsRenameFile',

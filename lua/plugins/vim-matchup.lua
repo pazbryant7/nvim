@@ -1,6 +1,6 @@
 return {
 	'andymass/vim-matchup',
-	event = 'BufReadPre',
+	event = { 'BufReadPre', 'BufNewFile' },
 
 	init = function()
 		vim.g.matchup_treesitter_enabled = true

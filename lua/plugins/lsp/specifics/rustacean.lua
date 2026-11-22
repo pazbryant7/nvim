@@ -5,6 +5,7 @@ return {
 	end,
 	version = '^6',
 	ft = 'rust',
+	dependencies = { 'saghen/blink.cmp' },
 	config = function()
 		local capabilities = require('plugins.lsp.setup').get_capabilities()
 
